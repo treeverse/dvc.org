@@ -76,8 +76,8 @@ $ dvc exp show ...
   [DOT](<https://en.wikipedia.org/wiki/DOT_(graph_description_language)>)
   format. It can be passed to third party visualization utilities.
 
-- `--collapse-foreach-matrix` - Collapse foreach/matrix stages to single stage.
-  This simplifies the output but keeps all edges.
+- `--collapse-foreach-matrix` - Collapse stages from each foreach/matrix
+  definition into a single node. This simplifies the output but keeps all edges.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
