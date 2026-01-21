@@ -41,7 +41,7 @@
     "hast-util-select": "6.0.4",
     "iso-url": "1.2.1",
     "isomorphic-fetch": "3.0.0",
-    "lodash": "4.17.21",
+    "lodash": "4.17.23",
     "nanoid": "5.1.6",
     "postcss": "8.5.6",
     "postcss-nested": "7.0.2",
