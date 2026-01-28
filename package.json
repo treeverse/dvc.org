@@ -54,7 +54,6 @@
     "express": "5.2.0",
     "gatsby": "5.15.0",
     "gatsby-plugin-catch-links": "5.15.0",
-    "gatsby-plugin-google-tagmanager": "5.15.0",
     "gatsby-plugin-image": "3.15.0",
     "gatsby-plugin-manifest": "5.15.0",
     "gatsby-plugin-parent-resolvers": "1.0.2",

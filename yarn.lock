@@ -12571,20 +12571,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"gatsby-plugin-google-tagmanager@npm:5.15.0":
-  version: 5.15.0
-  resolution: "gatsby-plugin-google-tagmanager@npm:5.15.0"
-  dependencies:
-    "@babel/runtime": "npm:^7.20.13"
-    web-vitals: "npm:^1.1.2"
-  peerDependencies:
-    gatsby: ^5.0.0-next
-    react: ^18.0.0 || ^0.0.0
-    react-dom: ^18.0.0 || ^0.0.0
-  checksum: 10c0/e11162ee1abb69bd54e193ba694d805f733ff584f06bff9dabb19b3b59ce73233d97db0e337e385d53b422f1f43eea3d5bb51a1b975c0de27b217e6e12f25e12
-  languageName: node
-  linkType: hard
-
 "gatsby-plugin-image@npm:3.15.0":
   version: 3.15.0
   resolution: "gatsby-plugin-image@npm:3.15.0"
@@ -23734,13 +23720,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"web-vitals@npm:^1.1.2":
-  version: 1.1.2
-  resolution: "web-vitals@npm:1.1.2"
-  checksum: 10c0/9521ea2e8ca2e4446ba8e3d5430b0c9a9a07e0d6f468a90dc5fab2bab524fb1a699f3874ea392c9e35a63dcf3651b40130d58ebd78e53a406cb9622049bf1403
-  languageName: node
-  linkType: hard
-
 "webidl-conversions@npm:^3.0.0":
   version: 3.0.1
   resolution: "webidl-conversions@npm:3.0.1"
@@ -23921,7 +23900,6 @@ __metadata:
     express: "npm:5.2.0"
     gatsby: "npm:5.15.0"
     gatsby-plugin-catch-links: "npm:5.15.0"
-    gatsby-plugin-google-tagmanager: "npm:5.15.0"
     gatsby-plugin-image: "npm:3.15.0"
     gatsby-plugin-manifest: "npm:5.15.0"
     gatsby-plugin-parent-resolvers: "npm:1.0.2"

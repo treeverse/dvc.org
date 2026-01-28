@@ -134,20 +134,14 @@ if (process.env.NODE_ENV === 'production') {
 
 if (process.env.GATSBY_GTM_ID) {
   plugins.push({
-    resolve: `gatsby-plugin-google-tagmanager`,
+    resolve: `gatsby-plugin-gtm`,
     options: {
       id: process.env.GATSBY_GTM_ID,
 
       // Include GTM in development.
       //
       // Defaults to false meaning GTM will only be loaded in production.
-      includeInDevelopment: process.env.GTM_INCLUDE_IN_DEV === `true`,
-
-      // datalayer to be set before GTM is loaded
-      // should be an object or a function that is executed in the browser
-      //
-      // Defaults to null
-      defaultDataLayer: { platform: `gatsby` }
+      includeInDevelopment: process.env.GTM_INCLUDE_IN_DEV === `true`
     }
   })
 }
