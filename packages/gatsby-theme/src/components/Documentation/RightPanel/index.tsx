@@ -211,6 +211,28 @@ const RightPanel: React.FC<IRightPanelProps> = ({
             Discord Chat
           </Link>
         </div>
+
+        <div className={styles.buttonSection}>
+          <p className={styles.buttonSectionDescription}>
+            <span
+              className={styles.buttonSectionIcon}
+              role="img"
+              aria-label="lakefs"
+            >
+              🤝
+            </span>{' '}
+            Data on petabyte scale? Checkout our sister project:
+          </p>
+
+          <Link
+            className={cn(sharedStyles.button, styles.button)}
+            href="https://docs.lakefs.io/latest/index.html"
+            target="_blank"
+          >
+            <i className={cn(sharedStyles.buttonIcon, styles.lakefsIcon)} />
+            lakeFS Docs
+          </Link>
+        </div>
       </div>
     </div>
   )

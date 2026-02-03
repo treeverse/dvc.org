@@ -261,3 +261,22 @@ _Luigi_, etc.
   /user-guide/pipelines/defining-pipelines#directed-acyclic-graph-dag
 
 </details>
+
+<admon type="info">
+
+### lakeFS
+
+lakeFS is a sister tool to DVC. It is a Git-like data version control system for
+large-scale data lakes and object stores (such as S3, GCS, and Azure), designed
+for data engineering and production AI workloads where copying data is
+impractical. While DVC focuses on lightweight, file-based data versioning for
+data science workflows using Git repositories, lakeFS operates as a control
+plane over centralized storage, enabling branching, commits, and rollbacks on
+petabyte-scale data without data duplication.
+
+Teams often explore lakeFS when their data grows beyond local or repo-centric
+workflows, or when multiple pipelines and services need coordinated,
+transactional control over shared datasets. If these are your requirements,
+[lakeFS](https://https://docs.lakefs.io/latest/) may be a good option for you.
+
+</admon>

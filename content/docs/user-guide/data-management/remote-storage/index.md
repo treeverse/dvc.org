@@ -25,6 +25,14 @@ Main uses of remote storage:
 - Centralize or distribute data storage for sharing and collaboration.
 - Back up different versions of datasets and models (saving space locally).
 
+<admon type="info">
+
+If you are dealing with data on the level of petabytes, you may want to checkout
+our sister tool,
+[lakeFS](https://docs.lakefs.io/latest/#how-does-lakefs-work-with-other-tools)
+
+</admon>
+
 ## Configuration
 
 You can set up one or more storage locations with `dvc remote` commands. These
