@@ -126,3 +126,68 @@
     flex: 1;
   }
 }
+
+.infoCardWrapper {
+  border: 1px solid #d6d6d6;
+  border-radius: 10px;
+  padding: 1.25rem 1.5rem;
+  margin: 2rem 0;
+}
+
+.infoCardHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.infoCardLogo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.infoCardTitle {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-gray-dark);
+}
+
+.infoCardContent {
+  font-size: 18px;
+  line-height: 1.7;
+
+  p {
+    margin: 0 0 0.5rem;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.infoCardLink {
+  display: inline-block !important;
+  margin-top: 1rem !important;
+  padding: 0.5rem 1.25rem !important;
+  background-color: #13adc7 !important;
+  color: #fff !important;
+  font-weight: 500 !important;
+  font-size: 16px !important;
+  text-decoration: none !important;
+  border-radius: 6px !important;
+  transition: all 0.2s ease !important;
+  white-space: nowrap !important;
+}
+
+.infoCardLink:hover {
+  background-color: #11849b !important;
+  color: #fff !important;
+  text-decoration: none !important;
+}
+
+.infoCardLink::after {
+  display: none !important;
+  content: none !important;
+}
