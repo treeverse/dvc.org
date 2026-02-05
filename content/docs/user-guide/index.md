@@ -277,6 +277,6 @@ petabyte-scale data without data duplication.
 Teams often explore lakeFS when their data grows beyond local or repo-centric
 workflows, or when multiple pipelines and services need coordinated,
 transactional control over shared datasets. If these are your requirements,
-[lakeFS](https://https://docs.lakefs.io/latest/) may be a good option for you.
+[lakeFS](https://docs.lakefs.io/latest/) may be a good option for you.
 
 </details>
