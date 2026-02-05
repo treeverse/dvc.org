@@ -6,6 +6,10 @@
     padding: 10px;
   }
 
+  .collapsible-purple .Collapsible {
+    background-color: rgb(128 90 213 / 20%);
+  }
+
   .Collapsible__trigger {
     font-family: var(--font-base);
     font-weight: 500;

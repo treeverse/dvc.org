@@ -262,7 +262,7 @@ _Luigi_, etc.
 
 </details>
 
-<admon type="info">
+<details color="purple">
 
 ### lakeFS
 
@@ -279,4 +279,4 @@ workflows, or when multiple pipelines and services need coordinated,
 transactional control over shared datasets. If these are your requirements,
 [lakeFS](https://https://docs.lakefs.io/latest/) may be a good option for you.
 
-</admon>
+</details>

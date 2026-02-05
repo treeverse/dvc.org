@@ -12,8 +12,12 @@ export const getComponents = (slugger: Slugger) => ({
   abbr: Abbr,
   card: Card,
   cards: Cards,
-  details: ({ id, children }: PropsWithChildren<{ id: string }>) => (
-    <Details slugger={slugger} id={id}>
+  details: ({
+    id,
+    children,
+    color
+  }: PropsWithChildren<{ id: string; color?: string }>) => (
+    <Details slugger={slugger} id={id} color={color}>
       {children}
     </Details>
   ),
