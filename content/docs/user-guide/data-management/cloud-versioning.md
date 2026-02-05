@@ -25,7 +25,8 @@ Currently, it is supported on the following storage types:
   https://learn.microsoft.com/en-us/azure/storage/blobs/versioning-overview
 [google cloud storage]:
   /user-guide/data-management/remote-storage/google-cloud-storage
-[object versioning]: https://cloud.google.com/storage/docs/object-versioning
+[object versioning]:
+  https://docs.cloud.google.com/storage/docs/object-versioning
 
 Lifecycle management policies may delete object versions, in which case DVC will
 be unable to recover those versions. For more information about lifecycle

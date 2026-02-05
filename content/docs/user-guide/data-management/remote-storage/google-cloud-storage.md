@@ -26,11 +26,11 @@ service account or other ways to authenticate ([more info]).
 
 [google cloud storage]: https://cloud.google.com/storage
 [existing storage bucket]:
-  https://cloud.google.com/storage/docs/creating-buckets
+  https://docs.cloud.google.com/storage/docs/creating-buckets
 [folder]: https://docs.cloud.google.com/storage/docs/objects#namespace
-[gcloud cli authorization]: https://cloud.google.com/sdk/docs/authorizing
+[gcloud cli authorization]: https://docs.cloud.google.com/sdk/docs/authorizing
 [gcloud auth application-default login]:
-  https://cloud.google.com/sdk/gcloud/reference/auth/application-default/login
+  https://docs.cloud.google.com/sdk/gcloud/reference/auth/application-default/login
 [more info]:
   https://stackoverflow.com/questions/53306131/difference-between-gcloud-auth-application-default-login-and-gcloud-auth-logi/53307505#53307505
 

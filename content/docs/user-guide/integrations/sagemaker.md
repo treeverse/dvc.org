@@ -54,7 +54,7 @@ and utilize [external dependencies and outputs].
 
 ### Example: XGBoost pipeline
 
-For an example, see https://github.com/iterative/sagemaker-pipeline, which
+For an example, see https://github.com/treeverse/sagemaker-pipeline, which
 adapts an existing SageMaker tutorial from a notebook into a DVC pipeline. The
 first stage (`prepare`) downloads the data and tracks the output so that it
 doesn't have to be re-downloaded on each run. We parametrize the `bucket` and
@@ -188,9 +188,9 @@ For a full example of how to deploy with SageMaker, see our [blog post].
 [external dependencies and outputs]:
   /user-guide/pipelines/external-dependencies-and-outputs
 [preprocessing script]:
-  https://github.com/iterative/sagemaker-pipeline/blob/main/sm_preprocessing.py
+  https://github.com/treeverse/sagemaker-pipeline/blob/main/sm_preprocessing.py
 [training script]:
-  https://github.com/iterative/sagemaker-pipeline/blob/main/sm_training.py
+  https://github.com/treeverse/sagemaker-pipeline/blob/main/sm_training.py
 [triggering sagemaker deployment]:
   https://github.com/iterative/example-get-started-experiments/blob/main/.github/workflows/deploy-model-sagemaker.yml
 [deploying sagemaker endpoints]:

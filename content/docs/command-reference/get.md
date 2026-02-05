@@ -123,9 +123,9 @@ the source Git repo. Instead, it's exported in the `dvc.yaml` file as an
 `dvc pull` the file from the `dvc remote default` of the source DVC project
 (found in [its config file]).
 
-[root directory]: https://github.com/iterative/example-get-started/tree/main/
+[root directory]: https://github.com/treeverse/example-get-started/tree/main
 [its config file]:
-  https://github.com/iterative/example-get-started/blob/main/.dvc/config
+  https://github.com/treeverse/example-get-started/blob/main/.dvc/config
 
 <admon type="info">
 

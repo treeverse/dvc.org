@@ -29,9 +29,9 @@ These are captured in our [example-get-started-experiments] repo (see its
 [tags][example-get-started-experiments-tags]).
 
 [example-get-started-experiments]:
-  https://github.com/iterative/example-get-started-experiments
+  https://github.com/treeverse/example-get-started-experiments
 [example-get-started-experiments-tags]:
-  https://github.com/iterative/example-get-started-experiments/tags
+  https://github.com/treeverse/example-get-started-experiments/tags
 
 </admon>
 

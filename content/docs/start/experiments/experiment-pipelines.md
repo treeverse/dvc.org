@@ -40,13 +40,13 @@ engineering best practices:
 ## Creating the experiment pipeline
 
 In our
-[example repo](https://github.com/iterative/example-get-started-experiments), we
+[example repo](https://github.com/treeverse/example-get-started-experiments), we
 first extract data preparation logic from the
-[original notebook](https://github.com/iterative/example-get-started-experiments/blob/main/notebooks/TrainSegModel.ipynb)
+[original notebook](https://github.com/treeverse/example-get-started-experiments/blob/main/notebooks/TrainSegModel.ipynb)
 into
-[`data_split.py`](https://github.com/iterative/example-get-started-experiments/blob/main/src/data_split.py).
+[`data_split.py`](https://github.com/treeverse/example-get-started-experiments/blob/main/src/data_split.py).
 We parametrize this script by reading parameters from
-[`params.yaml`](https://github.com/iterative/example-get-started-experiments/blob/main/params.yaml):
+[`params.yaml`](https://github.com/treeverse/example-get-started-experiments/blob/main/params.yaml):
 
 ```python
 from ruamel.yaml import YAML
@@ -60,7 +60,7 @@ def data_split():
 
 We now use `dvc stage add` commands to transform our scripts into individual
 <abbr>stages</abbr> starting with a `data_split` stage for
-[`data_split.py`](https://github.com/iterative/example-get-started-experiments/blob/main/src/data_split.py):
+[`data_split.py`](https://github.com/treeverse/example-get-started-experiments/blob/main/src/data_split.py):
 
 ```cli
 $ dvc stage add --name data_split \
@@ -98,9 +98,9 @@ stages:
 </details>
 
 Now, we create the `train` and `evaluate` stages using
-[`train.py`](https://github.com/iterative/example-get-started-experiments/blob/main/src/train.py)
+[`train.py`](https://github.com/treeverse/example-get-started-experiments/blob/main/src/train.py)
 and
-[`evaluate.py`](https://github.com/iterative/example-get-started-experiments/blob/main/src/evaluate.py)
+[`evaluate.py`](https://github.com/treeverse/example-get-started-experiments/blob/main/src/evaluate.py)
 to train the model and evaluate its performance respectively:
 
 ```cli

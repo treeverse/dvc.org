@@ -127,7 +127,7 @@ params.yaml  featurize.max_features  2000        500        -1500
 ```
 
 To compare an experiment to the
-[`7-ml-pipeline`](https://github.com/iterative/example-get-started/releases/tag/7-ml-pipeline)
+[`7-ml-pipeline`](https://github.com/treeverse/example-get-started/releases/tag/7-ml-pipeline)
 tag (or any other [revision](https://git-scm.com/docs/revisions)):
 
 ```cli

@@ -176,7 +176,7 @@ outs:
 ```
 
 Several of the values above are pulled from the original `.dvc` file
-[in the external DVC repository](https://github.com/iterative/example-get-started/blob/main/data/data.xml.dvc).
+[in the external DVC repository](https://github.com/treeverse/example-get-started/blob/main/data/data.xml.dvc).
 The `url` and `rev_lock` subfields under `repo` are used to save the origin and
 version of the dependency, respectively.
 
@@ -222,7 +222,7 @@ $ dvc update --rev cats-dogs-v2 cats-dogs.dvc
 ## Example: Data registry
 
 If you take a look at our
-[dataset registry](https://github.com/iterative/dataset-registry)
+[dataset registry](https://github.com/treeverse/dataset-registry)
 <abbr>project</abbr>, you'll see that it's organized into different directories
 such as `tutorials/versioning` and `use-cases/`, and these contain `.dvc` files
 that track different datasets. Given this simple structure, its data files can

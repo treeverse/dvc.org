@@ -36,10 +36,10 @@ directly.
 
 You can use `dvc list` to explore a <abbr>DVC repository</abbr> hosted on any
 Git server. For example, let's see what's in the `get-started/` directory of our
-[dataset-registry](https://github.com/iterative/dataset-registry) repo:
+[dataset-registry](https://github.com/treeverse/dataset-registry) repo:
 
 ```cli
-$ dvc list https://github.com/iterative/dataset-registry get-started
+$ dvc list https://github.com/treeverse/dataset-registry get-started
 .gitignore
 data.xml
 data.xml.dvc
@@ -48,7 +48,7 @@ data.xml.dvc
 The benefit of this command over browsing a Git hosting website is that the list
 includes files and directories tracked by both Git and DVC (`data.xml` is not
 visible if you
-[check GitHub](https://github.com/iterative/dataset-registry/tree/master/get-started)).
+[check GitHub](https://github.com/treeverse/dataset-registry/tree/master/get-started)).
 
 ## Download
 
@@ -57,7 +57,7 @@ working outside of a <abbr>DVC project</abbr> environment, for example in an
 automated ML model deployment task:
 
 ```cli
-$ dvc get https://github.com/iterative/dataset-registry \
+$ dvc get https://github.com/treeverse/dataset-registry \
           use-cases/cats-dogs
 ```
 
@@ -71,7 +71,7 @@ the data came from or whether new versions are available.
 file (which can be saved in the project):
 
 ```cli
-$ dvc import https://github.com/iterative/dataset-registry \
+$ dvc import https://github.com/treeverse/dataset-registry \
              get-started/data.xml -o data/data.xml
 ```
 
@@ -89,7 +89,7 @@ The [dataset registry] repository doesn't actually contain a
 `get-started/data.xml` file. Like `dvc get`, `dvc import` downloads from [remote
 storage].
 
-[dataset registry]: https://github.com/iterative/dataset-registry
+[dataset registry]: https://github.com/treeverse/dataset-registry
 
 </admon>
 
@@ -100,7 +100,7 @@ source `repo` and `path` (under `deps`):
 +deps:
 +- path: get-started/data.xml
 +  repo:
-+    url: https://github.com/iterative/dataset-registry
++    url: https://github.com/treeverse/dataset-registry
 +    rev_lock: 96fdd8f12c14fa58a1b7354f15c7adb50e4e8542
  outs:
  - md5: 22a1a2931c8370d3aeedd7183606fd7f
@@ -123,7 +123,7 @@ import dvc.api
 
 with dvc.api.open(
     'get-started/data.xml',
-    repo='https://github.com/iterative/dataset-registry'
+    repo='https://github.com/treeverse/dataset-registry'
 ) as f:
     # f is a file-like object which can be processed normally
 ```

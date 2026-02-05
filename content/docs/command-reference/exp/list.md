@@ -92,7 +92,7 @@ $ dvc exp list --all-commits git@github.com:iterative/example-get-started.git
 ```
 
 We can see that two experiments are available in
-([the DVC repo](https://github.com/iterative/example-get-started)).
+([the DVC repo](https://github.com/treeverse/example-get-started)).
 
 If we're currently in a local clone of the repo, we can also use
 [Git remote](https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes)

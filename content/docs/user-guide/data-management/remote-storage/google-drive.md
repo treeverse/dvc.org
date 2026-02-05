@@ -97,7 +97,7 @@ folder i.e. `gdrive://<base>/path/to/folder`. The base can be one of:
    `https://drive.google.com/drive/folders/0AIac4JZqHhKmUk9PDA`.
 
    > \* Note the
-   > [Shared drive limits](https://support.google.com/a/answer/7338880) on
+   > [Shared drive limits](https://support.google.com/a/users/answer/7338880) on
    > storage and uploads.
 
 2. `root` - indicates your topmost Google Drive folder ("My Drive").
@@ -457,5 +457,4 @@ for more information.
   - `https://www.googleapis.com/auth/drive`
   - `https://www.googleapis.com/auth/drive.appdata`
 
-[delegated]:
-  https://developers.google.com/admin-sdk/directory/v1/guides/delegation
+[delegated]: https://developers.google.com/workspace/guides/create-credentials

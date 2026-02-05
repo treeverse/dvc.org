@@ -224,7 +224,7 @@ in the [Get Started](/start).
 
 Start by cloning our example repo if you don't already have it. Then move into
 the repo and checkout the
-[3-config-remote](https://github.com/iterative/example-get-started/releases/tag/3-config-remote)
+[3-config-remote](https://github.com/treeverse/example-get-started/releases/tag/3-config-remote)
 tag, section of the _Get Started_:
 
 ```cli

@@ -103,7 +103,7 @@ Preparing to download data from 'https://remote.dvc.org/get-started'
 
 With the `-T` option, `dvc fetch` makes sure that we have all the data files
 related to all existing Git tags in the repo. You may see the available tags of
-our example repo [here](https://github.com/iterative/example-get-started/tags).
+our example repo [here](https://github.com/treeverse/example-get-started/tags).
 
 </details>
 
@@ -145,7 +145,7 @@ files summary: 1 added, 0 deleted, 0 modified
 ```
 
 [2-track-data]:
-  https://github.com/iterative/example-get-started/releases/tag/2-track-data
+  https://github.com/treeverse/example-get-started/releases/tag/2-track-data
 [data versioning]: /start
 
 ## Example: Comparing tags or branches
@@ -155,7 +155,7 @@ files summary: 1 added, 0 deleted, 0 modified
 ### Click and expand to set up the example
 
 Our example repository has the `baseline-experiment` and `bigrams-experiment`
-[tags](https://github.com/iterative/example-get-started/tags) tags, that
+[tags](https://github.com/treeverse/example-get-started/tags) tags, that
 reference two different modeling experiments.
 
 Having followed the example's setup, move into the `example-get-started/`
