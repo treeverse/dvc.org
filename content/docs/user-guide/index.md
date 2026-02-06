@@ -264,10 +264,19 @@ _Luigi_, etc.
 
 <infocard title="lakeFS" logo="/img/lakefs.svg" href="https://docs.lakefs.io/latest/" cta="Explore lakeFS">
 
-Git-like version control for data lakes at any scale. Branch, commit, and
-rollback data in S3, GCS, or Azure without duplication.
+Our sister tool, [lakeFS](https://docs.lakefs.io/), is an open-source data
+version control system for data lakes and object stores (S3, GCS, Azure Blob).
 
-Ideal when your data outgrows repo-centric workflows or when multiple pipelines
-need transactional control over shared datasets.
+- DVC is a CLI tool that requires no server infrastructure. lakeFS is a
+  centralized server that enables coordinated access for multiple users and
+  pipelines.
+
+- DVC versions data by storing content hashes in Git-tracked metafiles and
+  copies data to storage. lakeFS implements Git-like semantics (branches,
+  commits, merges, rollbacks) as metadata operations without copying data,
+  scaling to billions of objects at terabyte-to-petabyte scale.
+
+- DVC provides [ML pipelines], [experiment tracking][experiment management], and
+  [metrics]. lakeFS focuses on data versioning primitives.
 
 </infocard>
