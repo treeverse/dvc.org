@@ -5,7 +5,7 @@ import { DownloadLink, NoPreRedirectLink } from '../../../Link'
 import Admonition from '../Admonition'
 import { Tab, Toggle } from '../ToggleProvider'
 
-import { Abbr, Card, Cards, Details } from './default'
+import { Abbr, Card, Cards, Details, InfoCard } from './default'
 
 export const getComponents = (slugger: Slugger) => ({
   a: NoPreRedirectLink,
@@ -25,5 +25,6 @@ export const getComponents = (slugger: Slugger) => ({
   tab: Tab,
   admon: Admonition,
   admonition: Admonition,
-  downloadlink: DownloadLink
+  downloadlink: DownloadLink,
+  infocard: InfoCard
 })

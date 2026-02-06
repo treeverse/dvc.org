@@ -114,6 +114,36 @@ export const InnerCard: React.FC<
     <div className={className}>{children}</div>
   )
 
+export const InfoCard: React.FC<
+  PropsWithChildren<{
+    title?: string
+    logo?: string
+    href?: string
+    cta?: string
+  }>
+> = ({ children, title, logo, href, cta = 'Explore' }) => {
+  return (
+    <div className={styles.infoCardWrapper}>
+      <div className={styles.infoCardHeader}>
+        {logo && (
+          <img
+            src={logo}
+            alt={title || 'Logo'}
+            className={styles.infoCardLogo}
+          />
+        )}
+        {title && <h3 className={styles.infoCardTitle}>{title}</h3>}
+      </div>
+      <div className={styles.infoCardContent}>{children}</div>
+      {href && (
+        <Link href={href} className={styles.infoCardLink}>
+          {cta}
+        </Link>
+      )}
+    </div>
+  )
+}
+
 export const Card: React.FC<
   PropsWithChildren<{
     icon?: string
