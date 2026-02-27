@@ -24,6 +24,27 @@ export const BasePopup: React.FC<
   </div>
 )
 
+export const DataVersionControlPopup: React.FC<IPopupProps> = ({
+  isVisible,
+  closePopup
+}) => (
+  <BasePopup className={styles.communityPopup} isVisible={isVisible}>
+    {menuData.dataVersionControl.map(({ text, title, href }, i) => (
+      <Link
+        className={styles.link}
+        href={href}
+        key={i}
+        onClick={(): void => {
+          logEvent('Nav', { Item: 'dataVersionControl' })
+          closePopup()
+        }}
+      >
+        {text || title}
+      </Link>
+    ))}
+  </BasePopup>
+)
+
 export const CommunityPopup: React.FC<IPopupProps> = ({
   isVisible,
   closePopup

@@ -14,7 +14,11 @@ import { IPopupProps } from '../Popup'
 
 import * as styles from './styles.module.css'
 
-type PopupName = 'communityPopup' | 'otherToolsPopup' | 'otherPopup'
+type PopupName =
+  | 'communityPopup'
+  | 'otherToolsPopup'
+  | 'otherPopup'
+  | 'dataVersionControlPopup'
 
 export interface INavLinkData {
   href: string
@@ -42,10 +46,12 @@ const LinkItems: React.FC = () => {
   const communityPopup = usePopup()
   const otherToolsPopup = usePopup()
   const otherPopup = usePopup()
+  const dataVersionControlPopup = usePopup()
   const popups: { [key: string]: IUsePopupReturn } = {
     otherToolsPopup,
     communityPopup,
-    otherPopup
+    otherPopup,
+    dataVersionControlPopup
   }
 
   return (

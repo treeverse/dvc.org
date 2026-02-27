@@ -46,15 +46,14 @@ interface IFooterListData {
 
 const footerListsData: Array<IFooterListData> = [
   {
-    header: 'lakeFS',
+    header: 'Data Version Control',
     links: [
-      { href: externalUrls.lakefsHome, text: 'Why lakeFS?', target: '_blank' },
       {
-        href: externalUrls.lakefsQuickstart,
-        text: 'Quickstart',
-        target: '_blank'
+        href: externalUrls.lakefsHome,
+        text: 'For AI/ML & Data Infrastructure'
       },
-      { href: externalUrls.lakefsDocs, text: 'Documentation', target: '_blank' }
+      { href: docUrls.home, text: 'For Local Workflows (Git Extension)' },
+      { href: externalUrls.lakefsDocs, text: 'About lakeFS' }
     ]
   },
   {

@@ -11,6 +11,7 @@ import {
 } from '../components/LayoutHeader/Nav/LinkItems'
 import {
   CommunityPopup,
+  DataVersionControlPopup,
   OtherPopup
 } from '../components/LayoutHeader/Nav/Popup'
 
@@ -26,16 +27,23 @@ interface ICommunityData {
 
 interface IMenuData {
   community: Array<ICommunityData>
+  dataVersionControl: Array<ICommunityData>
   nav: Array<INavLinkData | INavLinkPopupData>
 }
 
 const menuData: IMenuData = {
   nav: [
     {
+      text: 'Data Version Control',
       href: docUrls.home,
-      eventType: 'doc',
-      text: 'Doc'
+      Popup: DataVersionControlPopup,
+      popupName: 'dataVersionControlPopup'
     },
+    // {
+    //     href: docUrls.home,
+    //     eventType: 'doc',
+    //     text: 'Doc'
+    // },
     {
       href: mainSiteUrls.blog,
       eventType: 'blog',
@@ -64,6 +72,22 @@ const menuData: IMenuData = {
       Popup: OtherPopup,
       className: styles.other,
       hideDropdown: true
+    }
+  ],
+  dataVersionControl: [
+    {
+      title: 'Meet Us',
+      text: 'For AI/ML and Data Science',
+      href: externalUrls.lakefsHome,
+      img: '/img/community/icon-lakefs.svg',
+      imgAlt: ''
+    },
+    {
+      title: 'Testimonials',
+      text: 'For Local Workflows (Git Extension)',
+      href: docUrls.home,
+      img: '/img/community/icon-community.svg',
+      imgAlt: ''
     }
   ],
   community: [
