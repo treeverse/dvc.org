@@ -44,7 +44,7 @@ installed.
 Okay! Let's first download the code and set up a Git repository:
 
 ```cli
-$ git clone https://github.com/iterative/example-versioning.git
+$ git clone https://github.com/treeverse/example-versioning.git
 $ cd example-versioning
 ```
 
@@ -79,7 +79,7 @@ first model. We'll capture everything with DVC, including the input dataset and
 model [metrics](/command-reference/metrics).
 
 ```cli
-$ dvc get https://github.com/iterative/dataset-registry \
+$ dvc get https://github.com/treeverse/dataset-registry \
           tutorials/versioning/data.zip
 $ unzip -q data.zip
 $ rm -f data.zip
@@ -93,7 +93,7 @@ repos. In this case we use our [dataset registry] repo as the data source (refer
 to [Data Registry] for more info.)
 
 [remotely]: /user-guide/data-management/remote-storage
-[dataset registry]: https://github.com/iterative/dataset-registry
+[dataset registry]: https://github.com/treeverse/dataset-registry
 [data registry]: /example-scenarios/data-registry
 
 </admon>
@@ -193,7 +193,7 @@ Let's imagine that our image dataset doubles in size. The next command extracts
 500 new cat images and 500 new dog images into `data/train`:
 
 ```cli
-$ dvc get https://github.com/iterative/dataset-registry \
+$ dvc get https://github.com/treeverse/dataset-registry \
           tutorials/versioning/new-labels.zip
 $ unzip -q new-labels.zip
 $ rm -f new-labels.zip

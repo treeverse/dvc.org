@@ -107,7 +107,7 @@ other commands like `dvc get` or `dvc import` to reuse any file or directory
 found in it. This includes files (or directories) tracked by DVC or by Git:
 
 ```cli
-$ dvc list https://github.com/iterative/example-get-started
+$ dvc list https://github.com/treeverse/example-get-started
 .dvcignore
 .gitignore
 README.md
@@ -122,7 +122,7 @@ src
 ```
 
 If you open the
-[example-get-started](https://github.com/iterative/example-get-started)
+[example-get-started](https://github.com/treeverse/example-get-started)
 project's page, you will see a similar list but not the `model.pkl` file. It's
 tracked by DVC and not visible to Git. It's exported in the `dvc.yaml` file as
 an output of the `train` stage (in the `outs` field).
@@ -130,7 +130,7 @@ an output of the `train` stage (in the `outs` field).
 We can now, for example, download the model file with:
 
 ```cli
-$ dvc get https://github.com/iterative/example-get-started model.pkl
+$ dvc get https://github.com/treeverse/example-get-started model.pkl
 ```
 
 ## Example: List all files in a data registry
@@ -141,7 +141,7 @@ with different datasets in separate directories. We can do this recursively,
 using `-R` option:
 
 ```cli
-$ dvc list -R https://github.com/iterative/dataset-registry
+$ dvc list -R https://github.com/treeverse/dataset-registry
 .gitignore
 README.md
 get-started/.gitignore
@@ -185,11 +185,11 @@ $ dvc list . -R --dvc-only | xargs python -m zipfile -c data.zip
 ## Example: Set AWS profile for default remote
 
 ```cli
-$ dvc list https://github.com/iterative/example-get-started-s3 data/prepared --remote-config profile=myprofile
+$ dvc list https://github.com/treeverse/example-get-started-s3 data/prepared --remote-config profile=myprofile
 ```
 
 ## Example: Set default remote
 
 ```cli
-$ dvc list https://github.com/iterative/example-get-started-s3 data/prepared --remote myremote
+$ dvc list https://github.com/treeverse/example-get-started-s3 data/prepared --remote myremote
 ```

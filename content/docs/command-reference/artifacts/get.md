@@ -92,7 +92,7 @@ the model registry, DVC will fall back to its typical method to get files (see
 ## Example: Download an artifact from a DVC remote
 
 ```cli
-$ dvc artifacts get https://github.com/iterative/example-get-started.git text-classification --rev=v1.0.0
+$ dvc artifacts get https://github.com/treeverse/example-get-started.git text-classification --rev=v1.0.0
 Downloaded 1 file(s) to 'model.pkl'
 ```
 
@@ -103,7 +103,7 @@ the artifact from the default DVC remote defined in the repository.
 ## Example: Download an artifact using a DVC Studio token
 
 ```cli
-$ DVC_STUDIO_TOKEN=mytoken dvc artifacts get https://github.com/iterative/example-get-started.git text-classification --stage=prod
+$ DVC_STUDIO_TOKEN=mytoken dvc artifacts get https://github.com/treeverse/example-get-started.git text-classification --stage=prod
 Downloaded 1 file(s) to 'model.pkl'
 ```
 
@@ -115,7 +115,7 @@ registry</abbr> rather than from a DVC remote.
 ## Example: Download an artifact defined in a specific `dvc.yaml` file
 
 ```cli
-$ dvc artifacts get https://github.com/iterative/lstm_seq2seq.git results/dvc.yaml:best
+$ dvc artifacts get https://github.com/treeverse/lstm_seq2seq.git results/dvc.yaml:best
 Downloaded 1 file(s) to 'epoch=0-step=16.ckpt'
 ```
 
@@ -131,7 +131,7 @@ We can use `dvc artifacts get --show-url` to get the actual location where the
 model is stored:
 
 ```cli
-$ dvc artifacts get https://github.com/iterative/example-get-started.git \
+$ dvc artifacts get https://github.com/treeverse/example-get-started.git \
   text-classification --rev=v1.0.0 --show-url
 https://remote.dvc.org/get-started/files/md5/cf/a72ff6e2575c44f78f423cada5b783
 ```

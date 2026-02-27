@@ -122,7 +122,7 @@ repository</abbr> without having to clone it locally.
 ```py
 import dvc.api
 metrics = dvc.api.metrics_show(
-    repo="https://github.com/iterative/example-get-started")
+    repo="https://github.com/treeverse/example-get-started")
 ```
 
 ```json

@@ -26,7 +26,7 @@ import dvc.api
 
 modelpkl = dvc.api.read(
     'model.pkl',
-    repo='https://github.com/iterative/example-get-started',
+    repo='https://github.com/treeverse/example-get-started',
     mode='rb'
 )
 ```
@@ -112,7 +112,7 @@ import dvc.api
 
 data = dvc.api.read(
     'model.pkl',
-    repo='https://github.com/iterative/example-get-started'
+    repo='https://github.com/treeverse/example-get-started'
     mode='rb'
 )
 model = pickle.loads(data)

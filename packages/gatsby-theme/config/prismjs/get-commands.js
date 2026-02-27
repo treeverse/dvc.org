@@ -15,12 +15,12 @@ const sortDashedCommand = (a, b) => {
 }
 
 const getUrl = (repo, branch = 'main') => {
-  return `https://raw.githubusercontent.com/iterative/${repo}/${branch}/content/docs/sidebar.json`
+  return `https://raw.githubusercontent.com/treeverse/${repo}/${branch}/content/docs/sidebar.json`
 }
 
 const getAliasList = async (repo, branch = 'main', tool) => {
   try {
-    const link = `https://raw.githubusercontent.com/iterative/${repo}/${branch}/content/linked-terms.js`
+    const link = `https://raw.githubusercontent.com/treeverse/${repo}/${branch}/content/linked-terms.js`
     const res = await fetch(link)
     if (res.ok) {
       const raw = await res.text()

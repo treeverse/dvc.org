@@ -85,7 +85,7 @@ $ dvc exp list --all-commits
 You can also list experiments in any DVC repo with `dvc exp list`:
 
 ```cli
-$ dvc exp list --all-commits git@github.com:iterative/example-get-started.git
+$ dvc exp list --all-commits git@github.com:treeverse/example-get-started.git
 10-bigrams-experiment:
     bally-gude
     conic-ease
@@ -100,7 +100,7 @@ name instead:
 
 ```cli
 $ git remote -v
-origin  git@github.com:iterative/example-get-started.git
+origin  git@github.com:treeverse/example-get-started.git
 $ dvc exp list --all-commits origin
 10-bigrams-experiment:
     bally-gude

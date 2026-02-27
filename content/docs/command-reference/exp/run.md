@@ -229,7 +229,7 @@ code.
 Clone the DVC repo and download the data it <abbr>depends</abbr> on:
 
 ```cli
-$ git clone git@github.com:iterative/example-get-started.git
+$ git clone git@github.com:treeverse/example-get-started.git
 $ cd example-get-started
 $ dvc pull
 ```

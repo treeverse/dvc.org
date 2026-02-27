@@ -192,7 +192,7 @@ For a full example of how to deploy with SageMaker, see our [blog post].
 [training script]:
   https://github.com/treeverse/sagemaker-pipeline/blob/main/sm_training.py
 [triggering sagemaker deployment]:
-  https://github.com/iterative/example-get-started-experiments/blob/main/.github/workflows/deploy-model-sagemaker.yml
+  https://github.com/treeverse/example-get-started-experiments/blob/main/.github/workflows/deploy-model-sagemaker.yml
 [deploying sagemaker endpoints]:
-  https://github.com/iterative/example-get-started-experiments/blob/main/sagemaker/deploy_model.py
+  https://github.com/treeverse/example-get-started-experiments/blob/main/sagemaker/deploy_model.py
 [blog post]: https://dvc.org/blog/sagemaker-model-deployment/

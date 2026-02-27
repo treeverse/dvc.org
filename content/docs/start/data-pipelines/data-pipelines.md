@@ -66,7 +66,7 @@ tracked with `dvc add` (if you are following from [Data Versioning](/start), you
 may already have this data):
 
 ```cli
-$ dvc get https://github.com/iterative/dataset-registry \
+$ dvc get https://github.com/treeverse/dataset-registry \
           get-started/data.xml -o data/data.xml
 $ dvc add data/data.xml
 ```

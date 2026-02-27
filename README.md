@@ -10,7 +10,7 @@
 Please see our [Contributing guide](https://doc.dvc.org/contributing/docs) for
 more details. Thanks to all our contributors!
 
-[![Contributors](https://contrib.rocks/image?repo=iterative/dvc.org)](https://github.com/treeverse/dvc.org/graphs/contributors)
+[![Contributors](https://contrib.rocks/image?repo=treeverse/dvc.org)](https://github.com/treeverse/dvc.org/graphs/contributors)
 
 # Getting help
 

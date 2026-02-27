@@ -144,7 +144,7 @@ in different situations.
 Start by cloning our example repo if you don't already have it:
 
 ```cli
-$ git clone https://github.com/iterative/example-get-started
+$ git clone https://github.com/treeverse/example-get-started
 $ cd example-get-started
 ```
 

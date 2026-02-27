@@ -127,7 +127,7 @@ pipeline stages, such as the <abbr>DVC project</abbr> created for the
 Start by cloning our example repo if you don't already have it:
 
 ```cli
-$ git clone https://github.com/iterative/example-get-started
+$ git clone https://github.com/treeverse/example-get-started
 $ cd example-get-started
 $ dvc fetch -aT
 ```

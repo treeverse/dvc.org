@@ -86,11 +86,11 @@ $ dvc update --rev master
 ## Example
 
 Let's first import a data artifact from our
-[get started example repo](https://github.com/iterative/example-get-started):
+[get started example repo](https://github.com/treeverse/example-get-started):
 
 ```cli
-$ dvc import git@github.com:iterative/example-get-started model.pkl
-Importing 'model.pkl (git@github.com:iterative/example-get-started)'
+$ dvc import git@github.com:treeverse/example-get-started model.pkl
+Importing 'model.pkl (git@github.com:treeverse/example-get-started)'
 -> 'model.pkl'
 ```
 
@@ -118,14 +118,14 @@ stable.
 > [Importing and updating fixed revisions](/command-reference/import#example-importing-and-updating-fixed-revisions).
 
 Let's import a model from a specific version of our
-[get started example repo](https://github.com/iterative/example-get-started)
+[get started example repo](https://github.com/treeverse/example-get-started)
 first:
 
 ```cli
 $ dvc import --rev baseline-experiment \
-            git@github.com:iterative/example-get-started \
+            git@github.com:treeverse/example-get-started \
             model.pkl
-Importing 'model.pkl (git@github.com:iterative/example-get-started)'
+Importing 'model.pkl (git@github.com:treeverse/example-get-started)'
 -> 'model.pkl'
 ```
 
@@ -145,7 +145,7 @@ Let's try to update the model to a different version:
 
 ```cli
 $ dvc update --rev bigrams-experiment model.pkl.dvc
-Importing 'model.pkl (git@github.com:iterative/example-get-started)'
+Importing 'model.pkl (git@github.com:treeverse/example-get-started)'
 -> 'model.pkl'
 ```
 

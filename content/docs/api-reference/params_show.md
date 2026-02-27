@@ -158,7 +158,7 @@ repository</abbr> without having to clone it locally.
 ```py
 import dvc.api
 params = dvc.api.params_show(
-    repo="https://github.com/iterative/example-get-started")
+    repo="https://github.com/treeverse/example-get-started")
 ```
 
 ```json

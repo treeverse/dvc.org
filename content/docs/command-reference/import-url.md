@@ -228,7 +228,7 @@ the repo and checkout the
 tag, section of the _Get Started_:
 
 ```cli
-$ git clone https://github.com/iterative/example-get-started
+$ git clone https://github.com/treeverse/example-get-started
 $ cd example-get-started
 $ git checkout 3-config-remote
 ```

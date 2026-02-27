@@ -199,7 +199,7 @@ that is installed when `yarn` runs (see [dev env](#development-environment)).
 
 > Check out the `.md` source code of any command reference to get a better idea,
 > for example in
-> [this very file](https://raw.githubusercontent.com/iterative/dvc.org/main/content/docs/contributing/docs.md).
+> [this very file](https://raw.githubusercontent.com/treeverse/dvc.org/main/content/docs/contributing/docs.md).
 
 ## General language guidelines
 

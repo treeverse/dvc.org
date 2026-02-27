@@ -28,7 +28,7 @@ import dvc.api
 
 artifact = dvc.api.artifacts_show(
     'text-classification',
-    repo='https://github.com/iterative/example-get-started.git',
+    repo='https://github.com/treeverse/example-get-started.git',
 )
 ```
 
@@ -78,12 +78,12 @@ import dvc.api
 artifact = dvc.api.artifacts_show(
     'text-classification',
     version='v1.0.0',
-    repo='https://github.com/iterative/example-get-started.git',
+    repo='https://github.com/treeverse/example-get-started.git',
 )
 data = dvc.api.read(
     artifact['path'],
     rev=artifact['rev'],
-    repo='https://github.com/iterative/example-get-started.git',
+    repo='https://github.com/treeverse/example-get-started.git',
     mode='rb',
 )
 model = pickle.loads(data)
@@ -101,10 +101,10 @@ import dvc.api
 artifact = dvc.api.artifacts_show(
     'text-classification',
     stage='prod',
-    repo='https://github.com/iterative/example-get-started.git',
+    repo='https://github.com/treeverse/example-get-started.git',
 )
 fs = dvc.api.DVCFileSystem(
-    'https://github.com/iterative/example-get-started.git',
+    'https://github.com/treeverse/example-get-started.git',
     rev=artifact['rev'],
 )
 fs.get_file(artifact['path'], os.path.basename(artifact['path']))

@@ -20,7 +20,7 @@ import dvc.api
 
 with dvc.api.open(
     'get-started/data.xml',
-    repo='https://github.com/iterative/dataset-registry'
+    repo='https://github.com/treeverse/dataset-registry'
 ) as f:
     # ... f is a file-like object that can be processed normally.
 ```
@@ -122,7 +122,7 @@ from mymodule import mySAXHandler
 
 with dvc.api.open(
     'get-started/data.xml',
-    repo='https://github.com/iterative/dataset-registry'
+    repo='https://github.com/treeverse/dataset-registry'
 ) as f:
     parse(f, mySAXHandler)
 ```
@@ -140,7 +140,7 @@ usage), and is typically faster than loading the whole data into memory.
 > from xml.dom.minidom import parse
 > import dvc.api
 >
-> url = 'https://github.com/iterative/dataset-registry'
+> url = 'https://github.com/treeverse/dataset-registry'
 > xmldata = dvc.api.read('get-started/data.xml', repo=url)
 > xmldom = parse(xmldata)
 > ```

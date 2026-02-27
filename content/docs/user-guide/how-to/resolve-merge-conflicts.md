@@ -128,7 +128,7 @@ frozen: true
 deps:
 - path: get-started/data.xml
   repo:
-    url: https://github.com/iterative/dataset-registry
+    url: https://github.com/treeverse/dataset-registry
 < < < < < < < HEAD
     rev_lock: f31f5c4cdae787b4bdeb97a717687d44667d9e62
 = = = = = = =
@@ -152,7 +152,7 @@ frozen: true
 deps:
   - path: get-started/data.xml
     repo:
-      url: https://github.com/iterative/dataset-registry
+      url: https://github.com/treeverse/dataset-registry
 outs:
   - path: data.xml
 ```

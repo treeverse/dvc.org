@@ -72,7 +72,7 @@ $ git init
 <admon type="info">
 
 This directory name is used in our
-[example-get-started](https://github.com/iterative/example-get-started) repo.
+[example-get-started](https://github.com/treeverse/example-get-started) repo.
 
 </admon>
 
@@ -108,7 +108,7 @@ directory, let's pick a piece of data to work with. We'll use an example
 running:
 
 ```cli
-$ dvc get https://github.com/iterative/dataset-registry \
+$ dvc get https://github.com/treeverse/dataset-registry \
           get-started/data.xml -o data/data.xml
 ```
 

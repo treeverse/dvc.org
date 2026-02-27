@@ -13,7 +13,7 @@ If you are using Lightning Fabric, check the
 ## Usage
 
 <p align='center'>
-  <a href="https://colab.research.google.com/github/iterative/dvclive/blob/main/examples/DVCLive-PyTorch-Lightning.ipynb">
+  <a href="https://colab.research.google.com/github/treeverse/dvclive/blob/main/examples/DVCLive-PyTorch-Lightning.ipynb">
     <img src="https://colab.research.google.com/assets/colab-badge.svg" />
   </a>
 </p>

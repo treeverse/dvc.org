@@ -146,12 +146,12 @@ file.
 
 A simple case for this command is to import a dataset from an external <abbr>DVC
 repository</abbr>, such as our
-[get started example repo](https://github.com/iterative/example-get-started).
+[get started example repo](https://github.com/treeverse/example-get-started).
 
 ```cli
-$ dvc import git@github.com:iterative/example-get-started \
+$ dvc import git@github.com:treeverse/example-get-started \
              data/data.xml
-Importing 'data/data.xml (git@github.com:iterative/example-get-started)'
+Importing 'data/data.xml (git@github.com:treeverse/example-get-started)'
 -> 'data.xml'
 ```
 
@@ -167,7 +167,7 @@ wdir: .
 deps:
   - path: data/data.xml
     repo:
-      url: git@github.com:iterative/example-get-started
+      url: git@github.com:treeverse/example-get-started
       rev_lock: 6c73875a5f5b522f90b5afa9ab12585f64327ca7
 outs:
   - md5: a304afb96060aad90176268345e10355
@@ -186,10 +186,10 @@ To import a specific version of a file/directory, we may use the `--rev` option:
 
 ```cli
 $ dvc import --rev cats-dogs-v1 \
-             git@github.com:iterative/dataset-registry.git \
+             git@github.com:treeverse/dataset-registry.git \
              use-cases/cats-dogs
 Importing
-'use-cases/cats-dogs (git@github.com:iterative/dataset-registry.git)'
+'use-cases/cats-dogs (git@github.com:treeverse/dataset-registry.git)'
 -> 'cats-dogs'
 ```
 
@@ -200,7 +200,7 @@ under `repo`:
 deps:
   - path: use-cases/cats-dogs
     repo:
-      url: git@github.com:iterative/dataset-registry.git
+      url: git@github.com:treeverse/dataset-registry.git
       rev: cats-dogs-v1
       rev_lock: 0547f5883fb18e523e35578e2f0d19648c8f2d5c
 ```
@@ -230,7 +230,7 @@ be easily shared among several other projects using `dvc get` and `dvc import`.
 For example:
 
 ```cli
-$ dvc get https://github.com/iterative/dataset-registry \
+$ dvc get https://github.com/treeverse/dataset-registry \
           tutorials/versioning/data.zip
 ```
 
@@ -240,7 +240,7 @@ $ dvc get https://github.com/iterative/dataset-registry \
 Or
 
 ```cli
-$ dvc import git@github.com:iterative/dataset-registry.git \
+$ dvc import git@github.com:treeverse/dataset-registry.git \
              use-cases/cats-dogs
 ```
 
@@ -257,7 +257,7 @@ frozen: true
 deps:
   - path: use-cases/cats-dogs
     repo:
-      url: git@github.com:iterative/dataset-registry.git
+      url: git@github.com:treeverse/dataset-registry.git
       rev_lock: 0547f5883fb18e523e35578e2f0d19648c8f2d5c
 outs:
   - md5: b6923e1e4ad16ea1a7e2b328842d56a2.dir
@@ -407,13 +407,13 @@ accessible (repo C needs to have all the appropriate credentials).
 ## Example: Set default remote
 
 ```cli
-$ dvc import https://github.com/iterative/example-get-started-s3 data/prepared --remote myremote
+$ dvc import https://github.com/treeverse/example-get-started-s3 data/prepared --remote myremote
 ...
 $ cat prepared.dvc
 deps:
   - path: data/prepared
     repo:
-      url: https://github.com/iterative/example-get-started-s3
+      url: https://github.com/treeverse/example-get-started-s3
       rev_lock: 8141b41c5be682ced15136ed84b59468b68fd66b
       remote: myremote
 outs:
@@ -426,13 +426,13 @@ outs:
 ## Example: Set AWS profile for default remote
 
 ```cli
-$ dvc import https://github.com/iterative/example-get-started-s3 data/prepared --remote-config profile=myprofile
+$ dvc import https://github.com/treeverse/example-get-started-s3 data/prepared --remote-config profile=myprofile
 ...
 $ cat prepared.dvc
 deps:
   - path: data/prepared
     repo:
-      url: https://github.com/iterative/example-get-started-s3
+      url: https://github.com/treeverse/example-get-started-s3
       rev_lock: 8141b41c5be682ced15136ed84b59468b68fd66b
       remote:
         profile: myprofile
@@ -449,7 +449,7 @@ If remote with that name already exists, its config will be merged with options
 provided by `--remote-config`.
 
 ```cli
-$ dvc import https://github.com/iterative/example-get-started-s3 data/prepared \
+$ dvc import https://github.com/treeverse/example-get-started-s3 data/prepared \
     --remote myremote \
     --remote-config url=s3://mybucket/mypath profile=myprofile
 ...
@@ -457,7 +457,7 @@ $ cat prepared.dvc
 deps:
   - path: data/prepared
     repo:
-      url: https://github.com/iterative/example-get-started-s3
+      url: https://github.com/treeverse/example-get-started-s3
       rev_lock: 8141b41c5be682ced15136ed84b59468b68fd66b
       config:
         core:
@@ -492,13 +492,13 @@ $ cat .gitignore # make sure you are not commiting this file to git
 ...
 /myconfig
 ...
-$ dvc import https://github.com/iterative/example-get-started-s3 data/prepared --config myconfig
+$ dvc import https://github.com/treeverse/example-get-started-s3 data/prepared --config myconfig
 ...
 $ cat prepared.dvc
 deps:
   - path: data/prepared
     repo:
-      url: https://github.com/iterative/example-get-started-s3
+      url: https://github.com/treeverse/example-get-started-s3
       rev_lock: 8141b41c5be682ced15136ed84b59468b68fd66b
       config: myconfig
 outs:

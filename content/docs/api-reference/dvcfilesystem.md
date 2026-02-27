@@ -29,7 +29,7 @@ stream from [supported remote storage].
 # opening a local repository
 >>> fs = DVCFileSystem("/path/to/local/repository")
 # opening a remote repository
->>> repo = "https://github.com/iterative/example-get-started.git"
+>>> repo = "https://github.com/treeverse/example-get-started.git"
 >>> fs = DVCFileSystem(repo, rev="main")
 ```
 
@@ -207,7 +207,7 @@ For methods which take filesystem arguments as additional keyword arguments:
 >>> import fsspec
 >>> fsspec.open(
 ...   "dvc://workshop/satellite-data/jan_train.csv",
-...   repo="https://github.com/iterative/dataset-registry.git",
+...   repo="https://github.com/treeverse/dataset-registry.git",
 ... )
 <OpenFile 'workshop/satellite-data/jan_train.csv'>
 ```
@@ -219,7 +219,7 @@ dictionary:
 >>> import fsspec
 >>> fsspec.get_fs_token_paths(
 ...   "dvc://workshop/satellite-data/jan_train.csv",
-...   storage_options={"repo": "https://github.com/iterative/dataset-registry.git"},
+...   storage_options={"repo": "https://github.com/treeverse/dataset-registry.git"},
 ... )
 (<dvc.fs.dvc._DVCFileSystem object at 0x113f7a290>, '06e54af48d3513bf33a8988c47e6fb47', ['workshop/satellite-data/jan_train.csv'])
 ```

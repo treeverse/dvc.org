@@ -13,7 +13,7 @@ If you are using PyTorch Lightning, check the
 ## Usage
 
 <p align='center'>
-  <a href="https://colab.research.google.com/github/iterative/dvclive/blob/main/examples/DVCLive-Quickstart.ipynb">
+  <a href="https://colab.research.google.com/github/treeverse/dvclive/blob/main/examples/DVCLive-Quickstart.ipynb">
     <img src="https://colab.research.google.com/assets/colab-badge.svg" />
   </a>
 </p>

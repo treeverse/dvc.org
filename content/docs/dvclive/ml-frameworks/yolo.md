@@ -6,7 +6,7 @@ DVCLive allows you to add experiment tracking capabilities to your
 ## Usage
 
 <p align='center'>
-  <a href="https://colab.research.google.com/github/iterative/dvclive/blob/main/examples/DVCLive-YOLO.ipynb">
+  <a href="https://colab.research.google.com/github/treeverse/dvclive/blob/main/examples/DVCLive-YOLO.ipynb">
     <img src="https://colab.research.google.com/assets/colab-badge.svg" />
   </a>
 </p>

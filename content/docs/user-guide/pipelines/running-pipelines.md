@@ -128,7 +128,7 @@ information about [upgrading from DVC 2.x to 3.0](/user-guide/upgrade).
 </admon>
 
 Given the pipeline used in
-[example-get-started-experiments](https://github.com/iterative/example-get-started-experiments):
+[example-get-started-experiments](https://github.com/treeverse/example-get-started-experiments):
 
 ```cli
 $ dvc dag

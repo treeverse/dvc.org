@@ -5,7 +5,7 @@
 through an example.
 
 <p align='center'>
-  <a href="https://colab.research.google.com/github/iterative/dvclive/blob/main/examples/DVCLive-Evidently.ipynb">
+  <a href="https://colab.research.google.com/github/treeverse/dvclive/blob/main/examples/DVCLive-Evidently.ipynb">
     <img src="https://colab.research.google.com/assets/colab-badge.svg" />
   </a>
 </p>
