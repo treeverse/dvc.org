@@ -414,7 +414,7 @@ a few important problems:
 - _Reproducibility_: `dvc.yaml` and `dvc.lock` files describe what data to use
   and which commands will generate the pipeline results (such as an ML model).
   Storing these files in Git makes it easy to version and share.
-- [_Continuous Delivery and Continuous Integration (CI/CD) for ML_](/use-cases/ci-cd-for-machine-learning):
+- [_Continuous Delivery and Continuous Integration (CI/CD) for ML_](/example-scenarios/ci-cd-for-machine-learning):
   describing projects in a way that can be built and reproduced is the first
   necessary step before introducing CI/CD systems. See our sister project
   [CML](https://cml.dev) for some examples.

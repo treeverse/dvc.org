@@ -53,7 +53,7 @@ this set of principles:
   <admon type="info">
 
   DVC can also work stand-alone, but without
-  [versioning](/use-cases/versioning-data-and-models) capabilities.
+  [versioning](/example-scenarios/versioning-data-and-models) capabilities.
 
   </admon>
 
@@ -95,7 +95,7 @@ versions of data, data pipelines, and experiments.
 <admon type="info">
 
 DVC is not fundamentally bound to Git, and can work without it (except
-[versioning-related](/use-cases/versioning-data-and-models) features).
+[versioning-related](/example-scenarios/versioning-data-and-models) features).
 
 </admon>
 

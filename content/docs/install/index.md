@@ -6,7 +6,7 @@ DVC does not replace or include Git. You must have `git` in your system to
 enable important features such as [data versioning] and [quick experimentation]
 (recommended).
 
-[data versioning]: /use-cases/versioning-data-and-models
+[data versioning]: /example-scenarios/versioning-data-and-models
 [quick experimentation]: /user-guide/experiment-management
 
 </admon>

@@ -65,8 +65,8 @@
     ]
   },
   {
-    "slug": "use-cases",
-    "source": "use-cases/index.md",
+    "slug": "example-scenarios",
+    "source": "example-scenarios/index.md",
     "children": [
       {
         "slug": "versioning-data-and-models",

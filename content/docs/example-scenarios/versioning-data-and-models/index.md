@@ -31,8 +31,8 @@ data, [restore](/command-reference/checkout) previous versions,
 [metrics](/command-reference/metrics), and more!
 
 👩‍💻 **Intrigued?** Try our
-[versioning tutorial](/use-cases/versioning-data-and-models/tutorial) to learn
-how DVC looks and feels firsthand.
+[versioning tutorial](/example-scenarios/versioning-data-and-models/tutorial) to
+learn how DVC looks and feels firsthand.
 
 As you use DVC, unique versions of your data files and directories are
 [cached](/user-guide/project-structure/internal-files#structure-of-the-cache-directory)
@@ -78,9 +78,9 @@ Benefits of our approach include:
 
 - [**GitOps**](https://www.gitops.tech/): Connect your data science projects
   with the Git ecosystem. Git workflows open the door to advanced
-  [CI/CD](/use-cases/ci-cd-for-machine-learning) tools (like
+  [CI/CD](/example-scenarios/ci-cd-for-machine-learning) tools (like
   [CML](https://cml.dev)), specialized patterns such as
-  [data registries](/use-cases/data-registry), and other best practices.
+  [data registries](/example-scenarios/data-registry), and other best practices.
 
 In summary, data science and ML are iterative processes where the lifecycles of
 data, models, and code happen at different paces. DVC helps you manage, and

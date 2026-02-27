@@ -94,7 +94,7 @@ to [Data Registry] for more info.)
 
 [remotely]: /user-guide/data-management/remote-storage
 [dataset registry]: https://github.com/iterative/dataset-registry
-[data registry]: /use-cases/data-registry
+[data registry]: /example-scenarios/data-registry
 
 </admon>
 

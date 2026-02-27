@@ -67,7 +67,7 @@ abstraction/codification and require no external services.
 **Data Validation**: It is common practice for tests to be triggered each time a
 code change is pushed to a repository branch. DVC can be used in a similar
 manner to checkout
-[different data versions](/use-cases/versioning-data-and-models) for the
+[different data versions](/example-scenarios/versioning-data-and-models) for the
 purposes of testing and running sanity checks. Mistakes can be caught
 automatically without requiring contributors to set up complicated tests
 locally. Instead, embrace agile development so you can confidently package,
@@ -79,9 +79,9 @@ that the [pipeline](/start/data-pipelines/data-pipelines) (including data,
 parameters, code, and metrics) is up to date, thereby ensuring that Git commits
 and model artifacts are in sync. DVC can also run benchmarks against previously
 deployed models before a new one is
-[released into production](/use-cases/data-registry). CML provides useful tools
-to make this process easy -- including reporting metric changes with interactive
-graphs and tables in pull request comments.
+[released into production](/example-scenarios/data-registry). CML provides
+useful tools to make this process easy -- including reporting metric changes
+with interactive graphs and tables in pull request comments.
 
 **Refine in the Cloud**: Rather than frequently updating models locally (e.g.
 based on new data from regular feeds), DVC and CML let you retrain/refine in the

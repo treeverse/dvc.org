@@ -1,8 +1,8 @@
 # Data Registry
 
 One of the main uses of <abbr>DVC repositories</abbr> is the
-[versioning of data and model files](/use-cases/versioning-data-and-models). DVC
-also enables cross-project
+[versioning of data and model files](/example-scenarios/versioning-data-and-models).
+DVC also enables cross-project
 [reusability](/user-guide/data-management/discovering-and-accessing-data) of
 these <abbr>data artifacts</abbr>. This means that your projects can depend on
 data from other repositories — like a **package management system for data
@@ -32,10 +32,10 @@ management _middleware_ between ML projects and cloud storage. Advantages:
   endpoints (e.g. an HTTP server) to prevent data deletions or alterations.
 
 [ci/cd for your data and models lifecycle]:
-  /use-cases/ci-cd-for-machine-learning
+  /example-scenarios/ci-cd-for-machine-learning
 [remote storage]: /user-guide/data-management/remote-storage
 
 👩‍💻 Intrigued? Try our [registry tutorial] to learn how DVC looks and feels
 firsthand.
 
-[registry tutorial]: /use-cases/data-registry/tutorial
+[registry tutorial]: /example-scenarios/data-registry/tutorial

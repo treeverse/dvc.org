@@ -177,10 +177,49 @@ describe('getRedirects', () => {
     itRedirects('/tutorials/versioning', '/start')
 
     itRedirects('/tutorial/bar', '/start')
+  })
 
+  describe('use-cases to example-scenarios', () => {
+    itRedirects(
+      '/use-cases/versioning-data-and-model-files/tutorial',
+      '/example-scenarios/versioning-data-and-models/tutorial'
+    )
     itRedirects(
       '/use-cases/data-and-model-files-versioning',
-      '/use-cases/versioning-data-and-models'
+      '/example-scenarios/versioning-data-and-models'
+    )
+    itRedirects(
+      '/use-cases/versioning-data-and-model-files',
+      '/example-scenarios/versioning-data-and-models'
+    )
+    itRedirects(
+      '/use-cases/shared-development-server',
+      '/example-scenarios/fast-data-storage-layer#example-shared-development-server'
+    )
+    itRedirects(
+      '/use-cases/data-registries',
+      '/example-scenarios/data-registry'
+    )
+    itRedirects('/use-cases', '/example-scenarios')
+    itRedirects('/use-cases/something-new', '/example-scenarios/something-new')
+  })
+
+  describe('example-scenarios legacy slugs', () => {
+    itRedirects(
+      '/example-scenarios/data-and-model-files-versioning',
+      '/example-scenarios/versioning-data-and-models'
+    )
+    itRedirects(
+      '/example-scenarios/versioning-data-and-model-files',
+      '/example-scenarios/versioning-data-and-models'
+    )
+    itRedirects(
+      '/example-scenarios/shared-development-server',
+      '/example-scenarios/fast-data-storage-layer#example-shared-development-server'
+    )
+    itRedirects(
+      '/example-scenarios/data-registries',
+      '/example-scenarios/data-registry'
     )
   })
 

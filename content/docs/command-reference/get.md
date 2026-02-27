@@ -136,7 +136,7 @@ predictions upon request. This can be automated by leveraging DVC with [CI/CD]
 tools.
 
 [etl]: https://en.wikipedia.org/wiki/Extract,_transform,_load
-[ci/cd]: /use-cases/ci-cd-for-machine-learning
+[ci/cd]: /example-scenarios/ci-cd-for-machine-learning
 
 </admon>
 

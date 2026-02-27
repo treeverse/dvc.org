@@ -11,7 +11,7 @@
   "^https://s\\.dvc\\.org/g/pipeline-files$                                               https://doc.dvc.org/user-guide/project-structure/dvcyaml-files 302",
   "^https://s\\.dvc\\.org/g/(.*)?$                                                        https://doc.dvc.org/user-guide/$1 302",
   "^https://s\\.dvc\\.org/s/(.*)?$                                                        https://doc.dvc.org/start/$1 302",
-  "^https://s\\.dvc\\.org/c/(.*)?$                                                        https://doc.dvc.org/use-cases/$1 302",
+  "^https://s\\.dvc\\.org/c/(.*)?$                                                        https://doc.dvc.org/example-scenarios/$1 302",
   "^https://s\\.dvc\\.org/r/(.*)?$                                                        https://doc.dvc.org/command-reference/$1 302",
 
   "^/(?:docs|documentation|doc)(/.*)?$                                                    /$1",
@@ -37,12 +37,18 @@
   "^/tutorials(/.*)?                                                                      /start",
   "^/tutorials/get-started(/.*)?$                                                         /start",
 
-  "^/tutorials/versioning(/.*)?$                                                          /use-cases/versioning-data-and-models/tutorial",
-  "^/use-cases/versioning-data-and-model-files/tutorial$                                  /use-cases/versioning-data-and-models/tutorial",
-  "^/use-cases/data-and-model-files-versioning/?$                                         /use-cases/versioning-data-and-models",
-  "^/use-cases/versioning-data-and-model-files/?$                                         /use-cases/versioning-data-and-models",
-  "^/use-cases/shared-development-server$                                                 /use-cases/fast-data-storage-layer#example-shared-development-server",
-  "^/use-cases/data-registries$                                                           /use-cases/data-registry",
+  "^/tutorials/versioning(/.*)?$                                                          /example-scenarios/versioning-data-and-models/tutorial",
+  "^/use-cases/versioning-data-and-model-files/tutorial$                                  /example-scenarios/versioning-data-and-models/tutorial",
+  "^/use-cases/data-and-model-files-versioning/?$                                         /example-scenarios/versioning-data-and-models",
+  "^/use-cases/versioning-data-and-model-files/?$                                         /example-scenarios/versioning-data-and-models",
+  "^/use-cases/shared-development-server$                                                 /example-scenarios/fast-data-storage-layer#example-shared-development-server",
+  "^/use-cases/data-registries$                                                           /example-scenarios/data-registry",
+  "^/use-cases(/.*)?$                                                                     /example-scenarios$1",
+
+  "^/example-scenarios/data-and-model-files-versioning/?$                                 /example-scenarios/versioning-data-and-models",
+  "^/example-scenarios/versioning-data-and-model-files/?$                                 /example-scenarios/versioning-data-and-models",
+  "^/example-scenarios/shared-development-server$                                         /example-scenarios/fast-data-storage-layer#example-shared-development-server",
+  "^/example-scenarios/data-registries$                                                   /example-scenarios/data-registry",
 
   "^/user-guide/what-is-dvc$                                                              /user-guide",
   "^/user-guide/related-technologies$                                                     /user-guide",

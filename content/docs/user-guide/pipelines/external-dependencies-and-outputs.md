@@ -182,7 +182,7 @@ $ dvc stage add -n download_file \
 
 External <abbr>outputs</abbr> will be tracked by DVC, detecting when they
 change, but not saved in the <abbr>cache</abbr> for
-[versioning](/use-cases/versioning-data-and-models).
+[versioning](/example-scenarios/versioning-data-and-models).
 
 <admon type="warn">
 

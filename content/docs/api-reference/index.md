@@ -11,7 +11,7 @@ import dvc.api
 ```
 
 The purpose of this API is to provide programmatic access to the data or models
-[stored and versioned](/use-cases/versioning-data-and-models) in <abbr>DVC
-repositories</abbr> from Python code.
+[stored and versioned](/example-scenarios/versioning-data-and-models) in
+<abbr>DVC repositories</abbr> from Python code.
 
 Choose a page from the navigation sidebar to the left.

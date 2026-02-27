@@ -235,7 +235,7 @@ $ dvc get https://github.com/iterative/dataset-registry \
 ```
 
 > Used in our
-> [versioning tutorial](/use-cases/versioning-data-and-models/tutorial)
+> [versioning tutorial](/example-scenarios/versioning-data-and-models/tutorial)
 
 Or
 
@@ -265,8 +265,8 @@ outs:
     cache: true
 ```
 
-See a full explanation in our [Data Registry](/use-cases/data-registry) use
-case.
+See a full explanation in our [Data Registry](/example-scenarios/data-registry)
+use case.
 
 ## Example: Importing from any Git repository
 

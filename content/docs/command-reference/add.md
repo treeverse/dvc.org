@@ -44,7 +44,8 @@ to your local machine.
 
 This command can be used to track large files, models, dataset directories, etc.
 that are too big for Git to handle directly. This enables
-[versioning](/use-cases/versioning-data-and-models) them indirectly with Git.
+[versioning](/example-scenarios/versioning-data-and-models) them indirectly with
+Git.
 
 > See also `dvc.yaml` and `dvc stage add` for more advanced ways to track and
 > version intermediate and final results (like ML models).
@@ -247,7 +248,7 @@ $ dvc stage add -n train \
 ```
 
 > To try this example, see the
-> [versioning tutorial](/use-cases/versioning-data-and-models/tutorial).
+> [versioning tutorial](/example-scenarios/versioning-data-and-models/tutorial).
 
 ## Example .dvcignore
 

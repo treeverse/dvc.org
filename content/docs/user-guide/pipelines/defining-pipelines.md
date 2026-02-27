@@ -27,7 +27,7 @@ We call this file-based definition _codification_ (YAML format in our case). It
 has the added benefit of allowing you to develop pipelines on standard Git
 workflows (and [GitOps]).
 
-[gitops]: /use-cases/versioning-data-and-models
+[gitops]: /example-scenarios/versioning-data-and-models
 
 </admon>
 

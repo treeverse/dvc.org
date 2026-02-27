@@ -77,11 +77,11 @@ export const HamburgerMenu: React.FC<
       <ul className={styles.sections}>
         <li className={styles.section}>
           <Link
-            href="/use-cases"
+            href={docUrls.exampleScenarios}
             className={styles.sectionHeading}
-            onClick={() => handleItemClick('use-cases')}
+            onClick={() => handleItemClick('example-scenarios')}
           >
-            Use Cases
+            Example Scenarios
           </Link>
         </li>
         <li className={styles.section}>
