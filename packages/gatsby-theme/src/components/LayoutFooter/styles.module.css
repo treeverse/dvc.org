@@ -93,6 +93,7 @@
 
   &:last-child {
     margin-right: 0;
+    max-width: 200px;
   }
 }
 
@@ -120,6 +121,7 @@
 
   display: flex;
   align-items: center;
+  text-align: left;
   font-size: 18px;
   line-height: 30px;
   color: rgb(255 255 255 / 75%);

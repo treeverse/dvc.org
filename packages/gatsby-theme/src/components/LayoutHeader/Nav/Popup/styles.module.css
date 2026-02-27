@@ -53,7 +53,8 @@
 
 .communityPopup {
   row-gap: 4px;
-  width: 260px;
+  width: fit-content;
+  white-space: nowrap;
 
   .link {
     padding: 6px 12px 4px;
