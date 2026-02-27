@@ -25,9 +25,9 @@ The steps and results of some of these chapters are captured in our
 [example-get-started] repo. Feel free to `git clone/checkout` any of its
 [tags][example-get-started-tags].
 
-[example-get-started]: https://github.com/iterative/example-get-started
+[example-get-started]: https://github.com/treeverse/example-get-started
 [example-get-started-tags]:
-  https://github.com/iterative/example-get-started/tags
+  https://github.com/treeverse/example-get-started/tags
 
 </admon>
 

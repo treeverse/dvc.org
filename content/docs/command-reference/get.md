@@ -108,11 +108,11 @@ name.
 > DVC is [installed](/install).
 
 We can use `dvc get` to download the resulting model file from our
-[get started example repo](https://github.com/iterative/example-get-started), a
+[get started example repo](https://github.com/treeverse/example-get-started), a
 <abbr>DVC project</abbr> hosted on GitHub:
 
 ```cli
-$ dvc get https://github.com/iterative/example-get-started model.pkl
+$ dvc get https://github.com/treeverse/example-get-started model.pkl
 $ ls
 model.pkl
 ```
@@ -157,12 +157,12 @@ install.sh
 
 We can use `dvc get --show-url` to get the actual location where the final model
 file from our
-[get started example repo](https://github.com/iterative/example-get-started) is
+[get started example repo](https://github.com/treeverse/example-get-started) is
 stored:
 
 ```cli
 $ dvc get --show-url \
-          https://github.com/iterative/example-get-started model.pkl
+          https://github.com/treeverse/example-get-started model.pkl
 https://remote.dvc.org/get-started/c8/d307aa005d6974a8525550956d5fb3
 ```
 
@@ -184,7 +184,7 @@ But this time, clone it first to see `dvc get` in action inside a <abbr>DVC
 project</abbr>.
 
 ```cli
-$ git clone https://github.com/iterative/example-get-started
+$ git clone https://github.com/treeverse/example-get-started
 $ cd example-get-started
 ```
 
@@ -229,17 +229,17 @@ Untracked files:
 	model.monograms.pkl
 ```
 
-[get started example repo]: https://github.com/iterative/example-get-started
+[get started example repo]: https://github.com/treeverse/example-get-started
 [switching between versions]: /start#switching-between-versions
 
 ## Example: Set AWS profile for default remote
 
 ```cli
-$ dvc get https://github.com/iterative/example-get-started-s3 data/prepared --remote-config profile=myprofile
+$ dvc get https://github.com/treeverse/example-get-started-s3 data/prepared --remote-config profile=myprofile
 ```
 
 ## Example: Set default remote
 
 ```cli
-$ dvc get https://github.com/iterative/example-get-started-s3 data/prepared --remote myremote
+$ dvc get https://github.com/treeverse/example-get-started-s3 data/prepared --remote myremote
 ```

@@ -86,7 +86,7 @@ In this case it installs the `boto3` library along with DVC.
 
 <admon type="info">
 
-Requires [snapd](https://snapcraft.io/docs/installing-snapd).
+Requires [snapd](https://snapcraft.io/docs/installing-snapd/).
 
 </admon>
 

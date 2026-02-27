@@ -40,7 +40,7 @@ $ dvc push
 > 💡 A good way to organize <abbr>DVC repositories</abbr> into data registries
 > is to use directories to group similar data, e.g. `images/`,
 > `natural-language/`, etc. For example, our
-> [dataset registry](https://github.com/iterative/dataset-registry) has
+> [dataset registry](https://github.com/treeverse/dataset-registry) has
 > directories like `get-started/` and `use-cases/`, matching parts of this
 > website.
 
@@ -56,7 +56,7 @@ To explore the contents of a DVC repository in search for the right data, use
 the `dvc list` command (similar to `ls` and 3rd-party tools like `aws s3 ls`):
 
 ```cli
-$ dvc list -R https://github.com/iterative/dataset-registry
+$ dvc list -R https://github.com/treeverse/dataset-registry
 .gitignore
 README.md
 get-started/.gitignore
