@@ -39,11 +39,11 @@ const menuData: IMenuData = {
       Popup: DataVersionControlPopup,
       popupName: 'dataVersionControlPopup'
     },
-    // {
-    //     href: docUrls.home,
-    //     eventType: 'doc',
-    //     text: 'Doc'
-    // },
+    {
+      href: docUrls.home,
+      eventType: 'doc',
+      text: 'Doc'
+    },
     {
       href: mainSiteUrls.blog,
       eventType: 'blog',
