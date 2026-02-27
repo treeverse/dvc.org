@@ -32,11 +32,6 @@ interface IMenuData {
 const menuData: IMenuData = {
   nav: [
     {
-      href: docUrls.useCases,
-      eventType: 'use-cases',
-      text: 'Use Cases'
-    },
-    {
       href: docUrls.home,
       eventType: 'doc',
       text: 'Doc'
