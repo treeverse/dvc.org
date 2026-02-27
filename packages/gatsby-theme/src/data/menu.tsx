@@ -77,7 +77,7 @@ const menuData: IMenuData = {
   dataVersionControl: [
     {
       title: 'Meet Us',
-      text: 'For AI/ML and Data Science',
+      text: 'For AI/ML and Data Infrastructure',
       href: externalUrls.lakefsHome,
       img: '/img/community/icon-lakefs.svg',
       imgAlt: ''
