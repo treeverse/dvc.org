@@ -93,7 +93,7 @@ with Live() as live:
 ```
 
 In DVC Studio and the
-[DVC Extension for VSCode](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc),
+[DVC Extension for VSCode](https://marketplace.visualstudio.com/items?itemName=lakeFS.lakefs-dvc),
 folders following this pattern will be rendered using an image slider:
 
 <toggle>

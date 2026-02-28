@@ -74,7 +74,7 @@ this set of principles:
 
 [free]: https://github.com/treeverse/dvc/blob/main/LICENSE
 [vs code extension]:
-  https://marketplace.visualstudio.com/items?itemName=Iterative.dvc
+  https://marketplace.visualstudio.com/items?itemName=lakeFS.lakefs-dvc
 [python api]: /api-reference
 [command line]: /command-reference
 

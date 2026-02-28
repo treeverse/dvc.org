@@ -81,4 +81,4 @@ https://www.youtube.com/watch?v=LHi3SWGD9nc
 [plots]: /user-guide/project-structure/dvcyaml-files#plots
 [visualize plots]: /user-guide/experiment-management/visualizing-plots
 [from the vs code ide]:
-  https://marketplace.visualstudio.com/items?itemName=Iterative.dvc
+  https://marketplace.visualstudio.com/items?itemName=lakeFS.lakefs-dvc

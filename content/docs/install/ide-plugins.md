@@ -30,7 +30,7 @@ To make `dvc.lock` and `.dvc` files recognized as YAML, add this to
 </admon>
 
 [dvc extension]:
-  https://marketplace.visualstudio.com/items?itemName=Iterative.dvc
+  https://marketplace.visualstudio.com/items?itemName=lakeFS.lakefs-dvc
 [intellisense]: https://code.visualstudio.com/docs/editing/intellisense
 [yaml extension]:
   https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml

@@ -324,7 +324,7 @@ Removing an experiment does not delete any objects in the DVC
 artifacts, etc.) related with the experiments, you can use `dvc gc`.
 
 [dvc extension for vs code]:
-  https://marketplace.visualstudio.com/items?itemName=Iterative.dvc
+  https://marketplace.visualstudio.com/items?itemName=lakeFS.lakefs-dvc
 [sharing experiments]: /user-guide/experiment-management/sharing-experiments
 [persist]:
   /user-guide/experiment-management/sharing-experiments#persist-experiment

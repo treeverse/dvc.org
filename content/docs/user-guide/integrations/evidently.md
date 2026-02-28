@@ -120,7 +120,7 @@ There are two ways to track the results of Evidently with DVCLive:
 
 We will demonstrate both, and show you how to inspect the results regardless of
 your IDE. However, if you are using VSCode, we recommend using the
-[DVC extension for VS Code](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
+[DVC extension for VS Code](https://marketplace.visualstudio.com/items?itemName=lakeFS.lakefs-dvc)
 to inspect the results.
 
 ### 1. One single experiment

@@ -182,7 +182,7 @@ For a full example of how to deploy with SageMaker, see our [blog post].
 [code-server]:
   https://aws.amazon.com/blogs/machine-learning/host-code-server-on-amazon-sagemaker/
 [dvc extension for vs code]:
-  https://marketplace.visualstudio.com/items?itemName=Iterative.dvc
+  https://marketplace.visualstudio.com/items?itemName=lakeFS.lakefs-dvc
 [dvc config]: /user-guide/project-structure/configuration#studio
 [pipelines]: /user-guide/pipelines
 [external dependencies and outputs]:

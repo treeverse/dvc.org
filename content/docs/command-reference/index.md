@@ -10,7 +10,7 @@
 operations [to the Command Palette].
 
 [for the vs code ide]:
-  https://marketplace.visualstudio.com/items?itemName=Iterative.dvc
+  https://marketplace.visualstudio.com/items?itemName=lakeFS.lakefs-dvc
 [to the command palette]:
   https://github.com/treeverse/vscode-dvc#useful-commands
 

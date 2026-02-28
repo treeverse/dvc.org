@@ -38,7 +38,7 @@ live.monitor_system(
 ```
 
 The system metrics will then be available live in DVC Studio and in our
-[VSCode extension](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc).
+[VSCode extension](https://marketplace.visualstudio.com/items?itemName=lakeFS.lakefs-dvc).
 
 <toggle>
 <tab title="DVC Studio">

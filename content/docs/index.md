@@ -4,7 +4,7 @@
 used as a [Python library].
 
 [visual studio code]:
-  https://marketplace.visualstudio.com/items?itemName=Iterative.dvc
+  https://marketplace.visualstudio.com/items?itemName=lakeFS.lakefs-dvc
 [system terminal]: /install
 [python library]: /api-reference
 

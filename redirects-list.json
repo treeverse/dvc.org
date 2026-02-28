@@ -99,7 +99,7 @@
   "^/cml(/.*)?$                                                                           https://cml.dev/doc$1",
   "^/gto(/.*)?$                                                                           https://mlem.ai/doc/gto$1",
 
-  "^/vs-code-extension$                                                                   https://marketplace.visualstudio.com/items?itemName=Iterative.dvc 302",
+  "^/vs-code-extension$                                                                   https://marketplace.visualstudio.com/items?itemName=lakeFS.lakefs-dvc 302",
 
   "^/(.+)/$                                                                               /$1"
 ]

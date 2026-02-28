@@ -30,7 +30,7 @@ saved as SVG or PNG image files from there).
 [plots dashboard]:
   https://github.com/treeverse/vscode-dvc/blob/main/extension/resources/walkthrough/plots.md
 [dvc extension]:
-  https://marketplace.visualstudio.com/items?itemName=Iterative.dvc
+  https://marketplace.visualstudio.com/items?itemName=lakeFS.lakefs-dvc
 [tracking]: /start
 
 For data-series plots, DVC expects to see one or more arrays of objects (usually

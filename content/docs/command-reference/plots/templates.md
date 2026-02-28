@@ -163,4 +163,4 @@ file:///Users/usr/src/dvc_plots/index.html
 [field]:
   /user-guide/project-structure/dvcyaml-files#available-configuration-fields
 [DVC extension for VS Code]:
-  https://marketplace.visualstudio.com/items?itemName=Iterative.dvc
+  https://marketplace.visualstudio.com/items?itemName=lakeFS.lakefs-dvc

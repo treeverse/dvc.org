@@ -157,7 +157,7 @@ will be useful for comparison: parameters.
   https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html
 [plots files]: /user-guide/project-structure/dvcyaml-files#plots
 [dvc extension]:
-  https://marketplace.visualstudio.com/items?itemName=Iterative.dvc
+  https://marketplace.visualstudio.com/items?itemName=lakeFS.lakefs-dvc
 
 ## Defining stage parameters
 
