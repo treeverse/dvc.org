@@ -16,10 +16,9 @@ const externalUrls = {
   course: 'https://learn.dvc.org/',
   mail: 'mailto:support@dvc.org',
   youtube: 'https://www.youtube.com/channel/UC37rp97Go-xIX3aNFVHhXfQ',
-  privacyPolicy: 'https://lakefs.io/privacy-policy',
-  lakefsHome: 'https://lakefs.io/',
-  lakefsDocs: 'https://docs.lakefs.io/',
-  lakefsQuickstart: 'https://docs.lakefs.io/quickstart/'
+  privacyPolicy: 'https://lakefs.io/privacy-policy/',
+  lakefsHome: 'https://lakefs.io',
+  lakefsAboutUs: 'https://lakefs.io/about-us/'
 }
 const docUrls = {
   home: '/',

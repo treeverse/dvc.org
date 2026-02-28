@@ -53,7 +53,7 @@ const footerListsData: Array<IFooterListData> = [
         text: 'For AI/ML & Data Infrastructure'
       },
       { href: docUrls.home, text: 'For Local Workflows (Git Extension)' },
-      { href: externalUrls.lakefsDocs, text: 'About lakeFS' }
+      { href: externalUrls.lakefsAboutUs, text: 'About lakeFS' }
     ]
   },
   {

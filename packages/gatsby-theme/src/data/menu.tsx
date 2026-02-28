@@ -61,11 +61,6 @@ const menuData: IMenuData = {
       popupName: 'communityPopup'
     },
     {
-      href: mainSiteUrls.support,
-      eventType: 'support',
-      text: 'Support'
-    },
-    {
       text: EllipsisIcon,
       ariaLabel: 'Show options',
       popupName: 'otherPopup',
