@@ -159,7 +159,7 @@ module.exports = ({
     }
   ].filter(Boolean),
   siteMetadata: {
-    author: 'Iterative',
+    author: 'Treeverse',
     titleTemplate: '',
     twitterUsername: '',
     imageAlt: ''

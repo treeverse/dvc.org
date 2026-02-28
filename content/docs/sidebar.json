@@ -667,7 +667,7 @@
   },
   {
     "label": "VS Code Extension",
-    "url": "https://marketplace.visualstudio.com/items?itemName=Iterative.dvc",
+    "url": "https://marketplace.visualstudio.com/items?itemName=lakeFS.lakefs-dvc",
     "type": "external",
     "icon": "vscode"
   },

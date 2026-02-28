@@ -78,7 +78,7 @@
 
 - docsInstanceName: string
 
-  Default: 'iterative-docs'
+  Default: 'docs'
 
   The `name` that will be passed to the `gatsby-source-filesystem` instance for
   docs pages. The resulting `sourceInstanceName` will be used to identify files
@@ -90,7 +90,7 @@
 
 - glossaryInstanceName: string
 
-  Default: 'iterative-glossary'
+  Default: 'glossary'
 
   The `name` that will be passed to the `gatsby-source-filesystem` instance for
   glossary entries. The resulting `sourceInstanceName` will be used to identify

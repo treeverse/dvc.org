@@ -159,7 +159,7 @@ module.exports = {
     siteName: 'DVC',
     twitterUsername: `DVCorg`,
     description,
-    author: 'Iterative',
+    author: 'Treeverse',
     keywords,
     siteUrl,
     title

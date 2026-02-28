@@ -2,9 +2,9 @@ const path = require('path')
 
 module.exports = {
   docsPath: path.resolve('content', 'docs'),
-  docsInstanceName: 'iterative-docs',
+  docsInstanceName: 'docs',
   glossaryPath: path.resolve('content', 'docs', 'user-guide', 'basic-concepts'),
-  glossaryInstanceName: 'iterative-glossary',
+  glossaryInstanceName: 'glossary',
   argsLinkerPath: ['command-reference', `ref`, 'cli-reference'],
   sentry: true
 }

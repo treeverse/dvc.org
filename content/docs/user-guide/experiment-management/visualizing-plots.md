@@ -103,7 +103,7 @@ In order to create visualizations, users need to provide the data and
 (optionally) configuration that will help customize the plot in a `dvc.yaml`
 file. If you are using [DVCLive](/dvclive), it will configure plots, but you can
 also add your own custom plots. The easiest way is to use the
-[DVC Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc)
+[DVC Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=lakeFS.lakefs-dvc)
 to define plots inside your `dvc.yaml`.
 
 https://youtu.be/qG2gfTuQWtk?si=ffpkBLX-odowXK-G
@@ -264,7 +264,7 @@ $ dvc plots diff $(dvc exp list --name-only)
 <tab title="VSCode Extension">
 
 Inside the
-[DVC Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=Iterative.dvc),
+[DVC Extension for VS Code](https://marketplace.visualstudio.com/items?itemName=lakeFS.lakefs-dvc),
 you can compare in the
 [`Plots`](https://github.com/treeverse/vscode-dvc/blob/main/extension/resources/walkthrough/plots.md)
 view.

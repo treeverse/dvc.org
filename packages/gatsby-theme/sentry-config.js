@@ -1,4 +1,4 @@
-/* This is the default Sentry config for all Iterative websites.
+/* This is the default Sentry config.
  * Much of this is lifted from Sentry's docs
  * see https://docs.sentry.io/platforms/javascript/guides/gatsby/configuration/filtering/#decluttering-sentry
  */
