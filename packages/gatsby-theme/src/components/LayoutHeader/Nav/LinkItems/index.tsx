@@ -8,17 +8,12 @@ import usePopup, {
 } from '../../../../../../../src/gatsby/hooks/usePopup'
 import { ReactComponent as ArrowDownSVG } from '../../../../../../../static/img/arrow-down-icon.svg'
 import { ReactComponent as ArrowUpSVG } from '../../../../../../../static/img/arrow-up-icon.svg'
-import { ReactComponent as EllipsisIcon } from '../../../../../../../static/img/ellipsis.svg'
 import Link from '../../../Link'
 import { IPopupProps } from '../Popup'
 
 import * as styles from './styles.module.css'
 
-type PopupName =
-  | 'communityPopup'
-  | 'otherToolsPopup'
-  | 'otherPopup'
-  | 'dataVersionControlPopup'
+type PopupName = 'communityPopup' | 'dataVersionControlPopup'
 
 export interface INavLinkData {
   href: string
@@ -28,7 +23,7 @@ export interface INavLinkData {
 }
 
 export interface INavLinkPopupData {
-  text: string | typeof EllipsisIcon
+  text: string
   popupName: PopupName
   ariaLabel?: string
   Popup: React.FC<IPopupProps>
@@ -42,15 +37,11 @@ const isPopup = (
 ): item is INavLinkPopupData =>
   (item as INavLinkPopupData).popupName !== undefined
 
-const LinkItems: React.FC = () => {
+const LinkItems: React.FC<{ onItemClick?: () => void }> = ({ onItemClick }) => {
   const communityPopup = usePopup()
-  const otherToolsPopup = usePopup()
-  const otherPopup = usePopup()
   const dataVersionControlPopup = usePopup()
   const popups: { [key: string]: IUsePopupReturn } = {
-    otherToolsPopup,
     communityPopup,
-    otherPopup,
     dataVersionControlPopup
   }
 
@@ -77,7 +68,7 @@ const LinkItems: React.FC = () => {
                     item.className
                   )}
                 >
-                  {typeof item.text === 'string' ? item.text : <item.text />}
+                  {item.text}
                   {!item.hideDropdown && (
                     <>
                       <ArrowDownSVG
@@ -95,9 +86,10 @@ const LinkItems: React.FC = () => {
               !isPopup(item) &&
               item.eventType && (
                 <Link
-                  onClick={(): void =>
+                  onClick={() => {
                     logEvent('Nav', { Item: item.eventType })
-                  }
+                    onItemClick?.()
+                  }}
                   href={item.href}
                   className={cn(styles.link, item.className)}
                 >

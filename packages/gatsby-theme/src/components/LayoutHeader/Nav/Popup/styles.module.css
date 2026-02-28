@@ -19,6 +19,26 @@
     opacity: 1;
     visibility: visible;
   }
+
+  @media screen(smMax) {
+    position: static;
+    padding: 0 0 8px 20px;
+    background-color: transparent;
+    filter: none;
+    border-radius: 0;
+    opacity: 1;
+    visibility: hidden;
+    max-height: 0;
+    overflow: hidden;
+    transition:
+      max-height 0.3s ease,
+      visibility 0.3s;
+
+    &.visible {
+      visibility: visible;
+      max-height: 500px;
+    }
+  }
 }
 
 .link {
@@ -33,22 +53,20 @@
   &:focus {
     background-color: rgb(15 22 36 / 5%);
   }
-}
 
-.cmlIcon {
-  background-image: url('../../../../../../../static/img/cml_icon-color--square_vector.svg');
-}
+  @media screen(smMax) {
+    color: rgb(15 22 36 / 60%);
+    font-size: 24px;
+    line-height: 30px;
+    border-radius: 0;
+    padding: 14px 0;
 
-.dvcIcon {
-  background-image: url('../../../../../../../static/img/dvc_icon-color--square_vector.svg');
-}
-
-.studioIcon {
-  background-image: url('../../../../../../../static/img/studio_icon-color--square_vector.svg');
-}
-
-.vscodeIcon {
-  background-image: url('../../../../../../../static/img/vscode-icon.svg');
+    &:hover,
+    &:focus {
+      background-color: transparent;
+      color: #0f1624;
+    }
+  }
 }
 
 .communityPopup {
@@ -59,96 +77,13 @@
   .link {
     padding: 6px 12px 4px;
   }
-}
 
-.otherToolsPopup {
-  row-gap: 8px;
-  width: 296px;
+  @media screen(smMax) {
+    width: 100%;
+    white-space: normal;
 
-  .link {
-    padding: 8px;
-    display: grid;
-    grid-template-areas: 'icon title' 'icon description';
-    grid-template-columns: 32px 216px;
-    column-gap: 16px;
-
-    &:hover .titleExternalIcon {
-      opacity: 1;
-    }
-
-    .linkIcon {
-      height: 32px;
-      width: 32px;
-      grid-area: icon;
-      display: flex;
-      align-items: center;
-      background-size: contain;
-      background-repeat: no-repeat;
-    }
-
-    .title {
-      grid-area: title;
-      font-weight: 500;
-      font-size: 18px;
-      line-height: 24px;
-      display: flex;
-      align-items: center;
-
-      &Icon {
-        margin-left: 4px;
-        margin-bottom: 2px;
-        width: 14px;
-        height: 14px;
-        background-size: contain;
-        background-repeat: no-repeat;
-      }
-    }
-
-    .titleExternalIcon {
-      opacity: 0;
-      width: 16px;
-      height: 16px;
-      margin-left: 8px;
-    }
-
-    .description {
-      grid-area: description;
-      color: rgb(15 22 36 / 50%);
-      font-size: 16px;
-      line-height: 20px;
-    }
-  }
-}
-
-.otherPopup {
-  padding: 10px;
-
-  .link {
-    padding: 10px;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 24px;
-
-    &:nth-child(2),
-    &:nth-child(3),
-    &:nth-child(5),
-    &:nth-child(6) {
-      display: none;
-    }
-
-    @media screen(mdMax) {
-      font-size: 17px;
-      line-height: 20px;
-
-      &:nth-child(6) {
-        display: initial;
-      }
-    }
-
-    @media screen(smMax) {
-      &:nth-child(5) {
-        display: initial;
-      }
+    .link {
+      padding: 10px 0;
     }
   }
 }

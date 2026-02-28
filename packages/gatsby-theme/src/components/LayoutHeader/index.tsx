@@ -1,16 +1,11 @@
 import cn from 'classnames'
 import includes from 'lodash/includes'
+import { useState, useCallback } from 'react'
 import { useInView } from 'react-intersection-observer'
 
-import {
-  HamburgerMenu,
-  HamburgerButton,
-  useHamburgerMenu
-} from '../HamburgerMenu'
 import LayoutWidthContainer from '../LayoutWidthContainer'
 import { LayoutModifiers, ILayoutModifiable } from '../MainLayout'
 
-// import LayoutAlert from './Alert'
 import { HeaderBranding } from './HeaderBranding'
 import Nav from './Nav'
 import * as styles from './styles.module.css'
@@ -19,9 +14,11 @@ const LayoutHeader: React.FC<ILayoutModifiable> = ({ modifiers }) => {
   const { ref, inView } = useInView({ rootMargin: '20px 0px 0px 0px' })
   const scrolled = !inView
 
-  const { opened, handleToggle, handleItemClick } = useHamburgerMenu()
+  const [opened, setOpened] = useState(false)
+  const handleToggle = useCallback(() => setOpened(prev => !prev), [])
+  const handleClose = useCallback(() => setOpened(false), [])
+
   const hasCollapsedModifier = includes(modifiers, LayoutModifiers.Collapsed)
-  // const hasHideAlertModifier = includes(modifiers, LayoutModifiers.HideAlert)
   const collapsed = opened || hasCollapsedModifier || scrolled
 
   return (
@@ -32,9 +29,6 @@ const LayoutHeader: React.FC<ILayoutModifiable> = ({ modifiers }) => {
         data-collapsed={collapsed}
         className={cn(styles.headerContainer)}
       >
-        {/* {!hasHideAlertModifier && LayoutAlert && ( */}
-        {/*   <LayoutAlert collapsed={collapsed} /> */}
-        {/* )} */}
         <LayoutWidthContainer
           className={cn(
             styles.header,
@@ -47,18 +41,7 @@ const LayoutHeader: React.FC<ILayoutModifiable> = ({ modifiers }) => {
           wide
         >
           <HeaderBranding />
-          <Nav />
-          <HamburgerButton
-            opened={opened}
-            collapsed={collapsed}
-            handleClick={handleToggle}
-          />
-          <HamburgerMenu
-            opened={opened}
-            collapsed={collapsed}
-            handleToggle={handleToggle}
-            handleItemClick={handleItemClick}
-          />
+          <Nav opened={opened} onToggle={handleToggle} onClose={handleClose} />
         </LayoutWidthContainer>
       </header>
     </>

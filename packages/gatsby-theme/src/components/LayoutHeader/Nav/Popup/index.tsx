@@ -65,24 +65,3 @@ export const CommunityPopup: React.FC<IPopupProps> = ({
     ))}
   </BasePopup>
 )
-
-export const OtherPopup: React.FC<IPopupProps> = ({
-  isVisible,
-  closePopup
-}) => (
-  <BasePopup className={styles.otherPopup} isVisible={isVisible}>
-    {menuData.nav.map(
-      ({ text, href }, i) =>
-        href && (
-          <Link
-            className={styles.link}
-            href={href}
-            key={i}
-            onClick={closePopup}
-          >
-            {text as React.ReactNode}
-          </Link>
-        )
-    )}
-  </BasePopup>
-)

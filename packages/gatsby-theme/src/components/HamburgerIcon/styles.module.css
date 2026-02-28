@@ -13,7 +13,6 @@
   transition: 0.4s;
 
   .opened & {
-    background-color: var(--color-gray-light);
     border-radius: 20px;
     width: 27px;
     height: 3px;

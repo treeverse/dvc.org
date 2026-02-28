@@ -3,20 +3,30 @@
   display: flex;
   padding: 0;
   margin: 0 16px 0 4px;
+  list-style: none;
 
   @media screen(xl) {
     margin: 0 24px 0 12px;
   }
 
   @media screen(mdMax) {
-    margin: 0 16px 0 0;
+    display: none;
   }
 
   @media screen(smMax) {
-    margin: 0 16px 0 4px;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
   }
 }
 
+.socialItem {
+  @media screen(smMax) {
+    border-top: 1px solid #e5e7eb;
+  }
+}
+
+/* Icon-only version: visible on desktop, hidden on mobile */
 .socialIcon {
   box-sizing: content-box;
   display: block;
@@ -32,8 +42,38 @@
     padding: 6px;
   }
 
+  @media screen(smMax) {
+    display: none;
+  }
+
   svg {
     width: inherit;
     height: inherit;
   }
+}
+
+/* Labeled link version: hidden on desktop, visible on mobile */
+.socialLink {
+  display: none;
+
+  @media screen(smMax) {
+    @apply hover active focus;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--font-base);
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 34px;
+    color: #353940;
+    text-decoration: none;
+    padding: 18px 0;
+  }
+}
+
+.socialLinkIcon {
+  width: 24px;
+  height: 24px;
+  color: #6f7685;
 }

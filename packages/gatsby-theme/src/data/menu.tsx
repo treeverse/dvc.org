@@ -4,18 +4,14 @@ import {
   docUrls
 } from '@dvcorg/gatsby-theme/consts'
 
-import { ReactComponent as EllipsisIcon } from '../../../../static/img/ellipsis.svg'
 import {
   INavLinkData,
   INavLinkPopupData
 } from '../components/LayoutHeader/Nav/LinkItems'
 import {
   CommunityPopup,
-  DataVersionControlPopup,
-  OtherPopup
+  DataVersionControlPopup
 } from '../components/LayoutHeader/Nav/Popup'
-
-import * as styles from './styles.module.css'
 
 interface ICommunityData {
   title: string
@@ -59,14 +55,6 @@ const menuData: IMenuData = {
       Popup: CommunityPopup,
       href: mainSiteUrls.community,
       popupName: 'communityPopup'
-    },
-    {
-      text: EllipsisIcon,
-      ariaLabel: 'Show options',
-      popupName: 'otherPopup',
-      Popup: OtherPopup,
-      className: styles.other,
-      hideDropdown: true
     }
   ],
   dataVersionControl: [

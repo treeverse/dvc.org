@@ -1,3 +1,7 @@
+.hiddenScrollbar {
+  overflow-y: hidden;
+}
+
 .wrapper {
   display: flex;
   flex-shrink: 0;
@@ -8,8 +12,84 @@
     list-style-type: none;
   }
 
-  @media screen(xsMax) {
-    display: none;
+  @media screen(smMax) {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    flex-shrink: initial;
+    visibility: hidden;
+    padding: 12px 16px;
+    position: fixed;
+    z-index: 11;
+    transform: translateX(100%);
+    inset: 0;
+    background-color: #fff;
+    overflow-y: auto;
+
+    &.opened {
+      visibility: visible;
+      transform: translateX(0);
+      transition:
+        transform 0.4s ease,
+        visibility 0.4s;
+    }
+  }
+}
+
+.mobileLogoRow {
+  display: none;
+
+  @media screen(smMax) {
+    display: flex;
+  }
+}
+
+.mobileLogo {
+  @apply hover active;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:focus path {
+    fill: var(--color-orange);
+  }
+}
+
+.hamburgerButton {
+  @apply hover px-2;
+
+  display: none;
+  visibility: hidden;
+
+  @media screen(smMax) {
+    position: relative;
+    display: flex;
+    visibility: visible;
+    z-index: 999;
+    border: none;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    outline: none;
+    transition:
+      0.5s all,
+      opacity 0.2s,
+      outline-offset 0s,
+      outline-width 0s,
+      outline-color 0s;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &.hamburgerOpened {
+    position: absolute;
+    top: 1rem;
+    right: 0.5rem;
   }
 }
 
@@ -47,5 +127,15 @@
   @media screen(mdMax) {
     padding: 12px 24px;
     font-size: 14px;
+  }
+
+  @media screen(smMax) {
+    display: block;
+    margin-top: auto;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
   }
 }
