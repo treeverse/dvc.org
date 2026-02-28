@@ -25,6 +25,8 @@
     inset: 0;
     background-color: #fff;
     overflow-y: auto;
+    font-size: 20px;
+    line-height: 24px;
 
     &.opened {
       visibility: visible;

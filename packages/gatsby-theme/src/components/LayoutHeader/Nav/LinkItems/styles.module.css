@@ -82,8 +82,8 @@
   }
 
   @media screen(smMax) {
-    font-size: 28px;
-    line-height: 34px;
+    font-size: inherit;
+    line-height: inherit;
     padding: 18px 0;
     align-items: center;
   }

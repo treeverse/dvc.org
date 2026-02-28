@@ -64,8 +64,8 @@
     gap: 12px;
     font-family: var(--font-base);
     font-weight: 400;
-    font-size: 28px;
-    line-height: 34px;
+    font-size: inherit;
+    line-height: inherit;
     color: #353940;
     text-decoration: none;
     padding: 18px 0;
