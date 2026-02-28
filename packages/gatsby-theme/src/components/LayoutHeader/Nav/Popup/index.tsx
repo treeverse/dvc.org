@@ -1,7 +1,6 @@
 import cn from 'classnames'
 import { PropsWithChildren } from 'react'
 
-import menuData from '@dvcorg/gatsby-theme/src/data/menu'
 import { logEvent } from '@dvcorg/gatsby-theme/src/utils/front/plausible'
 
 import Link from '../../../Link'
@@ -24,43 +23,26 @@ export const BasePopup: React.FC<
   </div>
 )
 
-export const DataVersionControlPopup: React.FC<IPopupProps> = ({
-  isVisible,
-  closePopup
-}) => (
-  <BasePopup className={styles.communityPopup} isVisible={isVisible}>
-    {menuData.dataVersionControl.map(({ text, title, href }, i) => (
+export const NavPopup: React.FC<
+  IPopupProps & {
+    items: Array<{ label: string; href: string }>
+    analyticsKey: string
+    onNavigate?: () => void
+  }
+> = ({ items, analyticsKey, isVisible, closePopup, onNavigate }) => (
+  <BasePopup className={styles.navPopup} isVisible={isVisible}>
+    {items.map(({ label, href }, i) => (
       <Link
         className={styles.link}
         href={href}
         key={i}
         onClick={(): void => {
-          logEvent('Nav', { Item: 'dataVersionControl' })
+          logEvent('Nav', { Item: analyticsKey })
           closePopup()
+          onNavigate?.()
         }}
       >
-        {text || title}
-      </Link>
-    ))}
-  </BasePopup>
-)
-
-export const CommunityPopup: React.FC<IPopupProps> = ({
-  isVisible,
-  closePopup
-}) => (
-  <BasePopup className={styles.communityPopup} isVisible={isVisible}>
-    {menuData.community.map(({ text, title, href }, i) => (
-      <Link
-        className={styles.link}
-        href={href}
-        key={i}
-        onClick={(): void => {
-          logEvent('Nav', { Item: 'community' })
-          closePopup()
-        }}
-      >
-        {text || title}
+        {label}
       </Link>
     ))}
   </BasePopup>

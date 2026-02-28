@@ -20,6 +20,11 @@
     margin: 0;
   }
 
+  &:where(:hover) > div {
+    opacity: 1;
+    visibility: visible;
+  }
+
   @media screen(smMax) {
     margin-left: 0;
 
@@ -51,12 +56,8 @@
   &.open {
     opacity: 0.7;
 
-    .arrowDownIcon {
-      display: none;
-    }
-
-    .arrowUpIcon {
-      display: inline-block;
+    .linkIcon {
+      transform: rotate(180deg);
     }
   }
 
@@ -64,10 +65,7 @@
     width: 16px;
     height: 16px;
     margin-left: 4px;
-  }
-
-  .arrowUpIcon {
-    display: none;
+    transition: transform 0.2s ease-in-out;
   }
 
   @media screen(xl) {
@@ -84,8 +82,17 @@
   @media screen(smMax) {
     font-size: inherit;
     line-height: inherit;
-    padding: 18px 0;
+    width: calc(100% + 32px);
+    padding: 18px 16px;
+    margin: 0 -16px;
     align-items: center;
+    transition: background-color 0.2s ease-in;
+
+    &:hover,
+    &:active {
+      opacity: 1;
+      background-color: rgb(15 22 36 / 5%);
+    }
   }
 }
 

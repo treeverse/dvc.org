@@ -31,8 +31,8 @@
     max-height: 0;
     overflow: hidden;
     transition:
-      max-height 0.3s ease,
-      visibility 0.3s;
+      max-height 0.2s ease,
+      visibility 0.2s;
 
     &.visible {
       visibility: visible;
@@ -59,17 +59,18 @@
     font-size: 18px;
     line-height: 22px;
     border-radius: 0;
-    padding: 14px 0;
+    padding: 14px 16px 14px 20px;
+    margin: 0 -16px 0 -20px;
 
     &:hover,
-    &:focus {
-      background-color: transparent;
+    &:active {
+      background-color: rgb(15 22 36 / 5%);
       color: #0f1624;
     }
   }
 }
 
-.communityPopup {
+.navPopup {
   row-gap: 4px;
   width: fit-content;
   white-space: nowrap;
@@ -83,7 +84,7 @@
     white-space: normal;
 
     .link {
-      padding: 10px 0;
+      padding: 10px 16px 10px 20px;
     }
   }
 }

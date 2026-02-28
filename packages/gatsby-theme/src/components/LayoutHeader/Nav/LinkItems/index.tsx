@@ -1,19 +1,16 @@
 import cn from 'classnames'
+import { useState, useRef, useEffect, useCallback } from 'react'
 
 import menuData from '@dvcorg/gatsby-theme/src/data/menu'
 import { logEvent } from '@dvcorg/gatsby-theme/src/utils/front/plausible'
 
-import usePopup, {
-  IUsePopupReturn
-} from '../../../../../../../src/gatsby/hooks/usePopup'
 import { ReactComponent as ArrowDownSVG } from '../../../../../../../static/img/arrow-down-icon.svg'
-import { ReactComponent as ArrowUpSVG } from '../../../../../../../static/img/arrow-up-icon.svg'
 import Link from '../../../Link'
-import { IPopupProps } from '../Popup'
+import { NavPopup } from '../Popup'
 
 import * as styles from './styles.module.css'
 
-type PopupName = 'communityPopup' | 'dataVersionControlPopup'
+type PopupName = 'dataVersionControlPopup' | 'communityPopup'
 
 export interface INavLinkData {
   href: string
@@ -25,8 +22,9 @@ export interface INavLinkData {
 export interface INavLinkPopupData {
   text: string
   popupName: PopupName
+  items: Array<{ label: string; href: string }>
+  analyticsKey: string
   ariaLabel?: string
-  Popup: React.FC<IPopupProps>
   className?: string
   href?: string
   hideDropdown?: boolean
@@ -38,65 +36,85 @@ const isPopup = (
   (item as INavLinkPopupData).popupName !== undefined
 
 const LinkItems: React.FC<{ onItemClick?: () => void }> = ({ onItemClick }) => {
-  const communityPopup = usePopup()
-  const dataVersionControlPopup = usePopup()
-  const popups: { [key: string]: IUsePopupReturn } = {
-    communityPopup,
-    dataVersionControlPopup
-  }
+  const [activePopup, setActivePopup] = useState<PopupName | null>(null)
+  const containerRef = useRef<HTMLUListElement>(null)
+
+  const close = useCallback(() => setActivePopup(null), [])
+
+  useEffect(() => {
+    if (!activePopup) return
+
+    const ac = new AbortController()
+
+    const onClickOutside = (e: Event) => {
+      if (!containerRef.current?.contains(e.target as Node)) close()
+    }
+
+    document.addEventListener('mousedown', onClickOutside, {
+      signal: ac.signal
+    })
+    document.addEventListener('touchstart', onClickOutside, {
+      signal: ac.signal,
+      passive: true
+    })
+    document.addEventListener(
+      'keyup',
+      e => {
+        if ((e as KeyboardEvent).key === 'Escape') close()
+      },
+      { signal: ac.signal }
+    )
+
+    return () => ac.abort()
+  }, [activePopup, close])
 
   return (
-    <ul className={styles.linksList}>
+    <ul className={styles.linksList} ref={containerRef}>
       {menuData.nav.map((item, i) => {
-        const popup = isPopup(item) ? popups[item.popupName] : undefined
+        const isPopupItem = isPopup(item)
+        const isOpen = isPopupItem && activePopup === item.popupName
         return (
-          <li
-            key={i}
-            className={styles.linkItem}
-            ref={popup?.containerEl}
-            onMouseEnter={popup?.open}
-            onMouseLeave={popup?.close}
-          >
-            {isPopup(item) && popup ? (
+          <li key={i} className={styles.linkItem}>
+            {isPopupItem ? (
               <>
                 <button
                   aria-label={item.ariaLabel}
-                  onPointerUp={popup?.toggle}
+                  onPointerUp={() =>
+                    setActivePopup(prev =>
+                      prev === item.popupName ? null : item.popupName
+                    )
+                  }
                   className={cn(
                     styles.link,
-                    popup?.isOpen && styles.open,
+                    isOpen && styles.open,
                     item.className
                   )}
                 >
                   {item.text}
                   {!item.hideDropdown && (
-                    <>
-                      <ArrowDownSVG
-                        className={cn(styles.linkIcon, styles.arrowDownIcon)}
-                      />
-                      <ArrowUpSVG
-                        className={cn(styles.linkIcon, styles.arrowUpIcon)}
-                      />
-                    </>
+                    <ArrowDownSVG className={styles.linkIcon} />
                   )}
                 </button>
-                <item.Popup isVisible={popup.isOpen} closePopup={popup.close} />
+                <NavPopup
+                  items={item.items}
+                  analyticsKey={item.analyticsKey}
+                  isVisible={!!isOpen}
+                  closePopup={close}
+                  onNavigate={onItemClick}
+                />
               </>
-            ) : (
-              !isPopup(item) &&
-              item.eventType && (
-                <Link
-                  onClick={() => {
-                    logEvent('Nav', { Item: item.eventType })
-                    onItemClick?.()
-                  }}
-                  href={item.href}
-                  className={cn(styles.link, item.className)}
-                >
-                  {item.text}
-                </Link>
-              )
-            )}
+            ) : item.eventType ? (
+              <Link
+                onClick={() => {
+                  logEvent('Nav', { Item: item.eventType })
+                  onItemClick?.()
+                }}
+                href={item.href}
+                className={cn(styles.link, item.className)}
+              >
+                {item.text}
+              </Link>
+            ) : null}
           </li>
         )
       })}

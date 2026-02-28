@@ -26,39 +26,21 @@
   }
 }
 
-/* Icon-only version: visible on desktop, hidden on mobile */
-.socialIcon {
+.socialLink {
+  @apply hover active focus;
+
   box-sizing: content-box;
   display: block;
-  width: 24px;
-  height: 24px;
-  color: #6f7685;
   padding: 12px;
   margin: 0;
+  color: #6f7685;
+  text-decoration: none;
 
   @media screen(mdMax) {
-    width: 20px;
-    height: 20px;
     padding: 6px;
   }
 
   @media screen(smMax) {
-    display: none;
-  }
-
-  svg {
-    width: inherit;
-    height: inherit;
-  }
-}
-
-/* Labeled link version: hidden on desktop, visible on mobile */
-.socialLink {
-  display: none;
-
-  @media screen(smMax) {
-    @apply hover active focus;
-
     display: flex;
     align-items: center;
     gap: 12px;
@@ -67,8 +49,15 @@
     font-size: inherit;
     line-height: inherit;
     color: #353940;
-    text-decoration: none;
-    padding: 18px 0;
+    padding: 18px 16px;
+    margin: 0 -16px;
+    transition: background-color 0.2s ease-in;
+
+    &:hover,
+    &:active {
+      opacity: 1;
+      background-color: rgb(15 22 36 / 5%);
+    }
   }
 }
 
@@ -76,4 +65,22 @@
   width: 24px;
   height: 24px;
   color: #6f7685;
+
+  @media screen(mdMax) {
+    width: 20px;
+    height: 20px;
+  }
+
+  @media screen(smMax) {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.socialLabel {
+  display: none;
+
+  @media screen(smMax) {
+    display: inline;
+  }
 }
