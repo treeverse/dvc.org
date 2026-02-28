@@ -42,8 +42,6 @@ const LinkItems: React.FC<{
   const [activePopup, setActivePopup] = useState<PopupName | null>(null)
   const containerRef = useRef<HTMLUListElement>(null)
   const buttonRefs = useRef<Map<PopupName, HTMLButtonElement>>(new Map())
-  const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
-
   const close = useCallback(() => setActivePopup(null), [])
 
   useEffect(() => {
@@ -94,8 +92,6 @@ const LinkItems: React.FC<{
               isPopupItem
                 ? e => {
                     if (e.pointerType === 'mouse') {
-                      if (closeTimerRef.current)
-                        clearTimeout(closeTimerRef.current)
                       setActivePopup(item.popupName)
                     }
                   }
@@ -105,7 +101,7 @@ const LinkItems: React.FC<{
               isPopupItem
                 ? e => {
                     if (e.pointerType === 'mouse') {
-                      closeTimerRef.current = setTimeout(close, 300)
+                      close()
                     }
                   }
                 : undefined
