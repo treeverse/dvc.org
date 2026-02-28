@@ -35,9 +35,14 @@ const isPopup = (
 ): item is INavLinkPopupData =>
   (item as INavLinkPopupData).popupName !== undefined
 
-const LinkItems: React.FC<{ onItemClick?: () => void }> = ({ onItemClick }) => {
+const LinkItems: React.FC<{
+  onItemClick?: () => void
+  isMobileMenu?: boolean
+}> = ({ onItemClick, isMobileMenu }) => {
   const [activePopup, setActivePopup] = useState<PopupName | null>(null)
   const containerRef = useRef<HTMLUListElement>(null)
+  const buttonRefs = useRef<Map<PopupName, HTMLButtonElement>>(new Map())
+  const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   const close = useCallback(() => setActivePopup(null), [])
 
@@ -46,40 +51,84 @@ const LinkItems: React.FC<{ onItemClick?: () => void }> = ({ onItemClick }) => {
 
     const ac = new AbortController()
 
-    const onClickOutside = (e: Event) => {
-      if (!containerRef.current?.contains(e.target as Node)) close()
+    if (!isMobileMenu) {
+      const onClickOutside = (e: Event) => {
+        if (!containerRef.current?.contains(e.target as Node)) close()
+      }
+      document.addEventListener('mousedown', onClickOutside, {
+        signal: ac.signal
+      })
+      document.addEventListener('touchstart', onClickOutside, {
+        signal: ac.signal,
+        passive: true
+      })
     }
 
-    document.addEventListener('mousedown', onClickOutside, {
-      signal: ac.signal
-    })
-    document.addEventListener('touchstart', onClickOutside, {
-      signal: ac.signal,
-      passive: true
-    })
-    document.addEventListener(
-      'keyup',
-      e => {
-        if ((e as KeyboardEvent).key === 'Escape') close()
-      },
-      { signal: ac.signal }
-    )
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        e.stopImmediatePropagation()
+        const btn = buttonRefs.current.get(activePopup!)
+        close()
+        btn?.focus()
+      }
+    }
 
+    document.addEventListener('keydown', onKeyDown, {
+      signal: ac.signal,
+      capture: true
+    })
     return () => ac.abort()
-  }, [activePopup, close])
+  }, [activePopup, isMobileMenu, close])
 
   return (
     <ul className={styles.linksList} ref={containerRef}>
       {menuData.nav.map((item, i) => {
         const isPopupItem = isPopup(item)
         const isOpen = isPopupItem && activePopup === item.popupName
+        const popupId = isPopupItem ? `nav-popup-${item.popupName}` : undefined
         return (
-          <li key={i} className={styles.linkItem}>
+          <li
+            key={i}
+            className={styles.linkItem}
+            onPointerEnter={
+              isPopupItem
+                ? e => {
+                    if (e.pointerType === 'mouse') {
+                      if (closeTimerRef.current)
+                        clearTimeout(closeTimerRef.current)
+                      setActivePopup(item.popupName)
+                    }
+                  }
+                : undefined
+            }
+            onPointerLeave={
+              isPopupItem
+                ? e => {
+                    if (e.pointerType === 'mouse') {
+                      closeTimerRef.current = setTimeout(close, 300)
+                    }
+                  }
+                : undefined
+            }
+            onBlur={
+              isPopupItem && !isMobileMenu
+                ? e => {
+                    if (!e.currentTarget.contains(e.relatedTarget as Node))
+                      close()
+                  }
+                : undefined
+            }
+          >
             {isPopupItem ? (
               <>
                 <button
+                  ref={el => {
+                    if (el) buttonRefs.current.set(item.popupName, el)
+                  }}
                   aria-label={item.ariaLabel}
-                  onPointerUp={() =>
+                  aria-expanded={!!isOpen}
+                  aria-controls={popupId}
+                  onClick={() =>
                     setActivePopup(prev =>
                       prev === item.popupName ? null : item.popupName
                     )
@@ -96,6 +145,7 @@ const LinkItems: React.FC<{ onItemClick?: () => void }> = ({ onItemClick }) => {
                   )}
                 </button>
                 <NavPopup
+                  id={popupId}
                   items={item.items}
                   analyticsKey={item.analyticsKey}
                   isVisible={!!isOpen}

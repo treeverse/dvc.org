@@ -1,5 +1,5 @@
 import cn from 'classnames'
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 
 import { logEvent } from '@dvcorg/gatsby-theme/src/utils/front/plausible'
 
@@ -27,9 +27,31 @@ const Nav: React.FC<NavProps> = ({ opened, onToggle, onClose }) => {
     }
   }, [opened])
 
+  const onCloseRef = useRef(onClose)
+  onCloseRef.current = onClose
+
+  useEffect(() => {
+    if (!opened) return
+
+    const ac = new AbortController()
+
+    document.addEventListener(
+      'keydown',
+      (e: KeyboardEvent) => {
+        if (e.key === 'Escape') onCloseRef.current()
+      },
+      { signal: ac.signal }
+    )
+
+    return () => ac.abort()
+  }, [opened])
+
   return (
     <>
-      <nav className={cn(styles.wrapper, opened && styles.opened)}>
+      <nav
+        className={cn(styles.wrapper, opened && styles.opened)}
+        aria-label="Main navigation"
+      >
         <div className={styles.mobileLogoRow}>
           <Link
             onClick={onClose}
@@ -40,7 +62,7 @@ const Nav: React.FC<NavProps> = ({ opened, onToggle, onClose }) => {
             <LogoSVG />
           </Link>
         </div>
-        <LinkItems onItemClick={onClose} />
+        <LinkItems onItemClick={onClose} isMobileMenu={opened} />
         <SocialIcons />
         <PseudoButton
           className={cn(styles.getStartedButton, 'btn-with-focus')}
@@ -57,7 +79,8 @@ const Nav: React.FC<NavProps> = ({ opened, onToggle, onClose }) => {
       <button
         className={cn(styles.hamburgerButton, opened && styles.hamburgerOpened)}
         onClick={onToggle}
-        aria-label="Toggle Mobile Menu"
+        aria-expanded={opened}
+        aria-label={opened ? 'Close menu' : 'Open menu'}
       >
         <HamburgerIcon opened={opened} />
       </button>

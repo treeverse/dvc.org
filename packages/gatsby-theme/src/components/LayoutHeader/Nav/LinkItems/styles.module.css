@@ -20,15 +20,6 @@
     margin: 0;
   }
 
-  &:where(:hover) > div {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  &:where(:hover) .linkIcon {
-    transform: rotate(180deg);
-  }
-
   @media screen(smMax) {
     margin-left: 0;
 

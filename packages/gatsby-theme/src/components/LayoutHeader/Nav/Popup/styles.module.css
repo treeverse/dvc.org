@@ -1,6 +1,8 @@
 .popup {
   display: grid;
+  margin: 0;
   padding: 8px;
+  list-style: none;
   opacity: 0;
   position: absolute;
   left: 10px;
@@ -42,6 +44,7 @@
 }
 
 .link {
+  display: block;
   border-radius: 8px;
   color: #0f1624;
   text-decoration: none;

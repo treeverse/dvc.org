@@ -22,8 +22,8 @@ const SocialIcons: React.FC = () => (
   <ul className={styles.socialIcons}>
     {socialIconData.map(({ label, url, Icon }, i) => (
       <li key={i} className={styles.socialItem}>
-        <Link href={url} className={styles.socialLink}>
-          <Icon className={styles.socialLinkIcon} />
+        <Link href={url} className={styles.socialLink} aria-label={label}>
+          <Icon className={styles.socialLinkIcon} aria-hidden="true" />
           <span className={styles.socialLabel}>{label}</span>
         </Link>
       </li>
