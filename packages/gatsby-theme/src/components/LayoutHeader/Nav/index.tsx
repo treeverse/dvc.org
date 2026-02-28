@@ -21,8 +21,10 @@ interface NavProps {
 
 const Nav: React.FC<NavProps> = ({ opened, onToggle, onClose }) => {
   useEffect(() => {
-    const method = opened ? 'add' : 'remove'
-    document.body.classList[method](styles.hiddenScrollbar)
+    document.body.classList.toggle(styles.hiddenScrollbar, opened)
+    return () => {
+      document.body.classList.remove(styles.hiddenScrollbar)
+    }
   }, [opened])
 
   return (

@@ -1,5 +1,7 @@
 .hiddenScrollbar {
-  overflow-y: hidden;
+  @media screen(smMax) {
+    overflow-y: hidden;
+  }
 }
 
 .wrapper {
@@ -25,6 +27,7 @@
     inset: 0;
     background-color: #fff;
     overflow-y: auto;
+    overscroll-behavior: contain;
     font-size: 20px;
     line-height: 24px;
 
@@ -137,6 +140,8 @@
     padding-top: 24px;
     padding-bottom: 24px;
     width: 100%;
+    font-size: 20px;
+    line-height: 20px;
     text-align: center;
     text-decoration: none;
   }
