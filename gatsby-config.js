@@ -1,9 +1,24 @@
 /* eslint-env node */
 
 require('dotenv').config()
+const fs = require('fs')
 const path = require('path')
 
+const autoprefixer = require('autoprefixer')
+
+require('./src/config/prismjs/dvc')
+require('./src/config/prismjs/usage')
+require('./src/config/prismjs/dvctable')
+const simpleLinkerTerms = require('./content/linked-terms')
 const redirectsMiddleware = require('./server/redirect')
+const customYoutubeTransformer = require('./src/config/custom-yt-embedder')
+const sentryConfig = require('./src/config/sentry')
+
+const linkIcon = fs
+  .readFileSync(path.join(__dirname, 'src', 'images', 'linkIcon.svg'))
+  .toString()
+
+const imageMaxWidth = 700
 
 const title = 'Data Version Control · DVC'
 const description =
@@ -21,32 +36,163 @@ const siteUrl = process.env.HEROKU_APP_NAME
   ? `https://${process.env.HEROKU_APP_NAME}.herokuapp.com/`
   : 'https://doc.dvc.org'
 
+const glossaryPath = path.resolve('content', 'basic-concepts')
+
+const docsPath = path.resolve('content', 'docs')
+const docsInstanceName = 'docs'
+const glossaryInstanceName = 'glossary'
+const argsLinkerPath = ['command-reference', 'ref', 'cli-reference']
+const sentry = true
+
+const postCssPlugins = [
+  require('tailwindcss/nesting')(require('postcss-nested')),
+  autoprefixer,
+  require('tailwindcss')
+]
+
 const plugins = [
   {
-    resolve: '@dvcorg/gatsby-theme',
+    resolve: 'gatsby-plugin-postcss',
     options: {
-      simpleLinkerTerms: require('./content/linked-terms'),
-      glossaryPath: path.resolve('content', 'basic-concepts')
+      postCssPlugins
+    }
+  },
+  'gatsby-plugin-sitemap',
+  glossaryInstanceName && {
+    resolve: 'gatsby-source-filesystem',
+    options: {
+      name: glossaryInstanceName,
+      path: glossaryPath
+    }
+  },
+  docsInstanceName && {
+    resolve: 'gatsby-source-filesystem',
+    options: {
+      name: docsInstanceName,
+      path: docsPath
     }
   },
   {
     resolve: 'gatsby-source-filesystem',
     options: {
       name: 'data',
-      path: path.join(__dirname, 'content', 'data')
+      path: path.resolve('content', 'data')
     }
   },
   {
     resolve: 'gatsby-source-filesystem',
     options: {
       name: 'images',
-      path: path.join(__dirname, 'static', 'img')
+      path: path.resolve('static', 'img')
     }
   },
-  `gatsby-plugin-catch-links`,
-  `gatsby-plugin-sharp`,
+  'gatsby-plugin-image',
+  {
+    resolve: 'gatsby-transformer-remark',
+    options: {
+      plugins: [
+        {
+          resolve: require.resolve('./src/plugins/image-preprocessor')
+        },
+        {
+          resolve: 'gatsby-remark-embedder',
+          options: {
+            customTransformers: [customYoutubeTransformer]
+          }
+        },
+        {
+          resolve: require.resolve('./src/plugins/gatsby-remark-dvc-linker'),
+          options: {
+            simpleLinkerTerms
+          }
+        },
+        {
+          resolve: require.resolve('./src/plugins/gatsby-remark-args-linker'),
+          options: {
+            icon: linkIcon,
+            // Pathname can also be array of paths. eg: ['docs/command-reference;', 'docs/api']
+            pathname: argsLinkerPath
+          }
+        },
+        {
+          resolve: 'gatsby-remark-prismjs',
+          options: {
+            noInlineHighlight: true,
+            languageExtensions: [
+              {
+                language: 'text',
+                definition: {}
+              }
+            ]
+          }
+        },
+        {
+          resolve: 'gatsby-remark-smartypants',
+          options: {
+            quotes: false
+          }
+        },
+        {
+          resolve: 'gatsby-remark-embed-gist',
+          options: {
+            gistDefaultCssInclude: false
+          }
+        },
+        'gatsby-remark-external-links',
+        {
+          resolve: 'gatsby-remark-autolink-headers',
+          options: {
+            enableCustomId: true,
+            isIconAfterHeader: true,
+            icon: linkIcon
+          }
+        },
+        {
+          resolve: 'gatsby-remark-images',
+          options: {
+            maxWidth: imageMaxWidth,
+            withWebp: true,
+            quality: 90,
+            loading: 'auto'
+          }
+        },
+        'gatsby-remark-responsive-iframe',
+        require.resolve('./src/plugins/resize-image-plugin'),
+        require.resolve('./src/plugins/external-link-plugin'),
+        require.resolve('./src/plugins/null-link-plugin'),
+        // moving this plugin after external-link-plugin to allow images to be copied to public folder
+        {
+          resolve: 'gatsby-remark-copy-relative-linked-files',
+          options: {
+            filename: ({ name, hash, extension }) =>
+              `${name}-${hash}.${extension}`
+          }
+        }
+      ]
+    }
+  },
+  {
+    resolve: 'gatsby-plugin-svgr',
+    options: {
+      ref: true
+    }
+  },
+  'gatsby-transformer-sharp',
+  {
+    resolve: 'gatsby-plugin-sharp',
+    options: {
+      defaults: {
+        placeholder: 'blurred'
+      }
+    }
+  },
+  sentry && {
+    resolve: '@sentry/gatsby',
+    options: sentryConfig
+  },
+  'gatsby-plugin-catch-links',
   'gatsby-plugin-twitter',
-  `gatsby-transformer-remark-frontmatter`,
+  'gatsby-transformer-remark-frontmatter',
   {
     resolve: 'gatsby-plugin-manifest',
     options: {
@@ -109,8 +255,8 @@ const plugins = [
 ]
 
 // keep usercentrics plugin before plausible
-let usercentricsSettingsId = process.env.GATSBY_USERCENTRICS_SETTINGS_ID
-let usercentricsRulesetId = process.env.GATSBY_USERCENTRICS_RULESET_ID
+const usercentricsSettingsId = process.env.GATSBY_USERCENTRICS_SETTINGS_ID
+const usercentricsRulesetId = process.env.GATSBY_USERCENTRICS_RULESET_ID
 if (usercentricsSettingsId || usercentricsRulesetId) {
   plugins.push({
     resolve: 'gatsby-plugin-usercentrics',
@@ -134,14 +280,10 @@ if (process.env.NODE_ENV === 'production') {
 
 if (process.env.GATSBY_GTM_ID) {
   plugins.push({
-    resolve: `gatsby-plugin-gtm`,
+    resolve: 'gatsby-plugin-gtm',
     options: {
       id: process.env.GATSBY_GTM_ID,
-
-      // Include GTM in development.
-      //
-      // Defaults to false meaning GTM will only be loaded in production.
-      includeInDevelopment: process.env.GTM_INCLUDE_IN_DEV === `true`
+      includeInDevelopment: process.env.GTM_INCLUDE_IN_DEV === 'true'
     }
   })
 }
@@ -153,19 +295,21 @@ if (process.env.ANALYZE) {
 }
 
 module.exports = {
-  trailingSlash: 'never',
-  plugins,
+  plugins: plugins.filter(Boolean),
   siteMetadata: {
     siteName: 'DVC',
-    twitterUsername: `DVCorg`,
+    twitterUsername: 'DVCorg',
     description,
     author: 'Treeverse',
     keywords,
     siteUrl,
-    title
+    title,
+    titleTemplate: '',
+    imageAlt: ''
   },
+  trailingSlash: 'never',
+  jsxRuntime: 'automatic',
   developMiddleware: app => {
     app.use(redirectsMiddleware)
-  },
-  jsxRuntime: 'automatic'
+  }
 }

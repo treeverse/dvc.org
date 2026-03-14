@@ -1,16 +1,16 @@
-const themeConfig = require('@dvcorg/gatsby-theme/tailwind.config')
-
 module.exports = {
-  ...themeConfig,
-  content: [
-    ...themeConfig.content,
-    './src/**/*.{js,jsx,ts,tsx}',
-    './content/**/*.json'
-  ],
+  content: ['./src/**/*.{ts,js,tsx,jsx}', './content/**/*.json'],
   theme: {
-    ...themeConfig.theme,
     extend: {
-      ...themeConfig.theme.extend,
+      screens: {
+        xxsMax: { max: '376px' },
+        xsMax: { max: '572px' },
+        smMax: { max: '768px' },
+        mdMax: { max: '1004px' },
+        xs: '572px',
+        lg: '1005px',
+        xl: '1200px'
+      },
       colors: {
         gray: { hover: '#40364d', dark: 'rgb(26, 30, 35)' },
         purple: { DEFAULT: '#945dd6' },
@@ -35,10 +35,32 @@ module.exports = {
       }
     },
     fontFamily: {
-      ...themeConfig.theme.fontFamily,
       sans: ['BrandonGrotesque', 'Tahoma', 'Arial', 'sans-serif'],
       mono: ['Consolas', '"Liberation Mono"', 'Menlo', 'Courier', 'monospace']
     }
   },
-  plugins: [...themeConfig.plugins, require(`tailwindcss-animate`)]
+  plugins: [
+    ({ addUtilities }) => {
+      addUtilities({
+        '.hover': {
+          '&:hover': {
+            opacity: 0.7
+          }
+        },
+        '.focus': {
+          '&:focus': {
+            color: 'var(--color-orange)'
+          }
+        },
+        '.active': {
+          '&:active': {
+            position: 'relative',
+            top: '1px',
+            left: '1px'
+          }
+        }
+      })
+    },
+    require('tailwindcss-animate')
+  ]
 }

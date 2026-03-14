@@ -1,8 +1,6 @@
 const { stringify } = require('querystring')
 
-const {
-  getRedirect
-} = require('@dvcorg/gatsby-theme/src/utils/shared/redirects')
+const { getRedirect } = require('../src/utils/shared/redirects')
 
 const isProduction = process.env.NODE_ENV === 'production'
 

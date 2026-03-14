@@ -23,15 +23,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "@/static/*": ["./static/*"],
-      "@dvcorg/gatsby-theme": ["packages/gatsby-theme"]
+      "@/static/*": ["./static/*"]
     }
   },
-  "include": [
-    "packages/gatsby-theme",
-    "packages/websites-server",
-    "./src/**/*",
-    "./*.js",
-    "./*.tsx"
-  ]
+  "include": ["./src/**/*", "./*.js", "./*.tsx"]
 }

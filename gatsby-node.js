@@ -1,19 +1,95 @@
-require('dotenv').config()
-global.__basedir = __dirname
+const path = require('path')
 
 const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin')
 
+const { DOCS_PREFIX } = require('./src/consts')
 const { setPageContext } = require('./src/gatsby/common')
 const models = require('./src/gatsby/models')
 const callOnModels = require('./src/gatsby/utils/models')
 
-exports.createSchemaCustomization = api =>
-  callOnModels(models, 'createSchemaCustomization', api)
+const disable = Boolean(process.env.SKIP_DOCS)
+
+const defaultGetTemplate = (template, defaultTemplate) =>
+  template
+    ? require.resolve(path.resolve('src', 'templates', template + '.tsx'))
+    : defaultTemplate
+
+const getTemplate = defaultGetTemplate
+const defaultTemplate = require.resolve('./src/templates/doc.tsx')
+const docsPrefix = DOCS_PREFIX
+
+exports.createSchemaCustomization = async api => {
+  const {
+    actions: { createTypes },
+    schema: { buildObjectType }
+  } = api
+  createTypes([
+    buildObjectType({
+      name: 'DocsPage',
+      interfaces: ['Node'],
+      fields: {
+        template: 'String',
+        title: 'String',
+        description: 'String',
+        slug: 'String',
+        sourcePath: 'String'
+      }
+    }),
+    buildObjectType({
+      name: 'GlossaryEntry',
+      interfaces: ['Node'],
+      fields: {
+        tooltip: {
+          type: 'String!'
+        },
+        name: 'String!',
+        match: '[String]'
+      }
+    }),
+    buildObjectType({
+      name: 'SiteSiteMetadata',
+      fields: {
+        author: 'String',
+        siteUrl: 'String',
+        titleTemplate: 'String'
+      }
+    })
+  ])
+  await callOnModels(models, 'createSchemaCustomization', api)
+}
+
 exports.sourceNodes = api => callOnModels(models, 'sourceNodes', api)
 
-exports.onCreateNode = api => callOnModels(models, 'onCreateNode', api)
-exports.createPages = api => callOnModels(models, 'createPages', api)
+exports.onCreateBabelConfig = ({ actions }) => {
+  actions.setBabelPlugin({
+    name: '@babel/plugin-transform-react-jsx',
+    options: {
+      runtime: 'automatic'
+    }
+  })
+}
+
+exports.createPages = async api => {
+  await require('./src/gatsby/createPages')(api, {
+    disable,
+    defaultTemplate,
+    getTemplate,
+    docsPrefix
+  })
+  await callOnModels(models, 'createPages', api)
+}
+
+exports.onCreateNode = async api => {
+  await require('./src/gatsby/onCreateNode')(api, {
+    disable,
+    glossaryInstanceName: 'glossary',
+    docsInstanceName: 'docs'
+  })
+  await callOnModels(models, 'onCreateNode', api)
+}
+
 exports.createResolvers = api => callOnModels(models, 'createResolvers', api)
+
 exports.onPostBuild = api => callOnModels(models, 'onPostBuild', api)
 
 exports.onCreatePage = ({ page, actions }) => {
