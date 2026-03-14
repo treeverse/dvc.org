@@ -17,9 +17,9 @@ instead of the original file name such as `model.pkl` or `data.xml`).
 
 </admon>
 
-<details>
+<details icon="video">
 
-### 🎬 Click to watch a video about sharing data and models
+### Click to watch a video about sharing data and models
 
 https://youtu.be/EE7Gk84OZY8
 
@@ -79,9 +79,9 @@ This is similar to `dvc get` + `dvc add`, but the resulting `.dvc` files
 includes metadata to track changes in the source repository. This allows you to
 bring in changes from the data source later using `dvc update`.
 
-<details>
+<details icon="bulb">
 
-### 💡 Expand to get a peek under the hood
+### Expand to get a peek under the hood
 
 <admon type="info">
 

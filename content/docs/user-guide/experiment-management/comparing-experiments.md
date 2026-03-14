@@ -102,7 +102,7 @@ https://youtu.be/Flpu_-D_zDI?si=8G1NgC4n1RqfrIXg
 If viewing the table isn't enough and you need programmatic access to the
 experiments table, you can save it as a CSV or access it using the Python API.
 
-<details>
+<details icon="bulb">
 
 #### Get experiments table in CSV
 

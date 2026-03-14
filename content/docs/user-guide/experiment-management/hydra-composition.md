@@ -96,7 +96,7 @@ train:
 
 ## Running experiments
 
-<details>
+<details icon="gear">
 
 ### Expand to set up a DVC pipeline.
 

@@ -26,7 +26,7 @@ This downloads the file to `data.xml` (see
 [Avoiding duplication](#avoiding-duplication) if you want to skip this step). It
 also creates the `data.xml.dvc`file, which tracks the source data.
 
-<details id="import-url-expand-to-see-resulting-dvc-file">
+<details id="import-url-expand-to-see-resulting-dvc-file" icon="book">
 
 ### Expand to see resulting `.dvc` file
 

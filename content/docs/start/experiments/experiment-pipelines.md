@@ -72,7 +72,7 @@ $ dvc stage add --name data_split \
 
 A `dvc.yaml` file is automatically generated with the stage details.
 
-<details>
+<details icon="book">
 
 ### Expand to see the created `dvc.yaml`
 
@@ -119,7 +119,7 @@ $ dvc stage add -n evaluate \
 The `dvc.yaml` file is updated automatically and should include all the stages
 now.
 
-<details>
+<details icon="book">
 
 ### Expand to see the full `dvc.yaml`
 

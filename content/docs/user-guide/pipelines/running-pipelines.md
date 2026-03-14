@@ -253,7 +253,7 @@ ignore any missing data, use `dvc repro --dry --allow-missing`.
 
 This command will succeed if nothing has changed:
 
-<details>
+<details icon="bulb">
 
 ### Clean example
 

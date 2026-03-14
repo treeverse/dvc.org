@@ -8,9 +8,9 @@ Experiments preserve a connection to the latest commit in the current branch
 (Git `HEAD`) as their parent or _baseline_, but do not form part of the regular
 Git tree. This prevents bloating your repo with temporary commits and branches.
 
-<details>
+<details icon="gear">
 
-### ⚙️ How does DVC track experiments?
+### How does DVC track experiments?
 
 Experiments are custom [Git references] (found in `.git/refs/exps`) with one or
 more commits based on `HEAD`. These commits are hidden and not checked out by

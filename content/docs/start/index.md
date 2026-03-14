@@ -11,9 +11,9 @@ pipelines and metrics, and manage experiments.'
 ## Get Started with DVC
 -->
 
-<details>
+<details icon="video">
 
-### 🎬 Click to watch a video intro.
+### Click to watch a video intro.
 
 https://youtu.be/kLKBcPonMYw
 
@@ -56,9 +56,9 @@ See the [Installation Guide](/install) for more installation options.
 Before we begin, settle on a directory for this guide. Everything we will do
 will be self contained there.
 
-<details>
+<details icon="gear">
 
-### ⚙️ Expand to prepare a project.
+### Expand to prepare a project.
 
 Imagine we want to build an ML project from scratch. Let's start by creating a
 Git repository:
@@ -142,9 +142,9 @@ $ git commit -m "Add raw data"
 Now the _metadata about your data_ is versioned alongside your source code,
 while the original data file was added to `.gitignore`.
 
-<details id="add-click-to-get-a-peek-under-the-hood">
+<details id="add-click-to-get-a-peek-under-the-hood" icon="bulb">
 
-### 💡 Expand to get a peek under the hood
+### Expand to get a peek under the hood
 
 `dvc add` moved the data to the project's <abbr>cache</abbr>, and
 <abbr>linked</abbr> it back to the <abbr>workspace</abbr>. The `.dvc/cache` will
@@ -233,9 +233,9 @@ Now that a storage remote was configured, run `dvc push` to upload data:
 $ dvc push
 ```
 
-<details id="push-click-to-get-a-peek-under-the-hood">
+<details id="push-click-to-get-a-peek-under-the-hood" icon="bulb">
 
-#### 💡 Expand to get a peek under the hood
+#### Expand to get a peek under the hood
 
 `dvc push` copied the data <abbr>cached</abbr> locally to the remote storage we
 set up earlier. The remote storage directory should look like this:

@@ -2,6 +2,8 @@
   display: flex;
   flex-wrap: wrap;
   margin: 0 0 16px;
+  border-bottom: 1px solid var(--color-light-gray);
+  gap: 0 4px;
 
   input {
     height: 0;
@@ -13,37 +15,42 @@
 
   input:checked + label {
     color: var(--color-azure);
-    border-color: var(--color-azure);
+    border-bottom-color: var(--color-azure);
   }
 
   input:checked + label + .tab {
     height: initial;
-    opacity: initial;
+    opacity: 1;
     position: static;
     width: 100%;
     overflow: visible;
   }
 
   .tabHeading {
-    padding: 12px 16px 10px;
+    padding: 10px 14px;
     background-color: transparent;
     border: none;
     border-bottom: 2px solid transparent;
-    font-weight: bold;
-    font-size: 16px;
+    font-weight: 500;
+    font-size: 14px;
     font-family: var(--font-base);
+    color: var(--color-gray-dark);
     order: -1;
+    transition:
+      color 0.15s ease,
+      border-color 0.15s ease;
+    margin-bottom: -1px;
 
     &:hover {
       cursor: pointer;
+      color: var(--color-azure);
     }
   }
 }
 
 .tab {
-  @apply p-2 m-0;
+  @apply py-4 px-1 m-0;
 
-  border-left: thick groove #caf3fa;
   height: 0;
   opacity: 0;
   position: absolute;

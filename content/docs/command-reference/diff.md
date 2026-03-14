@@ -82,7 +82,7 @@ for example when `dvc init` was used with the `--no-scm` option.
 
 For these examples we can use the [Get Started](/start) project.
 
-<details>
+<details icon="gear">
 
 ### Click and expand to set up the project to run examples
 

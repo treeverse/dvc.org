@@ -61,7 +61,7 @@ $ source .env/bin/activate
 $ pip install -r requirements.txt
 ```
 
-<details>
+<details icon="gear">
 
 ### Expand to learn about DVC internals
 

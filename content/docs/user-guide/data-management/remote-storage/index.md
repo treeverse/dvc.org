@@ -72,7 +72,7 @@ to re-configure these values.
 
 </admon>
 
-<details>
+<details icon="book">
 
 ### Click to see the resulting config files.
 

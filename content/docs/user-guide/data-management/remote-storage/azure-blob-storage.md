@@ -49,7 +49,7 @@ $ dvc remote modify myremote account_name 'mystorage'
 [azure cli configuration]:
   https://learn.microsoft.com/en-us/cli/azure/azure-cli-configuration?view=azure-cli-latest
 
-<details>
+<details icon="bulb">
 
 ### Windows users: click here for more info.
 

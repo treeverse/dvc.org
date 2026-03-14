@@ -239,7 +239,7 @@ Queueing with overrides '{'params.yaml': ['train.arch=shufflenet_v2_x2_0', 'trai
 [grid search]:
   https://en.wikipedia.org/wiki/Hyperparameter_optimization#Grid_search
 
-<details>
+<details icon="gear">
 
 ### How are experiments queued?
 
@@ -282,7 +282,7 @@ stages may be executed multiple times depending on the state of the
 
 </admon>
 
-<details>
+<details icon="gear">
 
 ### How are experiments isolated?
 

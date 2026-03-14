@@ -1,0 +1,92 @@
+.callout {
+  padding: 12px 16px;
+  border-left: 3px solid;
+  margin: 8px 0;
+  border-radius: 0 6px 6px 0;
+  font-size: 17px;
+  position: relative;
+
+  --callout-accent: var(--color-azure);
+
+  &.warn {
+    --callout-accent: var(--color-orange);
+
+    border-color: var(--color-orange);
+    background-color: rgb(227 112 70 / 10%);
+  }
+
+  &.tip {
+    --callout-accent: var(--color-azure);
+
+    border-color: var(--color-azure);
+    background-color: rgb(19 173 199 / 10%);
+  }
+
+  &.info {
+    --callout-accent: var(--color-purple);
+
+    border-color: var(--color-purple);
+    background-color: rgb(148 93 214 / 10%);
+  }
+}
+
+/* Static mode (admonition) */
+
+.title {
+  font-weight: 600;
+  font-size: 17px;
+  margin: 0 0 6px;
+  line-height: 1.4;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon {
+  display: inline-flex;
+  flex-shrink: 0;
+  color: var(--callout-accent);
+}
+
+.iconFloat {
+  display: inline-flex;
+  float: left;
+  margin-right: 8px;
+  margin-top: 2px;
+  color: var(--callout-accent);
+}
+
+.content > *:last-child {
+  margin-bottom: 0;
+}
+
+.content.hasIcon > *:first-child {
+  display: inline;
+}
+
+/* Collapsible mode */
+
+.triggerInner {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 8px;
+}
+
+.triggerLabel {
+  flex: 1;
+}
+
+.chevron {
+  flex-shrink: 0;
+  color: #5f6c72;
+  transition: transform 200ms ease;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.collapsibleContent {
+  padding: 10px 0 4px;
+}

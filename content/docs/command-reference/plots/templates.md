@@ -82,7 +82,7 @@ values.
 
 Please see the default templates for examples of how to use these anchors.
 
-<details>
+<details icon="book">
 
 ### Expand to learn how DVC modifies plot data for rendering.
 

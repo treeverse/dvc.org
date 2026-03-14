@@ -64,7 +64,7 @@ initializing DVC in the Git repo root:
 [internals]: /user-guide/project-structure/internal-files
 [remote storage]: /user-guide/data-management/remote-storage
 
-<details>
+<details icon="gear">
 
 #### How does it affect DVC commands?
 

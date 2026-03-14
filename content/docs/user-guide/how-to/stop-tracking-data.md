@@ -8,7 +8,7 @@ description: 'You can "un-track" files or directories added in error.'
 There are situations where you may want to "un-track" files or directories added
 in error to DVC.
 
-<details>
+<details icon="book">
 
 ### Expand to add a sample data `data.csv` file
 

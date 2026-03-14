@@ -33,9 +33,9 @@ $ dvc stage add -n evaluate \
 
 [earlier pipeline]: /start/data-pipelines/data-pipelines
 
-<details>
+<details icon="bulb">
 
-### 💡 Expand to get a peek under the hood
+### Expand to get a peek under the hood
 
 `dvc stage add` will generates this new stage in the `dvc.yaml` file:
 
@@ -65,9 +65,9 @@ parse to compare and visualize across iterations. By default, DVCLive will
 configure metrics and plots for you in `dvc.yaml`, but in this example we
 customize them by editing `dvc.yaml` to combine train and test plots.
 
-<details>
+<details icon="bulb">
 
-### 💡 Expand to see how to customize metrics and plots
+### Expand to see how to customize metrics and plots
 
 To combine train and test data, and to set other custom attributes like titles,
 first disable DVCLive's default configuration by opening `src/evaluate.py`,
@@ -182,9 +182,9 @@ featurize:
     - data/features
 ```
 
-<details>
+<details icon="gear">
 
-### ⚙️ Expand to recall how it was generated.
+### Expand to recall how it was generated.
 
 The `featurize` stage was created with this `dvc stage add` command. Notice the
 argument sent to the `-p` option (short for `--params`):

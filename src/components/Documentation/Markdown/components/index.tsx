@@ -2,7 +2,7 @@ import { PropsWithChildren } from 'react'
 
 import Slugger from '../../../../utils/front/Slugger'
 import { DownloadLink, NoPreRedirectLink } from '../../../Link'
-import Admonition from '../Admonition'
+import Callout from '../Callout'
 import { Tab, Toggle } from '../ToggleProvider'
 
 import { Abbr, Card, Cards, Details, InfoCard } from './default'
@@ -15,16 +15,32 @@ export const getComponents = (slugger: Slugger) => ({
   details: ({
     id,
     children,
-    color
-  }: PropsWithChildren<{ id: string; color?: string }>) => (
-    <Details slugger={slugger} id={id} color={color}>
+    type,
+    color,
+    icon,
+    open
+  }: PropsWithChildren<{
+    id: string
+    type?: string
+    color?: string
+    icon?: string
+    open?: boolean
+  }>) => (
+    <Details
+      slugger={slugger}
+      id={id}
+      type={type}
+      color={color}
+      icon={icon}
+      open={open}
+    >
       {children}
     </Details>
   ),
   toggle: Toggle,
   tab: Tab,
-  admon: Admonition,
-  admonition: Admonition,
+  admon: Callout,
+  admonition: Callout,
   downloadlink: DownloadLink,
   infocard: InfoCard
 })

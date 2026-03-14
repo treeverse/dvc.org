@@ -101,7 +101,7 @@ We'll use hierarchical metrics file `train.json` for this example:
 }
 ```
 
-<details>
+<details icon="book">
 
 ### Expand for YAML format
 

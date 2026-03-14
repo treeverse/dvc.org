@@ -1,5 +1,9 @@
 .highlightedText {
-  border-bottom: 1px black dotted;
+  text-decoration: underline dotted var(--color-gray-light);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1.5px;
+  cursor: help;
+  font-style: italic;
 }
 
 .modalBackground {
@@ -24,7 +28,7 @@
   position: absolute;
   height: 23px;
   width: 2px;
-  background-color: black;
+  background-color: var(--color-gray-dark);
 
   &.first {
     transform: rotate(-45deg);
@@ -37,13 +41,18 @@
 
 .modalContent {
   width: 80%;
-  padding: 8px 10px;
-  border: 1px solid var(--color-light-blue);
-  border-radius: 3px;
+  max-width: 400px;
+  padding: 16px 20px;
+  border: none;
+  border-radius: 8px;
   background-color: #fff;
+  box-shadow:
+    0 4px 24px rgb(0 0 0 / 12%),
+    0 1px 4px rgb(0 0 0 / 8%);
 }
 
 .modalHeader {
-  font-size: 1.3em;
-  font-weight: bold;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 6px;
 }

@@ -22,6 +22,28 @@
     font-family: inherit;
     font-size: 18px;
 
+    a[target='_blank']::after {
+      display: inline-block;
+      position: relative;
+      top: 0.5px;
+      width: 12px;
+      height: 12px;
+      margin-left: 2px;
+      content: url('../../../../images/external-link.svg');
+      opacity: 0.6;
+      transition: opacity 0.15s ease;
+    }
+
+    a[target='_blank']:hover::after {
+      opacity: 1;
+    }
+
+    blockquote {
+      border-left: 3px solid #d0d7de;
+      padding: 0.5em 1em;
+      color: #57606a;
+    }
+
     ul {
       list-style: disc;
     }
@@ -61,20 +83,6 @@
 
     :global(.gatsby-resp-image-wrapper) + em {
       margin-top: 0;
-    }
-
-    a[target='_blank'] {
-      white-space: nowrap;
-
-      &::after {
-        position: relative;
-        top: 1px;
-        right: 0;
-        width: 12px;
-        height: 12px;
-        margin-left: 1px;
-        content: url('../../../../images/external-link.svg');
-      }
     }
 
     a.token.arg {

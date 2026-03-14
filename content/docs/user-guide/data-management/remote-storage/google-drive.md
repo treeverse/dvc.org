@@ -37,7 +37,7 @@ See [Authorization](#authorization) for more details.
 For the full list of configuration parameters, see
 [Configuration Parameters](#configuration-parameters).
 
-<details id="default-configuration">
+<details id="default-configuration" icon="bulb">
 
 ### DVC verifies Google Drive files by default
 

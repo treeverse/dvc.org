@@ -1,45 +1,13 @@
 :global {
-  .Collapsible {
-    margin-bottom: 10px;
-    background-color: rgb(36 173 197 / 20%);
-    border-radius: 15px;
-    padding: 10px;
-  }
-
-  .collapsible-purple .Collapsible {
-    background-color: rgb(128 90 213 / 20%);
-  }
-
   .Collapsible__trigger {
     font-family: var(--font-base);
-    font-weight: 500;
-    display: block;
-    position: relative;
-    opacity: 0.9;
+    font-weight: 600;
+    font-size: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     cursor: pointer;
-
-    &::after {
-      position: absolute;
-      display: inline-block;
-      background-size: 20px 20px;
-      right: 0;
-      width: 20px;
-      height: 20px;
-      background-image: url('../../../images/click.png');
-      content: '';
-      font-family: monospace;
-      transition: transform 200ms;
-    }
-
-    &.is-open::after {
-      opacity: 0.5;
-    }
-  }
-
-  .Collapsible__contentInner {
-    background-color: rgb(36 173 197 / 0%);
-    border-radius: 15px;
-    padding: 10px;
+    color: var(--color-black);
   }
 }
 

@@ -263,9 +263,9 @@ ways to parametrize `cmd` strings.
 
 </admon>
 
-<details>
+<details icon="bulb">
 
-### 💡 Avoiding unexpected behavior
+### Avoiding unexpected behavior
 
 We don't want to tell anyone how to write their code or what programs to use!
 However, please be aware that in order to prevent unexpected results when DVC

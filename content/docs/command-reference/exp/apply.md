@@ -36,7 +36,7 @@ Conflicting changes in the workspace are overwritten, but the result of
 
 </admon>
 
-<details>
+<details icon="bulb">
 
 ### Expand for details on reverting `dvc exp apply`
 

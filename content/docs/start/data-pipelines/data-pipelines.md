@@ -6,9 +6,9 @@ version, and reproduce your data science and machine learning workflows.'
 
 # Get Started: Data Pipelines
 
-<details>
+<details icon="video">
 
-### 🎬 Click to watch a video intro.
+### Click to watch a video intro.
 
 https://youtu.be/71IGzyH95UY
 
@@ -41,9 +41,9 @@ $ wget https://code.dvc.org/get-started/code.zip
 $ unzip code.zip && rm -f code.zip
 ```
 
-<details>
+<details icon="bulb">
 
-### 💡 Expand to inspect project structure
+### Expand to inspect project structure
 
 Get the sample code like this:
 
@@ -123,9 +123,9 @@ produced by any stage, so there's no need to manually run `dvc add` for
 
 </admon>
 
-<details id="stage-expand-to-see-what-happens-under-the-hood">
+<details id="stage-expand-to-see-what-happens-under-the-hood" icon="bulb">
 
-### 💡 Expand to get a peek under the hood
+### Expand to get a peek under the hood
 
 Details on the command options used above:
 
@@ -192,9 +192,9 @@ stages:
 
 </details>
 
-<details id="external-data-pipelines">
+<details id="external-data-pipelines" icon="bulb">
 
-### 💡 What if my dependencies and outputs aren't inside my project?
+### What if my dependencies and outputs aren't inside my project?
 
 DVC can help simplify your workflow by keeping all your data inside your
 project, but this isn't always practical if you already have a large dataset
@@ -283,9 +283,9 @@ $ dvc repro
 You'll notice a `dvc.lock` (a "state file") was created to capture the
 reproduction's results.
 
-<details id="repro-expand-to-see-what-happens-under-the-hood">
+<details id="repro-expand-to-see-what-happens-under-the-hood" icon="bulb">
 
-### 💡 Expand to get a peek under the hood
+### Expand to get a peek under the hood
 
 `dvc repro` relies on the [dependency graph] of stages defined in `dvc.yaml`,
 and uses `dvc.lock` to determine what exactly needs to be run.
@@ -335,9 +335,9 @@ modification, to record the current state & results:
 $ git add dvc.lock && git commit -m "first pipeline repro"
 ```
 
-<details>
+<details icon="gear">
 
-### ⚙️ Learn how to parametrize and use cached results
+### Learn how to parametrize and use cached results
 
 Let's try to have a little bit of fun with it. First, change one of the
 parameters for the training stage:

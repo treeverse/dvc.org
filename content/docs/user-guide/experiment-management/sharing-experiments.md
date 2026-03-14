@@ -38,7 +38,7 @@ metrics to DVC Studio, set your [access token].
 While the experiment runs, you will see live updates like this in DVC Studio
 (and so will anyone else with access to the project):
 
-<details>
+<details icon="gear">
 
 ### Advanced options and troubleshooting for live metrics and plots
 
@@ -57,9 +57,9 @@ experiments] for more information on how to setup, view, and compare.
 
 </admon>
 
-<details>
+<details icon="gear">
 
-### ⚙️ How pushing and pulling experiments works
+### How pushing and pulling experiments works
 
 `dvc exp push` pushes <abbr>experiment</abbr> commits that Git can upload to
 remote servers like GitHub but don't show up in the UI (so they don't clutter
@@ -120,7 +120,7 @@ remote `origin`:
 $ dvc exp push origin
 ```
 
-<details>
+<details icon="gear">
 
 ### Advanced options and troubleshooting for pushing experiments
 
@@ -137,7 +137,7 @@ the flags to select a different set of experiments to push.
 
 </details>
 
-<details>
+<details icon="gear">
 
 ### Push experiments automatically
 
@@ -174,7 +174,7 @@ refs/tags/baseline-experiment:
     cnn-64
 ```
 
-<details>
+<details icon="gear">
 
 ### Advanced options for finding pushed experiments
 
@@ -196,7 +196,7 @@ $ dvc exp pull origin
 This puts all the necessary files and data (from both Git and DVC remotes) in
 your project.
 
-<details>
+<details icon="gear">
 
 ### Advanced options for pulling experiments
 

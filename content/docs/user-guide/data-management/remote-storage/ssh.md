@@ -4,7 +4,7 @@
 ## SSH
 -->
 
-<details>
+<details icon="bulb">
 
 ### Click to learn about SSH and SFTP.
 

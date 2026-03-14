@@ -1,28 +1,24 @@
-import { useLocation } from '@gatsbyjs/reach-router'
-import {
-  PropsWithChildren,
-  ReactElement,
-  ReactNode,
-  useEffect,
-  useMemo,
-  useState
-} from 'react'
-import Collapsible from 'react-collapsible'
+import { PropsWithChildren, ReactNode, useMemo } from 'react'
 
 import { ReactComponent as LinkIcon } from '../../../../images/linkIcon.svg'
 import Slugger from '../../../../utils/front/Slugger'
 import Link from '../../../Link'
+import Callout from '../Callout'
 import * as styles from '../styles.module.css'
 import Tooltip from '../Tooltip'
 
 type RemarkNode = { props: { children: RemarkNode[] } } | string
 
 export const Details: React.FC<
-  PropsWithChildren<{ slugger: Slugger; id: string; color?: string }>
-> = ({ slugger, children, id, color }) => {
-  const [isOpen, setIsOpen] = useState(false)
-  const location = useLocation()
-
+  PropsWithChildren<{
+    slugger: Slugger
+    id: string
+    type?: string
+    color?: string
+    icon?: string
+    open?: boolean
+  }>
+> = ({ slugger, children, id, type, color, icon, open = false }) => {
   const filteredChildren = (children as Array<RemarkNode>).filter(
     child => child !== '\n'
   )
@@ -50,43 +46,34 @@ export const Details: React.FC<
           ? cur?.props?.children?.toString()
           : '')
   }, '')
+
   id = useMemo(() => {
     return id ? slugger.slug(id) : slugger.slug(title)
   }, [id, slugger, title])
 
-  useEffect(() => {
-    if (location.hash === `#${id}`) {
-      setIsOpen(true)
-    }
+  // Support legacy `color` prop; default details to 'tip' (azure)
+  const resolvedType = type || (color === 'purple' ? 'info' : 'tip')
 
-    return () => {
-      setIsOpen(false)
-    }
-  }, [id, location.hash])
-
-  const colorClass = color ? `collapsible-${color}` : ''
-
-  /*
-     Collapsible's trigger type wants ReactElement, so we force a TS cast from
-     ReactNode here.
-   */
   return (
-    <div id={id} className={`collapsableDiv ${colorClass}`.trim()}>
-      <Link
-        href={`#${id}`}
-        aria-label={triggerChildren.toString()}
-        className="anchor after"
-      >
-        <LinkIcon />
-      </Link>
-      <Collapsible
-        open={isOpen}
-        trigger={triggerChildren as unknown as ReactElement}
-        transitionTime={200}
-      >
-        {filteredChildren.slice(1) as ReactNode}
-      </Collapsible>
-    </div>
+    <Callout
+      type={resolvedType}
+      icon={icon || 'none'}
+      collapsible
+      open={open}
+      id={id}
+      triggerContent={triggerChildren as unknown as ReactNode}
+      anchorLink={
+        <Link
+          href={`#${id}`}
+          aria-label={triggerChildren.toString()}
+          className="anchor after"
+        >
+          <LinkIcon />
+        </Link>
+      }
+    >
+      {filteredChildren.slice(1) as ReactNode}
+    </Callout>
   )
 }
 

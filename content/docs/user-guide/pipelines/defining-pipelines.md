@@ -44,7 +44,7 @@ files to find stages, rebuilding all the pipelines that these may define.
 [metrics]: /command-reference/metrics
 [plots]: /user-guide/experiment-management/visualizing-plots
 
-<details>
+<details icon="bulb">
 
 ### Directed Acyclic Graph (DAG)
 
