@@ -24,13 +24,13 @@ declare global {
 interface IFooterLinkData {
   href: string
   text: string
-  icon?: JSX.Element
+  icon?: React.JSX.Element
   target?: '_blank'
 }
 
 interface IFooterButtonData {
   text: string
-  icon?: JSX.Element
+  icon?: React.JSX.Element
   onClick: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void
 }
 

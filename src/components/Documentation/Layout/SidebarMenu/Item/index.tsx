@@ -124,7 +124,6 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
       {parentElement}
       {children && (
         <span hidden={!isExpanded}>
-          {/* @ts-expect-error react-collapse types incompatible with React types */}
           <Collapse isOpened={!!isExpanded}>
             {children.map(item => (
               <SidebarMenuItem

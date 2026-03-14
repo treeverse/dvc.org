@@ -47,7 +47,7 @@ const DesktopView: React.FC<IDesktopViewProps> = ({
   header,
   text
 }) => {
-  const timeoutRef = useRef<number | undefined>()
+  const timeoutRef = useRef<number | undefined>(undefined)
   const toggleRef = useRef<HTMLSpanElement>(null)
   const tooltipRef = useRef<HTMLDivElement>(null)
   const [tooltipPosition, setPosition] = useState<

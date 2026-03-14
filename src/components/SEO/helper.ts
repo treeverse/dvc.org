@@ -1,7 +1,7 @@
 import { getSrc, IGatsbyImageData } from 'gatsby-plugin-image'
 
-export type MetaProps = JSX.IntrinsicElements['meta']
-export type LinkProps = JSX.IntrinsicElements['link']
+export type MetaProps = React.JSX.IntrinsicElements['meta']
+export type LinkProps = React.JSX.IntrinsicElements['link']
 
 export const getMetaTitle = (title: string): MetaProps[] => {
   return [

@@ -7,7 +7,7 @@ import { ReactComponent as LinkedInIcon } from './linkedin.svg'
 import { ReactComponent as TwitterIcon } from './twitter.svg'
 import { ReactComponent as YoutubeIcon } from './youtube.svg'
 
-const icons: { [site: string]: JSX.Element } = {
+const icons: { [site: string]: React.JSX.Element } = {
   linkedin: <LinkedInIcon />,
   linkedinNoBg: <LinkedInNoBgIcon />,
   github: <GithubIcon />,
@@ -38,8 +38,8 @@ const SocialIcon: React.FC<ISocialIconProps> = ({
   url,
   className,
   label
-}): JSX.Element | null => {
-  const icon: JSX.Element = icons[site!]
+}): React.JSX.Element | null => {
+  const icon: React.JSX.Element = icons[site!]
   return icon ? (
     <Link href={url} className={className} aria-label={label || site}>
       {icon}

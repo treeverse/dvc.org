@@ -1,6 +1,6 @@
 import { Element } from 'hast'
-import { createElement, Fragment } from 'react'
-import rehypeReact from 'rehype-react'
+import { toJsxRuntime } from 'hast-util-to-jsx-runtime'
+import { Fragment, jsx, jsxs } from 'react/jsx-runtime'
 
 import patchHtmlAst from '../../../utils/front/patchHtmlAst'
 import Slugger from '../../../utils/front/Slugger'
@@ -9,15 +9,18 @@ import { getComponents } from './components'
 import Main from './Main'
 import { TogglesProvider } from './ToggleProvider'
 
-// Rehype's typedefs don't allow for custom components, even though they work
-const renderAst = (slugger: Slugger) => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return new (rehypeReact as any)({
-    createElement: createElement,
-    Fragment,
-    components: getComponents(slugger)
-  }).Compiler
-}
+/* eslint-disable @typescript-eslint/no-explicit-any */
+const renderAst = (slugger: Slugger) => (tree: Element) =>
+  toJsxRuntime(
+    tree as any,
+    {
+      Fragment,
+      jsx,
+      jsxs,
+      components: getComponents(slugger)
+    } as any
+  )
+/* eslint-enable @typescript-eslint/no-explicit-any */
 
 interface IMarkdownProps {
   htmlAst: Element

@@ -26,7 +26,7 @@ export const Details: React.FC<
   const filteredChildren = (children as Array<RemarkNode>).filter(
     child => child !== '\n'
   )
-  const firstChild = filteredChildren[0] as JSX.Element
+  const firstChild = filteredChildren[0] as React.JSX.Element
 
   if (!/^h.$/.test(firstChild.type)) {
     throw new Error('The first child of a details element must be a heading!')
@@ -91,7 +91,8 @@ export const Details: React.FC<
 }
 
 export const Abbr: React.FC<Record<string, never>> = ({ children }) => {
-  return <Tooltip text={(children as string[])[0]} />
+  const text = Array.isArray(children) ? children[0] : children
+  return <Tooltip text={text as string} />
 }
 
 export const Cards: React.FC<PropsWithChildren<Record<never, never>>> = ({
