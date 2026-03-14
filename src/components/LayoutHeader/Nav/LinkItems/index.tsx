@@ -2,32 +2,16 @@ import cn from 'classnames'
 import { useState, useRef, useEffect, useCallback } from 'react'
 
 import { ReactComponent as ArrowDownSVG } from '../../../../../static/img/arrow-down-icon.svg'
-import menuData from '../../../../data/menu'
+import menuData, {
+  INavLinkData,
+  INavLinkPopupData,
+  PopupName
+} from '../../../../data/menu'
 import { logEvent } from '../../../../utils/front/plausible'
 import Link from '../../../Link'
 import { NavPopup } from '../Popup'
 
 import * as styles from './styles.module.css'
-
-type PopupName = 'dataVersionControlPopup' | 'communityPopup'
-
-export interface INavLinkData {
-  href: string
-  eventType: string
-  text: string
-  className?: string
-}
-
-export interface INavLinkPopupData {
-  text: string
-  popupName: PopupName
-  items: Array<{ label: string; href: string }>
-  analyticsKey: string
-  ariaLabel?: string
-  className?: string
-  href?: string
-  hideDropdown?: boolean
-}
 
 const isPopup = (
   item: INavLinkData | INavLinkPopupData

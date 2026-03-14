@@ -1,8 +1,24 @@
-import {
-  INavLinkData,
-  INavLinkPopupData
-} from '../components/LayoutHeader/Nav/LinkItems'
-import { externalUrls, mainSiteUrls, docUrls } from '../consts'
+import { externalUrls, mainSiteUrls, docUrls } from '@/consts'
+
+export type PopupName = 'dataVersionControlPopup' | 'communityPopup'
+
+export interface INavLinkData {
+  href: string
+  eventType: string
+  text: string
+  className?: string
+}
+
+export interface INavLinkPopupData {
+  text: string
+  popupName: PopupName
+  items: Array<{ label: string; href: string }>
+  analyticsKey: string
+  ariaLabel?: string
+  className?: string
+  href?: string
+  hideDropdown?: boolean
+}
 
 interface IMenuData {
   nav: Array<INavLinkData | INavLinkPopupData>

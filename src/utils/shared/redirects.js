@@ -2,7 +2,7 @@
 
 const { navigate } = require('gatsby')
 
-const redirects = require('../../../redirects')
+const redirects = require('../../../redirects-list.json')
 
 const { structure, findChildWithSource } = require('./sidebar')
 

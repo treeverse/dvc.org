@@ -22,7 +22,7 @@
 
 const { titleCase } = require('title-case')
 
-const sidebar = require('../../../sidebar')
+const sidebar = require('../../../content/docs/sidebar.json')
 const {
   SIDEBAR_UPPERCASE_KEYWORDS_REGEX,
   SIDEBAR_PATH_ROOT,

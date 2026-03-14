@@ -1,5 +1,7 @@
 /* eslint-env jest */
 
+const SIDEBAR_SOURCE = '../../../content/docs/sidebar.json'
+
 describe('normalizeSidebar', () => {
   beforeEach(() => {
     jest.resetModules()
@@ -19,7 +21,7 @@ describe('normalizeSidebar', () => {
         }
       ]
 
-      jest.doMock('../../../sidebar', () => rawData)
+      jest.doMock(SIDEBAR_SOURCE, () => rawData)
       const sidebarData = require('./sidebar').structure
 
       expect(sidebarData).toEqual(result)
@@ -38,7 +40,7 @@ describe('normalizeSidebar', () => {
         }
       ]
 
-      jest.doMock('../../../sidebar', () => rawData)
+      jest.doMock(SIDEBAR_SOURCE, () => rawData)
       const sidebarData = require('./sidebar').structure
 
       expect(sidebarData).toEqual(result)
@@ -57,7 +59,7 @@ describe('normalizeSidebar', () => {
         }
       ]
 
-      jest.doMock('../../../sidebar', () => rawData)
+      jest.doMock(SIDEBAR_SOURCE, () => rawData)
       const sidebarData = require('./sidebar').structure
 
       expect(sidebarData).toEqual(result)
@@ -76,7 +78,7 @@ describe('normalizeSidebar', () => {
         }
       ]
 
-      jest.doMock('../../../sidebar', () => rawData)
+      jest.doMock(SIDEBAR_SOURCE, () => rawData)
       const sidebarData = require('./sidebar').structure
 
       expect(sidebarData).toEqual(result)
@@ -104,7 +106,7 @@ describe('normalizeSidebar', () => {
         }
       ]
 
-      jest.doMock('../../../sidebar', () => rawData)
+      jest.doMock(SIDEBAR_SOURCE, () => rawData)
       const sidebarData = require('./sidebar').structure
 
       expect(sidebarData).toEqual(result)
@@ -148,7 +150,7 @@ describe('normalizeSidebar', () => {
         }
       ]
 
-      jest.doMock('../../../sidebar', () => rawData)
+      jest.doMock(SIDEBAR_SOURCE, () => rawData)
       const sidebarData = require('./sidebar').structure
 
       expect(sidebarData).toEqual(result)
@@ -228,7 +230,7 @@ describe('normalizeSidebar', () => {
         }
       ]
 
-      jest.doMock('../../../sidebar', () => rawData)
+      jest.doMock(SIDEBAR_SOURCE, () => rawData)
       const sidebarData = require('./sidebar').structure
 
       expect(sidebarData).toEqual(result)
@@ -268,7 +270,7 @@ describe('normalizeSidebar', () => {
         }
       ]
 
-      jest.doMock('../../../sidebar', () => rawData)
+      jest.doMock(SIDEBAR_SOURCE, () => rawData)
       const sidebarData = require('./sidebar').structure
 
       expect(sidebarData).toEqual(result)
@@ -324,7 +326,7 @@ describe('normalizeSidebar', () => {
         }
       ]
 
-      jest.doMock('../../../sidebar', () => rawData)
+      jest.doMock(SIDEBAR_SOURCE, () => rawData)
       const sidebarData = require('./sidebar').structure
 
       expect(sidebarData).toEqual(result)
@@ -333,7 +335,7 @@ describe('normalizeSidebar', () => {
     it("Throws error if external item doesn't have a url field", () => {
       const rawData = [{ type: 'external' }]
 
-      jest.doMock('../../../sidebar', () => rawData)
+      jest.doMock(SIDEBAR_SOURCE, () => rawData)
 
       expect(() => require('./sidebar')).toThrow(
         new Error("'url' field is required in external sidebar.json entries")
@@ -343,7 +345,7 @@ describe('normalizeSidebar', () => {
     it("Throws error if local item doesn't have slug field", () => {
       const rawData = [{}]
 
-      jest.doMock('../../../sidebar', () => rawData)
+      jest.doMock(SIDEBAR_SOURCE, () => rawData)
 
       expect(() => require('./sidebar')).toThrow(
         new Error("'slug' field is required in local sidebar.json entries")
@@ -353,7 +355,7 @@ describe('normalizeSidebar', () => {
     it("Throws error if item has source: false and doesn't have children", () => {
       const rawData = [{ slug: 'item-name', source: false }]
 
-      jest.doMock('../../../sidebar', () => rawData)
+      jest.doMock(SIDEBAR_SOURCE, () => rawData)
 
       expect(() => require('./sidebar')).toThrow(
         new Error(
@@ -375,7 +377,7 @@ describe('normalizeSidebar', () => {
         next: undefined
       }
 
-      jest.doMock('../../../sidebar', () => rawData)
+      jest.doMock(SIDEBAR_SOURCE, () => rawData)
       const { getItemByPath } = require('./sidebar')
 
       expect(getItemByPath('/')).toEqual(result)
@@ -410,7 +412,7 @@ describe('normalizeSidebar', () => {
         next: undefined
       }
 
-      jest.doMock('../../../sidebar', () => rawData)
+      jest.doMock(SIDEBAR_SOURCE, () => rawData)
       const { getItemByPath } = require('./sidebar')
 
       expect(getItemByPath('/item')).toEqual(result)
@@ -429,7 +431,7 @@ describe('normalizeSidebar', () => {
         '/item-name/nested-item/subnested-item'
       ]
 
-      jest.doMock('../../../sidebar', () => rawData)
+      jest.doMock(SIDEBAR_SOURCE, () => rawData)
       const { getParentsListFromPath } = require('./sidebar')
 
       expect(getParentsListFromPath(path)).toEqual(result)
