@@ -56,4 +56,4 @@ const getHTML = url => {
   return `<div class="yt-embed-wrapper"><iframe width="100%" height="315" src="${iframeSrc}" frameBorder="0" allow="autoplay; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowFullScreen></iframe><div className="yt-embed-wrapper__overlay"><span class="yt-embed-wrapper__tooltip">By clicking play, you agree to YouTube&apos;s <a href="https://policies.google.com/u/3/privacy?hl=en" target="_blank" rel="nofollow noopener noreferrer">Privacy Policy</a> and <a href="https://www.youtube.com/static?template=terms" target="_blank" rel="nofollow noopener noreferrer">Terms of Service</a></span></div></div>`
 }
 
-module.exports = { getHTML, name, shouldTransform }
+export default { getHTML, name, shouldTransform }

@@ -1,4 +1,6 @@
-module.exports = {
+import tailwindcssAnimate from 'tailwindcss-animate'
+
+export default {
   content: ['./src/**/*.{ts,js,tsx,jsx}', './content/**/*.json'],
   theme: {
     extend: {
@@ -61,6 +63,6 @@ module.exports = {
         }
       })
     },
-    require('tailwindcss-animate')
+    tailwindcssAnimate
   ]
 }

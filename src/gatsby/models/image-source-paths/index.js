@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   async onCreateNode({ node, getNode, actions: { createNodeField } }) {
     const parentNode = getNode(node.parent)
     if (node.internal.type === 'ImageSharp') {

@@ -1,13 +1,14 @@
-/* eslint-env node */
+import {
+  docUrls,
+  ARGS_REGEXP,
+  CLI_REGEXP,
+  COMMAND_REGEXP
+} from '../../consts.js'
+import { getItemByPath } from '../../utils/shared/sidebar.js'
 
-const consts = require('../../consts')
-const { getItemByPath } = require('../../utils/shared/sidebar')
+import { createLinkNode, useMatcher } from './helpers.js'
 
-const { createLinkNode, useMatcher } = require('./helpers')
-
-const { docUrls, ARGS_REGEXP, CLI_REGEXP, COMMAND_REGEXP } = consts
-
-module.exports = aliasEntries => astNode => {
+export default aliasEntries => astNode => {
   const node = astNode[0]
   const parent = astNode[2]
   if (parent.type !== 'link' && CLI_REGEXP.test(node.value)) {

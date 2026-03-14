@@ -2,7 +2,7 @@ import { useLocation } from '@gatsbyjs/reach-router'
 import { Link as GatsbyLink } from 'gatsby'
 import { URL } from 'iso-url'
 
-import { mainSiteUrls } from '../../consts'
+import { mainSiteUrls } from '../../consts.js'
 import { getRedirect } from '../../utils/shared/redirects'
 
 export type ILinkProps = {

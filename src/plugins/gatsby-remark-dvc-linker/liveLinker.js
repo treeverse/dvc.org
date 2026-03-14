@@ -1,14 +1,12 @@
-/* eslint-env node */
+import { getItemByPath } from '../../utils/shared/sidebar.js'
 
-const { getItemByPath } = require('../../utils/shared/sidebar')
-
-const { createLinkNode } = require('./helpers')
+import { createLinkNode } from './helpers.js'
 
 const LIVE_API_REGEXP = /Live.([a-z-._]*\(\)$)?/
 const METHOD_REGEXP = /^[a-z-._]*\(\)$/
 const API_ROOT = '/dvclive/live/'
 
-module.exports = astNode => {
+export default astNode => {
   const node = astNode[0]
   const parent = astNode[2]
 

@@ -11,7 +11,4 @@ async function convertHastToHtml(htmlAst) {
   return unified().use(stringify).stringify(htmlAst)
 }
 
-module.exports = {
-  convertHastToHtml,
-  convertHtmlToHast
-}
+export { convertHastToHtml, convertHtmlToHast }

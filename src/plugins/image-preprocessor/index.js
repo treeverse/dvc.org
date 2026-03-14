@@ -1,6 +1,6 @@
-const path = require('path')
+import path from 'path'
 
-module.exports = async (
+export default async (
   { getRemarkFileDependency, markdownNode, markdownAST, reporter },
   { staticFolderName = 'static' }
 ) => {

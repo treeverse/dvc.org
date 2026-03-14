@@ -1,4 +1,4 @@
-import { externalUrls, mainSiteUrls, docUrls } from '../consts'
+import { externalUrls, mainSiteUrls, docUrls } from '../consts.js'
 
 export type PopupName = 'dataVersionControlPopup' | 'communityPopup'
 

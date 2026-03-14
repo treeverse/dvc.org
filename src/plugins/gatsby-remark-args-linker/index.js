@@ -1,7 +1,6 @@
-const _ = require('lodash')
+import _ from 'lodash'
 
-const consts = require('../../consts')
-const { ARGS_REGEXP } = consts
+import { ARGS_REGEXP } from '../../consts.js'
 
 function patch(context, key, value) {
   if (!_.has(context, key)) {
@@ -21,7 +20,7 @@ const addIdAttrToNode = (node, id) => {
   patch(data.hProperties, `id`, id)
 }
 
-module.exports = async (
+export default async (
   { markdownAST, getNode, markdownNode },
   { icon = '', className = 'anchor', isIconAfterHeader = false, pathname = '' }
 ) => {

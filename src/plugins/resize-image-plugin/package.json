@@ -1,6 +1,7 @@
 {
   "name": "resize-image-plugin",
   "version": "1.0.0",
+  "type": "module",
   "main": "index.js",
   "author": "Franco",
   "license": "Apache-2.0"

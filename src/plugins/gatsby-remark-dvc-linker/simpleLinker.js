@@ -1,10 +1,8 @@
-/* eslint-env node */
-
-const { createLinkNode, useMatcher } = require('./helpers')
+import { createLinkNode, useMatcher } from './helpers.js'
 
 const excludedParentTypes = ['link', 'heading']
 
-module.exports = entries => astNode => {
+export default entries => astNode => {
   if (entries) {
     const node = astNode[0]
     const parent = astNode[2]

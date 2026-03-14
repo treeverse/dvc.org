@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "module": "commonjs",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "lib": ["dom", "ESNext"],
     "jsx": "react-jsx",
@@ -26,5 +27,5 @@
       "@/static/*": ["./static/*"]
     }
   },
-  "include": ["./src/**/*", "./*.js", "./*.tsx"]
+  "include": ["./src/**/*", "./*.mjs", "./*.tsx"]
 }

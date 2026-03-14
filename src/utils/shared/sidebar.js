@@ -1,4 +1,3 @@
-/* eslint-env node */
 /*
   These helpers normalize sidebar structure and create all the resources needed.
   This prevents future recalculations.
@@ -20,15 +19,15 @@
   }
 */
 
-const { titleCase } = require('title-case')
+import { titleCase } from 'title-case'
 
-const sidebar = require('../../../content/docs/sidebar.json')
-const {
+import sidebar from '../../../content/docs/sidebar.json' with { type: 'json' }
+import {
   SIDEBAR_UPPERCASE_KEYWORDS_REGEX,
   SIDEBAR_PATH_ROOT,
   SIDEBAR_FILE_ROOT,
   SIDEBAR_FILE_EXTENSION
-} = require('../../consts')
+} from '../../consts.js'
 
 function uppercaseSlugKeywords(slug) {
   return slug.replace(SIDEBAR_UPPERCASE_KEYWORDS_REGEX, match => {
@@ -235,8 +234,8 @@ function getParentsListFromPath(path) {
     })
 }
 
-module.exports = {
-  structure: normalizedSidebar,
+export {
+  normalizedSidebar as structure,
   findChildWithSource,
   getItemByPath,
   getItemBySource,

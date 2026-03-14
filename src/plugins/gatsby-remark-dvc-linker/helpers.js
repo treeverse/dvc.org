@@ -24,4 +24,4 @@ const createLinkNode = (url, [node, index, parent]) =>
     position: node.position
   })
 
-module.exports = { createLinkNode, useMatcher }
+export { createLinkNode, useMatcher }

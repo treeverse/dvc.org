@@ -1,10 +1,8 @@
-/* eslint-env node */
+import { navigate } from 'gatsby'
 
-const { navigate } = require('gatsby')
+import redirects from '../../../redirects-list.json' with { type: 'json' }
 
-const redirects = require('../../../redirects-list.json')
-
-const { structure, findChildWithSource } = require('./sidebar')
+import { structure, findChildWithSource } from './sidebar.js'
 
 const buildSidebarRedirects = (list, redirects = []) => {
   list.forEach(item => {
@@ -92,7 +90,9 @@ const handleFrontRedirect = (host, pathname, clickEvent) => {
   }
 }
 
-exports.buildSidebarRedirects = buildSidebarRedirects
-exports.processRedirectString = processRedirectString
-exports.getRedirect = getRedirect
-exports.handleFrontRedirect = handleFrontRedirect
+export {
+  buildSidebarRedirects,
+  processRedirectString,
+  getRedirect,
+  handleFrontRedirect
+}

@@ -1,6 +1,6 @@
 import cn from 'classnames'
 
-import { mainSiteUrls } from '../../../consts'
+import { mainSiteUrls } from '../../../consts.js'
 import { ReactComponent as LogoSVG } from '../../../images/dvc_by_lakefs.svg'
 import Link from '../../Link'
 

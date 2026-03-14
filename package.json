@@ -12,7 +12,7 @@
     "start": "node ./server/index.js",
     "start-dev": "nodemon",
     "heroku-postbuild": "./scripts/heroku-deploy.sh",
-    "test": "jest",
+    "test": "vitest run",
     "format": "prettier --write",
     "format-check-all": "prettier --check \"**/*.{js,jsx,md,tsx,ts,json,css,yml,yaml}\"",
     "format-all": "prettier --write \"**/*.{js,jsx,md,tsx,ts,json,css,yml,yaml}\"",
@@ -129,7 +129,6 @@
     "@types/gatsbyjs__reach-router": "2.0.5",
     "@types/hast": "3.0.4",
     "@types/isomorphic-fetch": "0.0.39",
-    "@types/jest": "30.0.0",
     "@types/lodash": "4.17.20",
     "@types/promise-polyfill": "6.0.6",
     "@types/react": "18.3.26",
@@ -137,7 +136,7 @@
     "@types/react-instantsearch-dom": "6.12.9",
     "@types/react-popover": "0.5.8",
     "@types/unist": "3.0.3",
-    "babel-jest": "30.2.0",
+    "browserslist": "4.28.1",
     "class-variance-authority": "0.7.1",
     "eslint": "9.37.0",
     "eslint-config-prettier": "10.1.8",
@@ -153,7 +152,6 @@
     "gatsby-source-filesystem": "5.15.0",
     "globals": "16.4.0",
     "husky": "9.1.7",
-    "jest": "30.2.0",
     "lint-staged": "16.2.3",
     "nodemon": "3.1.10",
     "prettier": "3.6.2",
@@ -161,9 +159,9 @@
     "remark-html": "16.0.1",
     "stylelint": "16.25.0",
     "stylelint-config-standard": "38.0.0",
-    "ts-jest": "29.4.4",
     "typescript": "5.9.3",
-    "typescript-eslint": "8.46.0"
+    "typescript-eslint": "8.46.0",
+    "vitest": "3.2.3"
   },
   "cacheDirectories": [
     "node_modules"

@@ -1,11 +1,16 @@
-const path = require('path')
+import { createRequire } from 'module'
+import path from 'path'
 
-const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin')
+import { TsconfigPathsPlugin } from 'tsconfig-paths-webpack-plugin'
 
-const { DOCS_PREFIX } = require('./src/consts')
-const { setPageContext } = require('./src/gatsby/common')
-const models = require('./src/gatsby/models')
-const callOnModels = require('./src/gatsby/utils/models')
+import { DOCS_PREFIX } from './src/consts.js'
+import { setPageContext } from './src/gatsby/common.js'
+import createPagesImpl from './src/gatsby/createPages.js'
+import models from './src/gatsby/models.js'
+import onCreateNodeImpl from './src/gatsby/onCreateNode.js'
+import callOnModels from './src/gatsby/utils/models/index.js'
+
+const require = createRequire(import.meta.url)
 
 const disable = Boolean(process.env.SKIP_DOCS)
 
@@ -18,7 +23,7 @@ const getTemplate = defaultGetTemplate
 const defaultTemplate = require.resolve('./src/templates/doc.tsx')
 const docsPrefix = DOCS_PREFIX
 
-exports.createSchemaCustomization = async api => {
+export const createSchemaCustomization = async api => {
   const {
     actions: { createTypes },
     schema: { buildObjectType }
@@ -58,9 +63,9 @@ exports.createSchemaCustomization = async api => {
   await callOnModels(models, 'createSchemaCustomization', api)
 }
 
-exports.sourceNodes = api => callOnModels(models, 'sourceNodes', api)
+export const sourceNodes = api => callOnModels(models, 'sourceNodes', api)
 
-exports.onCreateBabelConfig = ({ actions }) => {
+export const onCreateBabelConfig = ({ actions }) => {
   actions.setBabelPlugin({
     name: '@babel/plugin-transform-react-jsx',
     options: {
@@ -69,8 +74,8 @@ exports.onCreateBabelConfig = ({ actions }) => {
   })
 }
 
-exports.createPages = async api => {
-  await require('./src/gatsby/createPages')(api, {
+export const createPages = async api => {
+  await createPagesImpl(api, {
     disable,
     defaultTemplate,
     getTemplate,
@@ -79,8 +84,8 @@ exports.createPages = async api => {
   await callOnModels(models, 'createPages', api)
 }
 
-exports.onCreateNode = async api => {
-  await require('./src/gatsby/onCreateNode')(api, {
+export const onCreateNode = async api => {
+  await onCreateNodeImpl(api, {
     disable,
     glossaryInstanceName: 'glossary',
     docsInstanceName: 'docs'
@@ -88,17 +93,18 @@ exports.onCreateNode = async api => {
   await callOnModels(models, 'onCreateNode', api)
 }
 
-exports.createResolvers = api => callOnModels(models, 'createResolvers', api)
+export const createResolvers = api =>
+  callOnModels(models, 'createResolvers', api)
 
-exports.onPostBuild = api => callOnModels(models, 'onPostBuild', api)
+export const onPostBuild = api => callOnModels(models, 'onPostBuild', api)
 
-exports.onCreatePage = ({ page, actions }) => {
+export const onCreatePage = ({ page, actions }) => {
   setPageContext(page, actions)
 }
 
 // Ignore warnings about CSS inclusion order, because we use CSS modules.
 // https://spectrum.chat/gatsby-js/general/having-issue-related-to-chunk-commons-mini-css-extract-plugin~0ee9c456-a37e-472a-a1a0-cc36f8ae6033?m=MTU3MjYyNDQ5OTAyNQ==
-exports.onCreateWebpackConfig = ({ stage, actions, getConfig }) => {
+export const onCreateWebpackConfig = ({ stage, actions, getConfig }) => {
   if (stage === 'build-javascript') {
     const config = getConfig()
 

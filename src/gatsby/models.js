@@ -1,6 +1,6 @@
-const imageSourcePaths = require('./models/image-source-paths')
-const pruneCache = require('./models/prune-cache')
+import imageSourcePaths from './models/image-source-paths/index.js'
+import * as pruneCache from './models/prune-cache/index.js'
 
 const models = [imageSourcePaths, pruneCache]
 
-module.exports = models
+export default models

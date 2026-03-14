@@ -1,4 +1,4 @@
-const path = require('upath')
+import path from 'upath'
 
 /** Source Path Resolver Builder
    This function makes Gatsby resolvers that connect a node to another node via
@@ -62,7 +62,4 @@ const resolvePostAuthor = sourcePathResolver({
   resolvePath: value => path.join('authors', value) + '.md'
 })
 
-module.exports = {
-  sourcePathResolver,
-  resolvePostAuthor
-}
+export { sourcePathResolver, resolvePostAuthor }

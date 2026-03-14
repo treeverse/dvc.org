@@ -1,14 +1,12 @@
-/* eslint-env node */
-
 // we require prism and load its bash module so we have
 // Prism.languages.bash to embed into our DVC language.
 
-const Prism = require('prismjs')
-require('prismjs/components/prism-bash')
-require('./dvc-hook')
+import Prism from 'prismjs'
+import 'prismjs/components/prism-bash.js'
+import './dvc-hook.js'
 const { bash } = Prism.languages
 
-const dvc = require('./dvc-commands')
+import dvc from './dvc-commands.js'
 
 // Command arrays are intentionally reverse sorted
 // to prevent shorter matches before longer ones

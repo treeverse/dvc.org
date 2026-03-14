@@ -3,3 +3,4 @@ public/
 .github/PULL_REQUEST_TEMPLATE.md
 packages/websites-server/examples/*/.cache
 packages/websites-server/examples/*/public
+.venv/

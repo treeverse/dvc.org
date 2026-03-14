@@ -1,8 +1,6 @@
-/* eslint-env node */
+import Prism from 'prismjs'
 
-const Prism = require('prismjs')
-
-const dvc = require('./dvc-commands')
+import dvc from './dvc-commands.js'
 
 Prism.languages.usage = {
   dvc: {

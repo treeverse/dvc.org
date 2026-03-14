@@ -1,6 +1,6 @@
 const SLUG_REGEXP = /\s+{#([a-z0-9-]*[a-z0-9]+)}\s*$/
 
-const path = require('path')
+import path from 'path'
 
 const extractSlugFromTitle = (title, slugger) => {
   // extracts expressions like {#too-many-files} from the end of a title
@@ -92,4 +92,4 @@ const createPages = async (
   })
 }
 
-module.exports = createPages
+export default createPages

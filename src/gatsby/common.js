@@ -45,5 +45,5 @@ const setPageContext = (page, actions) =>
     resolve()
   })
 
-exports.setPageContext = setPageContext
-exports.markdownToHtml = markdownToHtml
+export { setPageContext }
+export { markdownToHtml }

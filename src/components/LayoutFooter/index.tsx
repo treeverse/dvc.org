@@ -1,7 +1,7 @@
 import cn from 'classnames'
 
 import { ReactComponent as LogoSVG } from '../../../static/img/dvc_by_lakefs_white.svg'
-import { externalUrls, mainSiteUrls, docUrls } from '../../consts'
+import { externalUrls, mainSiteUrls, docUrls } from '../../consts.js'
 import LayoutWidthContainer from '../LayoutWidthContainer'
 import Link from '../Link'
 import { ReactComponent as BlogSVG } from '../SocialIcon/blog.svg'

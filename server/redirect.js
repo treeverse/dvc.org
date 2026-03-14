@@ -1,10 +1,10 @@
-const { stringify } = require('querystring')
+import { stringify } from 'querystring'
 
-const { getRedirect } = require('../src/utils/shared/redirects')
+import { getRedirect } from '../src/utils/shared/redirects.js'
 
 const isProduction = process.env.NODE_ENV === 'production'
 
-module.exports = (req, res, next) => {
+export default (req, res, next) => {
   const host = req.headers.host
   let pathname = req.baseUrl + req.path
   const [code, location] = getRedirect(host, pathname, {

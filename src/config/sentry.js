@@ -2,7 +2,7 @@
  * Much of this is lifted from Sentry's docs
  * see https://docs.sentry.io/platforms/javascript/guides/gatsby/configuration/filtering/#decluttering-sentry
  */
-module.exports = {
+export default {
   dsn: process.env.SENTRY_DSN,
   environment: process.env.NODE_ENV,
   release: process.env.SOURCE_VERSION,

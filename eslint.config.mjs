@@ -19,7 +19,7 @@ export default tseslint.config(
       '**/.cache/**',
       '.log/**',
       '**/.yarn/**',
-      '**/tmp/**',
+      '**/tmp/**'
     ]
   },
   eslint.configs.recommended,
@@ -74,7 +74,7 @@ export default tseslint.config(
       'import-x/extensions': [
         'error',
         'ignorePackages',
-        { ts: 'never', tsx: 'never', js: 'never', jsx: 'never' }
+        { ts: 'never', tsx: 'never', js: 'always', jsx: 'always' }
       ],
       'import-x/order': [
         'error',
@@ -133,16 +133,30 @@ export default tseslint.config(
   },
   // JavaScript-specific rules
   {
-    files: ['**/*.js'],
+    files: ['**/*.js', '**/*.mjs'],
     languageOptions: {
       globals: {
-        ...globals.node,
-        ...globals.jest
+        ...globals.node
       }
     },
     rules: {
-      '@typescript-eslint/explicit-function-return-type': 'off',
-      '@typescript-eslint/no-require-imports': 'off'
+      '@typescript-eslint/explicit-function-return-type': 'off'
+    }
+  },
+  // Vitest test file globals
+  {
+    files: ['**/*.test.{js,ts}'],
+    languageOptions: {
+      globals: {
+        describe: 'readonly',
+        it: 'readonly',
+        expect: 'readonly',
+        vi: 'readonly',
+        beforeEach: 'readonly',
+        afterEach: 'readonly',
+        beforeAll: 'readonly',
+        afterAll: 'readonly'
+      }
     }
   },
   eslintPluginPrettierRecommended

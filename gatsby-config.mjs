@@ -1,18 +1,23 @@
-/* eslint-env node */
+import { createRequire } from 'module'
+import fs from 'fs'
+import path from 'path'
 
-require('dotenv').config()
-const fs = require('fs')
-const path = require('path')
+import autoprefixer from 'autoprefixer'
+import postcssNested from 'postcss-nested'
+import tailwindcss from 'tailwindcss'
+import tailwindNesting from 'tailwindcss/nesting/index.js'
 
-const autoprefixer = require('autoprefixer')
+import 'dotenv/config'
+import './src/config/prismjs/dvc.js'
+import './src/config/prismjs/usage.js'
+import './src/config/prismjs/dvctable.js'
+import simpleLinkerTerms from './content/linked-terms.js'
+import redirectsMiddleware from './server/redirect.js'
+import customYoutubeTransformer from './src/config/custom-yt-embedder.js'
+import sentryConfig from './src/config/sentry.js'
 
-require('./src/config/prismjs/dvc')
-require('./src/config/prismjs/usage')
-require('./src/config/prismjs/dvctable')
-const simpleLinkerTerms = require('./content/linked-terms')
-const redirectsMiddleware = require('./server/redirect')
-const customYoutubeTransformer = require('./src/config/custom-yt-embedder')
-const sentryConfig = require('./src/config/sentry')
+const require = createRequire(import.meta.url)
+const __dirname = import.meta.dirname
 
 const linkIcon = fs
   .readFileSync(path.join(__dirname, 'src', 'images', 'linkIcon.svg'))
@@ -45,9 +50,9 @@ const argsLinkerPath = ['command-reference', 'ref', 'cli-reference']
 const sentry = true
 
 const postCssPlugins = [
-  require('tailwindcss/nesting')(require('postcss-nested')),
+  tailwindNesting(postcssNested),
   autoprefixer,
-  require('tailwindcss')
+  tailwindcss
 ]
 
 const plugins = [
@@ -174,7 +179,20 @@ const plugins = [
   {
     resolve: 'gatsby-plugin-svgr',
     options: {
-      ref: true
+      ref: true,
+      svgoConfig: {
+        plugins: [
+          {
+            name: 'preset-default',
+            params: {
+              overrides: {
+                removeViewBox: false
+              }
+            }
+          },
+          'prefixIds'
+        ]
+      }
     }
   },
   'gatsby-transformer-sharp',
@@ -294,7 +312,7 @@ if (process.env.ANALYZE) {
   })
 }
 
-module.exports = {
+export default {
   plugins: plugins.filter(Boolean),
   siteMetadata: {
     siteName: 'DVC',

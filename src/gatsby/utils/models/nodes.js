@@ -14,6 +14,4 @@ function childNodeCreator({
   }
 }
 
-module.exports = {
-  childNodeCreator
-}
+export { childNodeCreator }

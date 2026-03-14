@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   '*.ts?(x)': () => 'yarn lint-ts',
   '*.{json,md,mdx,yml,yaml}': 'prettier --write',
   '*.css': ['prettier --write', 'stylelint --fix'],

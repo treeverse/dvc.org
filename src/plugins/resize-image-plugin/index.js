@@ -10,20 +10,20 @@
   ![](/relative-path-image ":wrap-left =500 Some Title")
 */
 
-const {
+import {
   imageClass,
   imageWrapperClass
-} = require('gatsby-remark-images/constants')
+} from 'gatsby-remark-images/constants.js'
 
 const imageMaxWidth = 700
 
-const { convertHtmlToHast, convertHastToHtml } = require('../utils/convertHast')
+import { convertHtmlToHast, convertHastToHtml } from '../utils/convertHast.js'
 
-const {
+import {
   imageWrapClassPrefix,
   imageWrapStopClass,
   stopWrapTag
-} = require('./constants')
+} from './constants.js'
 
 const extractInstructions = titleString => {
   const regexResize = /=\d{2,4}/g
@@ -43,7 +43,7 @@ const extractInstructions = titleString => {
   }
 }
 
-module.exports = async ({ markdownAST }) => {
+const resizeImagePlugin = async ({ markdownAST }) => {
   const { selectAll, select } = await import('hast-util-select')
   const { visit } = await import('unist-util-visit')
   let nodes = []
@@ -125,4 +125,5 @@ module.exports = async ({ markdownAST }) => {
   }
 }
 
-module.exports.extractInstructions = extractInstructions
+export default resizeImagePlugin
+export { extractInstructions }

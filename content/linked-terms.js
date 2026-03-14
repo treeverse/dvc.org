@@ -1,4 +1,4 @@
-module.exports = [
+export default [
   {
     matches: 'dvc.yaml',
     url: '/user-guide/project-structure/dvcyaml-files'

@@ -1,6 +1,6 @@
-const fs = require('fs')
+import fs from 'fs'
 
-const path = require('upath')
+import path from 'upath'
 
 async function crawlPageData(dataPath, onPageData) {
   const stat = fs.statSync(dataPath)
@@ -28,7 +28,7 @@ async function removeFile(filePath) {
   )
 }
 
-exports.onPostBuild = async function pruneStalePageCache({ graphql }) {
+export async function onPostBuild({ graphql }) {
   // Remove stale page-data from cache in production
 
   // Bail out early if we're in dev mode.

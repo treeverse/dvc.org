@@ -33,4 +33,4 @@ async function callOnModels(models, name, api, modelOptions = { models }) {
   )
 }
 
-module.exports = callOnModels
+export default callOnModels

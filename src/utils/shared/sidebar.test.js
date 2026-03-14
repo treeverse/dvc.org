@@ -1,14 +1,14 @@
-/* eslint-env jest */
+import { describe, it, expect, vi, beforeEach } from 'vitest'
 
 const SIDEBAR_SOURCE = '../../../content/docs/sidebar.json'
 
 describe('normalizeSidebar', () => {
   beforeEach(() => {
-    jest.resetModules()
+    vi.resetModules()
   })
 
   describe('default', () => {
-    it('Resolves shortcuts to full syntax', () => {
+    it('Resolves shortcuts to full syntax', async () => {
       const rawData = ['item-name']
       const result = [
         {
@@ -21,13 +21,13 @@ describe('normalizeSidebar', () => {
         }
       ]
 
-      jest.doMock(SIDEBAR_SOURCE, () => rawData)
-      const sidebarData = require('./sidebar').structure
+      vi.doMock(SIDEBAR_SOURCE, () => ({ default: rawData }))
+      const { structure: sidebarData } = await import('./sidebar.js')
 
       expect(sidebarData).toEqual(result)
     })
 
-    it('Adds missed source and label fields', () => {
+    it('Adds missed source and label fields', async () => {
       const rawData = [{ slug: 'item-name' }]
       const result = [
         {
@@ -40,13 +40,13 @@ describe('normalizeSidebar', () => {
         }
       ]
 
-      jest.doMock(SIDEBAR_SOURCE, () => rawData)
-      const sidebarData = require('./sidebar').structure
+      vi.doMock(SIDEBAR_SOURCE, () => ({ default: rawData }))
+      const { structure: sidebarData } = await import('./sidebar.js')
 
       expect(sidebarData).toEqual(result)
     })
 
-    it('Adds missed source field', () => {
+    it('Adds missed source field', async () => {
       const rawData = [{ slug: 'item-name', label: 'Custom Label' }]
       const result = [
         {
@@ -59,13 +59,13 @@ describe('normalizeSidebar', () => {
         }
       ]
 
-      jest.doMock(SIDEBAR_SOURCE, () => rawData)
-      const sidebarData = require('./sidebar').structure
+      vi.doMock(SIDEBAR_SOURCE, () => ({ default: rawData }))
+      const { structure: sidebarData } = await import('./sidebar.js')
 
       expect(sidebarData).toEqual(result)
     })
 
-    it('Adds missed label field', () => {
+    it('Adds missed label field', async () => {
       const rawData = [{ slug: 'item-name', source: 'item-name/index.md' }]
       const result = [
         {
@@ -78,13 +78,13 @@ describe('normalizeSidebar', () => {
         }
       ]
 
-      jest.doMock(SIDEBAR_SOURCE, () => rawData)
-      const sidebarData = require('./sidebar').structure
+      vi.doMock(SIDEBAR_SOURCE, () => ({ default: rawData }))
+      const { structure: sidebarData } = await import('./sidebar.js')
 
       expect(sidebarData).toEqual(result)
     })
 
-    it('Forwards tutorials', () => {
+    it('Forwards tutorials', async () => {
       const rawData = [
         {
           slug: 'item-name',
@@ -106,13 +106,13 @@ describe('normalizeSidebar', () => {
         }
       ]
 
-      jest.doMock(SIDEBAR_SOURCE, () => rawData)
-      const sidebarData = require('./sidebar').structure
+      vi.doMock(SIDEBAR_SOURCE, () => ({ default: rawData }))
+      const { structure: sidebarData } = await import('./sidebar.js')
 
       expect(sidebarData).toEqual(result)
     })
 
-    it('Resolves multiple nested levels', () => {
+    it('Resolves multiple nested levels', async () => {
       const rawData = [
         {
           slug: 'item-name',
@@ -150,13 +150,13 @@ describe('normalizeSidebar', () => {
         }
       ]
 
-      jest.doMock(SIDEBAR_SOURCE, () => rawData)
-      const sidebarData = require('./sidebar').structure
+      vi.doMock(SIDEBAR_SOURCE, () => ({ default: rawData }))
+      const { structure: sidebarData } = await import('./sidebar.js')
 
       expect(sidebarData).toEqual(result)
     })
 
-    it('Adds correct prev/next links in nested lists', () => {
+    it('Adds correct prev/next links in nested lists', async () => {
       const rawData = [
         {
           slug: 'first-item',
@@ -230,13 +230,13 @@ describe('normalizeSidebar', () => {
         }
       ]
 
-      jest.doMock(SIDEBAR_SOURCE, () => rawData)
-      const sidebarData = require('./sidebar').structure
+      vi.doMock(SIDEBAR_SOURCE, () => ({ default: rawData }))
+      const { structure: sidebarData } = await import('./sidebar.js')
 
       expect(sidebarData).toEqual(result)
     })
 
-    it('Adds correct prev/next links for sourceless items', () => {
+    it('Adds correct prev/next links for sourceless items', async () => {
       const rawData = [
         'first-item',
         { slug: 'second-item', source: false, children: ['nested-item'] }
@@ -270,13 +270,13 @@ describe('normalizeSidebar', () => {
         }
       ]
 
-      jest.doMock(SIDEBAR_SOURCE, () => rawData)
-      const sidebarData = require('./sidebar').structure
+      vi.doMock(SIDEBAR_SOURCE, () => ({ default: rawData }))
+      const { structure: sidebarData } = await import('./sidebar.js')
 
       expect(sidebarData).toEqual(result)
     })
 
-    it('Adds correct prev/next links for nested sourceless items', () => {
+    it('Adds correct prev/next links for nested sourceless items', async () => {
       const rawData = [
         'first-item',
         {
@@ -326,38 +326,38 @@ describe('normalizeSidebar', () => {
         }
       ]
 
-      jest.doMock(SIDEBAR_SOURCE, () => rawData)
-      const sidebarData = require('./sidebar').structure
+      vi.doMock(SIDEBAR_SOURCE, () => ({ default: rawData }))
+      const { structure: sidebarData } = await import('./sidebar.js')
 
       expect(sidebarData).toEqual(result)
     })
 
-    it("Throws error if external item doesn't have a url field", () => {
+    it("Throws error if external item doesn't have a url field", async () => {
       const rawData = [{ type: 'external' }]
 
-      jest.doMock(SIDEBAR_SOURCE, () => rawData)
+      vi.doMock(SIDEBAR_SOURCE, () => ({ default: rawData }))
 
-      expect(() => require('./sidebar')).toThrow(
+      await expect(() => import('./sidebar.js')).rejects.toThrow(
         new Error("'url' field is required in external sidebar.json entries")
       )
     })
 
-    it("Throws error if local item doesn't have slug field", () => {
+    it("Throws error if local item doesn't have slug field", async () => {
       const rawData = [{}]
 
-      jest.doMock(SIDEBAR_SOURCE, () => rawData)
+      vi.doMock(SIDEBAR_SOURCE, () => ({ default: rawData }))
 
-      expect(() => require('./sidebar')).toThrow(
+      await expect(() => import('./sidebar.js')).rejects.toThrow(
         new Error("'slug' field is required in local sidebar.json entries")
       )
     })
 
-    it("Throws error if item has source: false and doesn't have children", () => {
+    it("Throws error if item has source: false and doesn't have children", async () => {
       const rawData = [{ slug: 'item-name', source: false }]
 
-      jest.doMock(SIDEBAR_SOURCE, () => rawData)
+      vi.doMock(SIDEBAR_SOURCE, () => ({ default: rawData }))
 
-      expect(() => require('./sidebar')).toThrow(
+      await expect(() => import('./sidebar.js')).rejects.toThrow(
         new Error(
           'Local sidebar.json entries with no source must have children'
         )
@@ -366,7 +366,7 @@ describe('normalizeSidebar', () => {
   })
 
   describe('getItemByPath', () => {
-    it('Returns first child for the /doc path', () => {
+    it('Returns first child for the /doc path', async () => {
       const rawData = ['item-name']
       const result = {
         label: 'Item Name',
@@ -377,13 +377,13 @@ describe('normalizeSidebar', () => {
         next: undefined
       }
 
-      jest.doMock(SIDEBAR_SOURCE, () => rawData)
-      const { getItemByPath } = require('./sidebar')
+      vi.doMock(SIDEBAR_SOURCE, () => ({ default: rawData }))
+      const { getItemByPath } = await import('./sidebar.js')
 
       expect(getItemByPath('/')).toEqual(result)
     })
 
-    it('Returns first child with source for all parents with source:false', () => {
+    it('Returns first child with source for all parents with source:false', async () => {
       const rawData = [
         {
           slug: 'item',
@@ -412,8 +412,8 @@ describe('normalizeSidebar', () => {
         next: undefined
       }
 
-      jest.doMock(SIDEBAR_SOURCE, () => rawData)
-      const { getItemByPath } = require('./sidebar')
+      vi.doMock(SIDEBAR_SOURCE, () => ({ default: rawData }))
+      const { getItemByPath } = await import('./sidebar.js')
 
       expect(getItemByPath('/item')).toEqual(result)
       expect(getItemByPath('/item/nested')).toEqual(result)
@@ -422,7 +422,7 @@ describe('normalizeSidebar', () => {
   })
 
   describe('getParentsListFromPath', () => {
-    it("Returns array of current and parent's paths", () => {
+    it("Returns array of current and parent's paths", async () => {
       const rawData = []
       const path = '/item-name/nested-item/subnested-item'
       const result = [
@@ -431,8 +431,8 @@ describe('normalizeSidebar', () => {
         '/item-name/nested-item/subnested-item'
       ]
 
-      jest.doMock(SIDEBAR_SOURCE, () => rawData)
-      const { getParentsListFromPath } = require('./sidebar')
+      vi.doMock(SIDEBAR_SOURCE, () => ({ default: rawData }))
+      const { getParentsListFromPath } = await import('./sidebar.js')
 
       expect(getParentsListFromPath(path)).toEqual(result)
     })

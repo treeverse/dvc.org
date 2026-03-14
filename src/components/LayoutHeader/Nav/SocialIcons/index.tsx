@@ -1,4 +1,4 @@
-import { externalUrls, mainSiteUrls } from '../../../../consts'
+import { externalUrls, mainSiteUrls } from '../../../../consts.js'
 import Link from '../../../Link'
 import { ReactComponent as DiscordIcon } from '../../../SocialIcon/discord.svg'
 import { ReactComponent as GithubIcon } from '../../../SocialIcon/github.svg'

@@ -1,4 +1,4 @@
-const path = require('path')
+import path from 'path'
 
 let tooltipHTMLProcessor
 const getTooltipHTMLProcessor = async () => {
@@ -113,4 +113,4 @@ async function onCreateNode(
   }
 }
 
-module.exports = onCreateNode
+export default onCreateNode

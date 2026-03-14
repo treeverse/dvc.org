@@ -1,6 +1,6 @@
-const escape = require('escape-html')
+import escape from 'escape-html'
 
-const { convertHastToHtml, convertHtmlToHast } = require('../utils/convertHast')
+import { convertHastToHtml, convertHtmlToHast } from '../utils/convertHast.js'
 
 const requiredExternalLinkAttrs = ['href', 'title', 'description', 'link']
 
@@ -33,7 +33,7 @@ function renderTag(attrs) {
     `
 }
 
-module.exports = async ({ markdownAST }) => {
+export default async ({ markdownAST }) => {
   const { visit } = await import('unist-util-visit')
   const { selectAll } = await import('hast-util-select')
   const nodes = []

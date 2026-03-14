@@ -1,7 +1,7 @@
 import cn from 'classnames'
 import { useEffect, useRef } from 'react'
 
-import { mainSiteUrls } from '../../../consts'
+import { mainSiteUrls } from '../../../consts.js'
 import { ReactComponent as LogoSVG } from '../../../images/dvc_by_lakefs.svg'
 import { logEvent } from '../../../utils/front/plausible'
 import HamburgerIcon from '../../HamburgerIcon'

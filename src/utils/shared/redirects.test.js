@@ -1,10 +1,10 @@
-const url = require('url')
+import { describe, it, expect } from 'vitest'
 
-const {
+import {
   buildSidebarRedirects,
   processRedirectString,
   getRedirect
-} = require('./redirects')
+} from './redirects.js'
 
 describe('buildRedirectsList', () => {
   it('builds correct redirects list', () => {
@@ -75,14 +75,14 @@ describe('getRedirects', () => {
 
     it(`${source} -> ${target} (${code})`, () => {
       source = addHost(source)
-      const { hostname, pathname } = url.parse(source)
+      const { hostname, pathname } = new URL(source)
       const [rCode, rLocation] = getRedirect(hostname, pathname)
 
       expect(rLocation).toEqual(target)
       expect(rCode).toEqual(code)
 
       // Detect redirect loops.
-      const secondUrl = url.parse(addHost(rLocation))
+      const secondUrl = new URL(addHost(rLocation))
       if (
         secondUrl.hostname === 'downloads.dvc.org' ||
         secondUrl.hostname === 'r2.dvc.org'
@@ -95,7 +95,7 @@ describe('getRedirects', () => {
       // allow second redirect only if it removes trailing slash
       const secondRedirect = getRedirect(secondUrl.hostname, secondUrl.pathname)
       if (secondRedirect.length) {
-        const thirdUrl = url.parse(addHost(secondRedirect[1]))
+        const thirdUrl = new URL(addHost(secondRedirect[1]))
         expect(secondUrl.host).toEqual(thirdUrl.host)
         expect(secondUrl.pathname.replace(/\/$/, '')).toEqual(secondRedirect[1])
 

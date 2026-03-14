@@ -1,4 +1,4 @@
-const Sentry = require('@sentry/node')
+import * as Sentry from '@sentry/node'
 
 const parseBoolean = str => {
   return ['True', 'true', '1', true].includes(str)

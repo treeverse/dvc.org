@@ -3,7 +3,7 @@ import throttle from 'lodash/throttle'
 import { useState, useEffect, useRef, useCallback } from 'react'
 
 import { IHeading } from '../'
-import { mainSiteUrls } from '../../../consts'
+import { mainSiteUrls } from '../../../consts.js'
 import { allImagesLoadedInContainer } from '../../../utils/front/images'
 import { getScrollPosition } from '../../../utils/front/scroll'
 import Link from '../../Link'
