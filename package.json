@@ -160,6 +160,9 @@
     "typescript-eslint": "8.57.0",
     "vitest": "4.0.18"
   },
+  "resolutions": {
+    "css-tree": "^3.2.1"
+  },
   "cacheDirectories": [
     "node_modules"
   ],
