@@ -27,7 +27,9 @@ const Nav: React.FC<NavProps> = ({ opened, onToggle, onClose }) => {
   }, [opened])
 
   const onCloseRef = useRef(onClose)
-  onCloseRef.current = onClose
+  useEffect(() => {
+    onCloseRef.current = onClose
+  }, [onClose])
 
   useEffect(() => {
     if (!opened) return

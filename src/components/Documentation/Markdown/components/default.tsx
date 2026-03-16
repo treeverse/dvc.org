@@ -39,12 +39,14 @@ export const Details: React.FC<
   )
 
   const title = triggerChildren.reduce<string>((acc, cur) => {
-    return (acc +=
-      typeof cur === 'string'
+    return (
+      acc +
+      (typeof cur === 'string'
         ? cur
         : typeof cur === 'object'
           ? cur?.props?.children?.toString()
           : '')
+    )
   }, '')
 
   id = useMemo(() => {

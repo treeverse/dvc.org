@@ -105,7 +105,7 @@ export default tseslint.config(
   react.configs.flat.recommended,
   react.configs.flat['jsx-runtime'],
   jsxA11y.flatConfigs.recommended,
-  eslintPluginReactHooks.configs['recommended-latest'],
+  ...eslintPluginReactHooks.configs.recommended,
   {
     files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'],
     plugins: {
@@ -123,7 +123,9 @@ export default tseslint.config(
     },
     settings: {
       react: {
-        version: 'detect'
+        // TODO: change back to 'detect' once eslint-plugin-react supports ESLint 10
+        // See: https://github.com/jsx-eslint/eslint-plugin-react/issues/3977
+        version: '19'
       }
     },
     rules: {
