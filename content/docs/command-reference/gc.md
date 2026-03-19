@@ -66,6 +66,11 @@ to the DVC project(s) whose data should be preserved. Make sure that all the
 commits and branches that reference files you want to keep have been pulled in
 those other projects first.
 
+This works together with `--all-branches --num <num>` as well. In that case,
+`dvc gc` preserves the union of objects referenced by the last `<num>` commits
+from each branch tip across the current project and any projects passed with
+`--projects`.
+
 For example, if we have several projects with some overlapping files and we'd
 like to collect all the data that's only used in one of them (e.g. if we no
 longer need that project), we would first clone all the other projects, fetch
@@ -84,18 +89,21 @@ project we want to clear.
   well as in the workspace (implying `-w`).
 
 - `-n <num>`, `--num <num>` - keep cached data referenced in the last `--num`
-  commits starting from a `--rev <commit>` (required), as well as in the
-  workspace (implying `-w`).
+  commits starting from each selected revision root, as well as in the workspace
+  (implying `-w`). Can be used with `--rev <commit>` and `--all-branches`. It
+  cannot be used with `--all-tags` alone.
 
 - `-a`, `--all-branches` - keep cached data referenced in all Git branches, as
   well as in the workspace (implying `-w`). Useful if branches are used to track
-  different experiments. Note that this can be combined with `-T` below, for
-  example using the `-aT` flags.
+  different experiments. When combined with `-n`, this keeps cached data
+  referenced in the last `--num` commits from each branch tip. Note that this
+  can be combined with `-T` below, for example using the `-aT` flags.
 
 - `-T`, `--all-tags` - keep cached data referenced in all Git tags, as well as
   in the workspace (implying `-w`). Useful if tags are used to mark certain
   versions of an experiment or project. Note that this can be combined with `-a`
-  above, for example using the `-aT` flags.
+  above, for example using the `-aT` flags. If used together with `-a --num`,
+  `--num` only affects branches, not tags.
 
 - `-A`, `--all-commits` - keep cached data referenced in all\* Git commits, as
   well as in the workspace (implying `-w`). This preserves the cache for all
@@ -212,3 +220,13 @@ Let's check the size now:
 $ du -sh .dvc/cache/
 3.1G    .dvc/cache/
 ```
+
+To keep the last 2 commits from every branch tip while cleaning a shared cache
+used by multiple repos:
+
+```cli
+$ dvc gc --all-branches --num 2 --projects ../repo-a ../repo-b --force
+```
+
+This preserves the union of cache objects needed by the current repo and the
+listed projects for the last 2 commits reachable from each branch tip.
