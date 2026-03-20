@@ -161,7 +161,7 @@
     "vitest": "4.0.18"
   },
   "resolutions": {
-    "css-tree": "^3.2.1"
+    "css-tree": "3.2.1"
   },
   "cacheDirectories": [
     "node_modules"
