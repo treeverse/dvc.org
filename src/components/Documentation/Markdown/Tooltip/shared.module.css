@@ -1,0 +1,135 @@
+/* Shared variables and content styles for Desktop tooltip and Mobile modal. */
+
+.popovercontainer {
+  --docs-tooltip-bg: var(--bg-elevated);
+  --docs-tooltip-shadow: var(--shadow-elevated);
+  --docs-text-primary: var(--text-primary);
+  --docs-text-secondary: var(--text-secondary);
+  --docs-link: #0969da;
+  --docs-link-hover: #0969da;
+  --fgColor-accent: var(--docs-link);
+  --docs-link-decoration: color-mix(in srgb, var(--docs-link) 40%, transparent);
+  --docs-link-decoration-hover: color-mix(
+    in srgb,
+    var(--docs-link-hover) 60%,
+    transparent
+  );
+  --docs-surface-hover-bg: var(--bg-subtle);
+  --docs-border-strong: var(--border-strong);
+  --docs-blockquote-border: var(--border-strong);
+  --docs-blockquote-bg: color-mix(
+    in srgb,
+    var(--bg-elevated) 82%,
+    var(--bg-surface)
+  );
+  --docs-blockquote-text: var(--text-secondary);
+}
+
+:global(body.dark-mode) .popovercontainer {
+  --docs-link: color-mix(in srgb, var(--accent-primary) 82%, white);
+  --docs-link-hover: color-mix(in srgb, var(--accent-primary) 66%, white);
+  --fgColor-accent: var(--docs-link);
+}
+
+:global(body.dark-mode) .popoverbody:global(.markdown-body) {
+  --fgColor-accent: var(--docs-link);
+}
+
+:global(body.dark-mode) .popoverbody a {
+  font-weight: 500;
+}
+
+.popoverbody {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--docs-text-secondary);
+  background-color: transparent;
+  box-sizing: border-box;
+  min-width: 0;
+  max-width: none;
+  padding: 0;
+  margin: 0;
+  overflow-wrap: anywhere;
+
+  :global(h1),
+  :global(h2),
+  :global(h3),
+  :global(h4),
+  :global(h5),
+  :global(h6) {
+    margin: 0 0 0.5rem;
+    color: var(--docs-text-primary);
+    font-size: 1rem;
+    line-height: 1.35;
+    border: 0;
+  }
+
+  :global(p),
+  :global(ul),
+  :global(ol),
+  :global(blockquote),
+  :global(pre) {
+    margin: 0 0 0.75rem;
+  }
+
+  :global(p:last-child),
+  :global(ul:last-child),
+  :global(ol:last-child),
+  :global(blockquote:last-child),
+  :global(pre:last-child) {
+    margin-bottom: 0;
+  }
+
+  :global(ul),
+  :global(ol) {
+    padding-left: 1.1rem;
+  }
+
+  :global(blockquote) {
+    margin-left: 0;
+    padding: 0.5rem 0.75rem;
+    border-left: 3px solid var(--docs-blockquote-border);
+    border-radius: 0 6px 6px 0;
+    background-color: var(--docs-blockquote-bg);
+    color: var(--docs-blockquote-text);
+  }
+
+  :global(code) {
+    padding: 0.08rem 0.38rem;
+    border-radius: 0.35rem;
+    background-color: var(--docs-surface-hover-bg);
+    color: var(--docs-text-primary);
+    font-size: 0.92em;
+  }
+
+  :global(pre) {
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    background-color: var(--docs-surface-hover-bg);
+    overflow-x: auto;
+  }
+
+  :global(pre code) {
+    padding: 0;
+    background-color: transparent;
+  }
+
+  &:global(.markdown-body) {
+    --fgColor-accent: var(--docs-link);
+  }
+
+  a {
+    color: var(--docs-link);
+    text-decoration-color: var(--docs-link-decoration);
+  }
+
+  a code {
+    color: inherit;
+  }
+
+  a:hover,
+  a:focus-visible {
+    color: var(--docs-link-hover);
+    text-decoration-color: var(--docs-link-decoration-hover);
+  }
+}

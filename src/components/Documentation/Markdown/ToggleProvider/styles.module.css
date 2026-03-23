@@ -2,7 +2,7 @@
   display: flex;
   flex-wrap: wrap;
   margin: 0 0 16px;
-  border-bottom: 1px solid var(--color-light-gray);
+  border-bottom: 1px solid var(--border-subtle);
   gap: 0 4px;
 
   input {
@@ -14,8 +14,8 @@
   }
 
   input:checked + label {
-    color: var(--color-azure);
-    border-bottom-color: var(--color-azure);
+    color: var(--accent-primary);
+    border-bottom-color: var(--accent-primary);
   }
 
   input:checked + label + .tab {
@@ -34,7 +34,7 @@
     font-weight: 500;
     font-size: 14px;
     font-family: var(--font-base);
-    color: var(--color-gray-dark);
+    color: var(--text-secondary);
     order: -1;
     transition:
       color 0.15s ease,
@@ -43,7 +43,7 @@
 
     &:hover {
       cursor: pointer;
-      color: var(--color-azure);
+      color: var(--accent-primary);
     }
   }
 }

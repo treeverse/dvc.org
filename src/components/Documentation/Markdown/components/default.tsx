@@ -1,4 +1,5 @@
 import { PropsWithChildren, ReactNode, useMemo } from 'react'
+import type { CSSProperties } from 'react'
 
 import { ReactComponent as LinkIcon } from '../../../../images/linkIcon.svg'
 import Slugger from '../../../../utils/front/Slugger'
@@ -24,19 +25,14 @@ export const Details: React.FC<
   )
   const firstChild = filteredChildren[0] as React.JSX.Element
 
-  if (!/^h.$/.test(firstChild.type)) {
-    throw new Error('The first child of a details element must be a heading!')
-  }
-
   /*
      To work around auto-linked headings, the last child of the heading node
      must be removed. The only way around this is the change the autolinker,
      which we currently have as an external package.
    */
-  const triggerChildren: RemarkNode[] = firstChild.props.children.slice(
-    0,
-    firstChild.props.children.length - 1
-  )
+  const triggerChildren: RemarkNode[] = /^h.$/.test(firstChild?.type)
+    ? firstChild.props.children.slice(0, firstChild.props.children.length - 1)
+    : []
 
   const title = triggerChildren.reduce<string>((acc, cur) => {
     return (
@@ -49,9 +45,13 @@ export const Details: React.FC<
     )
   }, '')
 
-  id = useMemo(() => {
+  const sluggedId = useMemo(() => {
     return id ? slugger.slug(id) : slugger.slug(title)
   }, [id, slugger, title])
+
+  if (!/^h.$/.test(firstChild?.type)) {
+    throw new Error('The first child of a details element must be a heading!')
+  }
 
   // Support legacy `color` prop; default details to 'tip' (azure)
   const resolvedType = type || (color === 'purple' ? 'info' : 'tip')
@@ -62,11 +62,11 @@ export const Details: React.FC<
       icon={icon || 'none'}
       collapsible
       open={open}
-      id={id}
+      id={sluggedId}
       triggerContent={triggerChildren as unknown as ReactNode}
       anchorLink={
         <Link
-          href={`#${id}`}
+          href={`#${sluggedId}`}
           aria-label={triggerChildren.toString()}
           className="anchor after"
         >
@@ -108,20 +108,37 @@ export const InfoCard: React.FC<
   PropsWithChildren<{
     title?: string
     logo?: string
+    /** Use "mask" for SVGs that should adapt to the current theme color. */
+    logomode?: string
     href?: string
     cta?: string
   }>
-> = ({ children, title, logo, href, cta = 'Explore' }) => {
+> = ({ children, title, logo, logomode, href, cta = 'Explore' }) => {
+  const resolvedLogoMode = logomode || 'image'
+  const logoMaskStyle =
+    resolvedLogoMode === 'mask' && logo
+      ? ({
+          '--info-card-logo': `url(${logo})`
+        } as CSSProperties)
+      : undefined
+
   return (
     <div className={styles.infoCardWrapper}>
       <div className={styles.infoCardHeader}>
-        {logo && (
-          <img
-            src={logo}
-            alt={title || 'Logo'}
-            className={styles.infoCardLogo}
-          />
-        )}
+        {logo &&
+          (resolvedLogoMode === 'mask' ? (
+            <span
+              aria-hidden="true"
+              className={styles.infoCardLogoMask}
+              style={logoMaskStyle}
+            />
+          ) : (
+            <img
+              src={logo}
+              alt={title || 'Logo'}
+              className={styles.infoCardLogo}
+            />
+          ))}
         {title && <h3 className={styles.infoCardTitle}>{title}</h3>}
       </div>
       <div className={styles.infoCardContent}>{children}</div>

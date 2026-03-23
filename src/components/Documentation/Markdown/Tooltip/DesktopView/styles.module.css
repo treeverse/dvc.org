@@ -3,10 +3,10 @@
   --underline-offset: 3px;
 
   position: relative;
-  text-decoration: underline dotted var(--color-gray-light);
+  text-decoration: underline dotted var(--docs-link);
   text-underline-offset: var(--underline-offset);
   text-decoration-thickness: var(--underline-thickness);
-  background-image: linear-gradient(var(--color-azure), var(--color-azure));
+  background-image: linear-gradient(var(--docs-link), var(--docs-link));
   background-position: 0 calc(100% - var(--underline-offset));
   background-repeat: no-repeat;
   background-size: 0 var(--underline-thickness);
@@ -23,6 +23,7 @@
 }
 
 .tooltip {
+  composes: popovercontainer from '../shared.module.css';
   z-index: 1001;
   position: fixed;
   top: 0;
@@ -36,11 +37,9 @@
   border: none;
   border-radius: 8px;
   font-family: var(--font-base);
-  color: var(--color-black);
-  background-color: #fff;
-  box-shadow:
-    0 4px 24px rgb(0 0 0 / 12%),
-    0 1px 4px rgb(0 0 0 / 8%);
+  color: var(--docs-text-primary);
+  background-color: var(--docs-tooltip-bg);
+  box-shadow: var(--docs-tooltip-shadow);
   transition:
     opacity 0.18s ease,
     transform 0.22s cubic-bezier(0.22, 1, 0.36, 1);
@@ -53,7 +52,7 @@
     height: 10px;
     width: 10px;
     border: none;
-    background-color: #fff;
+    background-color: var(--docs-tooltip-bg);
     transform: rotate(45deg);
     box-shadow: -2px -2px 4px rgb(0 0 0 / 4%);
   }
@@ -109,11 +108,20 @@
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 6px;
-  color: var(--color-black);
+  color: var(--docs-text-primary);
 }
 
 .tooltipBody {
-  font-size: 14px;
-  line-height: 1.5;
-  color: var(--color-gray-dark);
+  composes: popoverbody from '../shared.module.css';
+}
+
+:global(body.dark-mode) .highlightedText {
+  color: var(--docs-link);
+  text-decoration-color: color-mix(in srgb, var(--docs-link) 50%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tooltip {
+    transition: none;
+  }
 }

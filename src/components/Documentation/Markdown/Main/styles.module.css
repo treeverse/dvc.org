@@ -21,17 +21,30 @@
   .markdown-body {
     font-family: inherit;
     font-size: 18px;
+    color: var(--docs-text-primary);
+    background-color: var(--docs-content-bg);
 
     a[target='_blank']::after {
-      display: inline;
+      display: inline-block;
       position: relative;
-      top: 0.5px;
-      content: '\00a0';
-      padding-right: 12px;
-      background-image: url('../../../../images/external-link.svg');
-      background-repeat: no-repeat;
-      background-position: right center;
-      background-size: 12px 12px;
+      top: 1px;
+      width: 12px;
+      height: 12px;
+      margin-left: 4px;
+      content: '';
+      background-color: currentcolor;
+      mask-image: url('../../../../images/external-link.svg');
+      mask-repeat: no-repeat;
+      mask-position: center;
+      mask-size: contain;
+      /* stylelint-disable-next-line property-no-vendor-prefix */
+      -webkit-mask-image: url('../../../../images/external-link.svg');
+      /* stylelint-disable-next-line property-no-vendor-prefix */
+      -webkit-mask-repeat: no-repeat;
+      /* stylelint-disable-next-line property-no-vendor-prefix */
+      -webkit-mask-position: center;
+      /* stylelint-disable-next-line property-no-vendor-prefix */
+      -webkit-mask-size: contain;
       opacity: 0.6;
       transition: opacity 0.15s ease;
     }
@@ -41,9 +54,11 @@
     }
 
     blockquote {
-      border-left: 3px solid #d0d7de;
+      border-left: 3px solid var(--docs-blockquote-border);
+      background-color: var(--docs-blockquote-bg);
+      border-radius: 0;
       padding: 0.5em 1em;
-      color: #57606a;
+      color: var(--docs-blockquote-text);
     }
 
     ul {
@@ -76,7 +91,7 @@
 
     img + em,
     :global(.gatsby-resp-image-wrapper) + em {
-      color: #6a737d;
+      color: var(--docs-caption);
       font-size: 0.9em;
       display: block;
       margin-top: -6px;
@@ -89,7 +104,7 @@
 
     /* Clickable flag links in Prism usage blocks */
     a.token.arg {
-      color: var(--color-azure);
+      color: var(--accent-primary);
       text-decoration: underline;
       text-decoration-color: rgb(19 173 199 / 40%);
       text-underline-offset: 3px;
@@ -109,12 +124,14 @@
     }
 
     :global(li.arg-target-flash) {
-      background-color: rgb(148 93 214 / 10%);
+      background-color: var(--docs-arg-target-flash-bg);
       border-radius: 6px;
       transition: background-color 0.3s ease;
     }
 
     @media (prefers-reduced-motion: reduce) {
+      animation: none;
+
       :global(li.arg-target-flash) {
         transition: none;
       }
@@ -126,11 +143,11 @@
 
       display: block;
       padding: 0.7em 1em;
-      background-color: var(--color-light-blue);
-      border: 1px solid var(--color-light-gray);
+      background-color: var(--docs-synopsis-bg);
+      border: 1px solid var(--docs-synopsis-border);
       border-radius: 6px;
       font-size: 0.875rem;
-      color: var(--color-gray-dark);
+      color: var(--docs-text-secondary);
       margin: 0.5em 0;
       overflow-x: auto;
 
@@ -150,15 +167,15 @@
     }
 
     [data-synopsis-cmd] {
-      color: var(--color-black);
-      font-weight: 600;
+      color: var(--docs-synopsis-command);
+      font-weight: 700;
     }
 
     [data-synopsis-flag],
     [data-synopsis-subcmd] {
-      color: var(--color-teal);
+      color: var(--link);
       text-decoration: underline;
-      text-decoration-color: rgb(14 124 145 / 30%);
+      text-decoration-color: color-mix(in srgb, var(--link) 30%, transparent);
       text-decoration-thickness: 1px;
       text-underline-offset: 2px;
       white-space: nowrap;
@@ -167,12 +184,12 @@
         text-decoration-color 0.15s ease;
 
       &:hover {
-        color: var(--color-teal-hover);
-        text-decoration-color: rgb(14 124 145 / 60%);
+        color: var(--link-hover);
+        text-decoration-color: color-mix(in srgb, var(--link) 60%, transparent);
       }
 
       &:focus-visible {
-        outline: 2px solid var(--color-teal);
+        outline: 2px solid var(--link);
         outline-offset: 2px;
         border-radius: 2px;
       }
@@ -187,22 +204,22 @@
     }
 
     [data-synopsis-value] {
-      color: var(--color-orange);
+      color: var(--accent-warn);
       font-style: italic;
     }
 
     [data-synopsis-either] {
-      color: var(--color-gray-dark);
+      color: var(--docs-synopsis-either);
       white-space: nowrap;
     }
 
     [data-synopsis-positionals] {
-      color: var(--color-black);
+      color: var(--docs-synopsis-command);
       white-space: nowrap;
     }
 
     [data-synopsis-sep] {
-      color: var(--color-gray);
+      color: var(--docs-synopsis-separator);
     }
 
     [data-synopsis-subcmds] {
@@ -296,14 +313,14 @@
 
   details p {
     font-size: 17px;
-    color: var(--color-gray-dark);
+    color: var(--docs-text-secondary);
     margin-left: 20px;
     margin-right: 10px;
   }
 
   details pre {
     font-size: 14px;
-    color: var(--color-gray-dark);
+    color: var(--docs-text-secondary);
     margin-left: 20px;
     margin-right: 10px;
   }
@@ -338,11 +355,11 @@
 
     &__tooltip {
       padding: 10px;
-      color: #fff;
+      color: var(--docs-overlay-text);
       opacity: 0;
       width: 100%;
       font-size: 16px;
-      background-color: rgb(23 23 23 / 59%);
+      background-color: var(--docs-video-tooltip-bg);
       text-shadow: 0 1px 0 rgb(33 45 69 / 25%);
       transition: opacity 0.2s ease-in-out;
 
@@ -353,7 +370,7 @@
       a {
         @apply focus;
 
-        color: #fff;
+        color: inherit;
         text-decoration: underline;
 
         &::after {
@@ -364,12 +381,47 @@
   }
 }
 
+:global(
+  #markdown-root .markdown-body :is(p, li, blockquote, td, th) a:not(.token)
+) {
+  color: var(--docs-link);
+  text-decoration: none;
+  text-decoration-color: transparent;
+  text-underline-offset: 0.14em;
+  text-decoration-thickness: 0.08em;
+  transition:
+    color 0.15s ease,
+    text-decoration-color 0.15s ease;
+}
+
+:global(
+  #markdown-root
+    .markdown-body
+    :is(p, li, blockquote, td, th)
+    a:not(.token):hover
+) {
+  color: var(--docs-link-hover);
+  text-decoration-line: underline;
+  text-decoration-color: var(--docs-link-decoration-hover);
+}
+
+:global(
+  #markdown-root
+    .markdown-body
+    :is(p, li, blockquote, td, th)
+    a:not(.token):focus-visible
+) {
+  color: var(--docs-link-hover);
+  text-decoration-line: underline;
+  text-decoration-color: var(--docs-link-decoration-hover);
+}
+
 .content {
   @apply py-7 xs:px-7 mt-14;
 
   min-width: 200px;
   flex: 1;
-  background-color: #fff;
+  background-color: var(--docs-content-bg);
 }
 
 .tutorialsWrapper {
@@ -393,6 +445,8 @@
   margin: 5px 0 10px 10px;
   z-index: 1;
   position: relative;
+  color: var(--docs-button-text);
+  text-decoration: none;
 
   @media screen(mdMax) {
     float: none;
@@ -402,10 +456,33 @@
   @media only screen and (width <= 1200px) {
     display: inline-flex;
   }
+
+  &:hover,
+  &:focus-visible {
+    color: var(--docs-button-text);
+    text-decoration: none;
+  }
+
+  &::after {
+    display: none;
+  }
 }
 
 .githubIcon {
-  background-image: url('../../../../images/github_icon.svg');
+  background-color: currentcolor;
+  background-image: none;
+  mask-image: url('../../../../images/github_icon.svg');
+  mask-size: contain;
+  mask-position: center;
+  mask-repeat: no-repeat;
+  /* stylelint-disable-next-line property-no-vendor-prefix */
+  -webkit-mask-image: url('../../../../images/github_icon.svg');
+  /* stylelint-disable-next-line property-no-vendor-prefix */
+  -webkit-mask-size: contain;
+  /* stylelint-disable-next-line property-no-vendor-prefix */
+  -webkit-mask-position: center;
+  /* stylelint-disable-next-line property-no-vendor-prefix */
+  -webkit-mask-repeat: no-repeat;
 }
 
 .navButtons {
@@ -414,22 +491,29 @@
   align-items: center;
   margin-top: 40px;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .navButton {
   text-decoration: none;
-  background: white;
+  background: var(--docs-surface-bg);
   padding: 10px 15px;
   text-transform: uppercase;
-  color: #333;
-  border-bottom: 3px solid #13adc7;
+  color: var(--docs-text-primary);
+  border: none;
+  border-bottom: 3px solid var(--docs-accent-primary);
   display: inline-flex;
   align-items: center;
-  transition: 0.2s border-color ease-out;
+  transition:
+    border-color 0.2s ease-out,
+    background-color 0.2s ease-out,
+    color 0.2s ease-out,
+    box-shadow 0.2s ease-out;
 
   &:hover {
-    border-bottom: 3px solid #11849b;
+    color: var(--docs-link-hover);
+    background-color: var(--docs-surface-hover-bg);
+    border-bottom-color: var(--docs-accent-primary-hover);
   }
 
   &[disabled] {
@@ -438,15 +522,171 @@
   }
 }
 
+:global(body.dark-mode #markdown-root .markdown-body) {
+  --focus-outlineColor: var(--focus-ring);
+
+  /* Inline code: github-markdown-css uses rgba(101,108,118,0.2) which is
+     nearly invisible on the dark content bg. Boost the background and add
+     a subtle border so inline code stands out when scanning. */
+  --bgColor-neutral-muted: color-mix(
+    in srgb,
+    var(--docs-text-primary) 12%,
+    var(--docs-content-bg)
+  );
+}
+
+:global(body.dark-mode #markdown-root .markdown-body blockquote) {
+  border-radius: 0 8px 8px 0;
+}
+
+:global(body.dark-mode #markdown-root .markdown-body details p) {
+  color: var(--docs-text-primary);
+}
+
+:global(body.dark-mode #markdown-root .markdown-body details pre) {
+  color: var(--docs-text-primary);
+}
+
+:global(body.dark-mode #markdown-root .markdown-body details summary) {
+  color: var(--docs-text-primary);
+}
+
+:global(
+  body.dark-mode
+    #markdown-root
+    .markdown-body
+    :is(p, li, blockquote, td, th)
+    a:not(.token)
+) {
+  color: var(--docs-link);
+  font-weight: 500;
+  text-decoration: none;
+  text-decoration-color: transparent;
+}
+
+:global(
+  body.dark-mode
+    #markdown-root
+    .markdown-body
+    :is(p, li, blockquote, td, th)
+    a:not(.token)
+    code
+) {
+  color: inherit;
+  font-weight: inherit;
+}
+
+:global(
+  body.dark-mode
+    #markdown-root
+    .markdown-body
+    :is(p, li, blockquote, td, th)
+    a:not(.token):hover
+) {
+  color: var(--docs-link-hover);
+  text-decoration: underline;
+  text-decoration-color: var(--docs-link-decoration-hover);
+}
+
+:global(
+  body.dark-mode
+    #markdown-root
+    .markdown-body
+    :is(p, li, blockquote, td, th)
+    a:not(.token):focus-visible
+) {
+  color: var(--docs-link-hover);
+  text-decoration: underline;
+  text-decoration-color: var(--docs-link-decoration-hover);
+}
+
+:global(
+  body.dark-mode
+    #markdown-root
+    .markdown-body
+    :is(h1, h2, h3, h4, h5, h6)
+    a:not(.anchor)
+) {
+  color: var(--docs-link);
+  text-decoration: none;
+}
+
+:global(
+  body.dark-mode
+    #markdown-root
+    .markdown-body
+    :is(h1, h2, h3, h4, h5, h6)
+    a:not(.anchor):hover
+) {
+  color: var(--docs-link-hover);
+  text-decoration: underline;
+  text-decoration-color: var(--docs-link-decoration-hover);
+}
+
+:global(
+  body.dark-mode
+    #markdown-root
+    .markdown-body
+    :is(h1, h2, h3, h4, h5, h6)
+    a:not(.anchor):focus-visible
+) {
+  color: var(--docs-link-hover);
+  text-decoration: underline;
+  text-decoration-color: var(--docs-link-decoration-hover);
+}
+
+:global(#markdown-root .markdown-body .collapsableDiv .anchor),
+:global(#markdown-root .markdown-body li .anchor),
+:global(#markdown-root .markdown-body .anchor) {
+  color: var(--docs-text-muted);
+}
+
+:global(#markdown-root .markdown-body .anchor svg) {
+  color: currentcolor;
+}
+
+:global(#markdown-root .markdown-body .anchor svg path) {
+  fill: currentcolor;
+  stroke: currentcolor;
+}
+
+:global(body.dark-mode) .navButton {
+  border: 1px solid var(--docs-border-subtle);
+  border-bottom: 3px solid var(--docs-accent-primary);
+}
+
+:global(body.dark-mode) .navButton:hover,
+:global(body.dark-mode) .navButton:focus-visible {
+  border-color: color-mix(in srgb, var(--docs-border-subtle) 86%, white 10%);
+  background-color: color-mix(
+    in srgb,
+    var(--docs-surface-hover-bg) 84%,
+    var(--docs-surface-bg) 16%
+  );
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 4%),
+    0 2px 6px rgb(0 0 0 / 12%);
+}
+
 .navButtonIcon {
   display: inline-block;
   width: 1em;
   height: 1em;
   line-height: 1;
-  background-image: url('../../../../images/arrow.svg');
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
+  background-color: currentcolor;
+  background-image: none;
+  mask-image: url('../../../../images/arrow.svg');
+  mask-size: contain;
+  mask-position: center;
+  mask-repeat: no-repeat;
+  /* stylelint-disable-next-line property-no-vendor-prefix */
+  -webkit-mask-image: url('../../../../images/arrow.svg');
+  /* stylelint-disable-next-line property-no-vendor-prefix */
+  -webkit-mask-size: contain;
+  /* stylelint-disable-next-line property-no-vendor-prefix */
+  -webkit-mask-position: center;
+  /* stylelint-disable-next-line property-no-vendor-prefix */
+  -webkit-mask-repeat: no-repeat;
   transition: all 0.3s;
 
   &.next {

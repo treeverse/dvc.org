@@ -6,6 +6,7 @@
   font-size: 16px;
   display: flex;
   flex-direction: column;
+  background-color: var(--docs-content-bg);
 
   @media only screen and (width <= 1200px) {
     display: none;
@@ -17,15 +18,20 @@
 
   overflow-y: scroll;
   margin-bottom: 17px;
+  scrollbar-color: var(--docs-rail-text) var(--docs-content-bg);
 
   &::-webkit-scrollbar {
     appearance: none;
     width: 7px;
   }
 
+  &::-webkit-scrollbar-track {
+    background-color: var(--docs-content-bg);
+  }
+
   &::-webkit-scrollbar-thumb {
     border-radius: 5px;
-    background-color: #7e7e7e;
+    background-color: var(--docs-rail-text);
   }
 }
 
@@ -34,8 +40,13 @@
 
   font-size: 14px;
   text-transform: uppercase;
-  border-bottom: 1px solid var(--color-lighter-blue);
-  color: var(--color-black);
+  color: var(--docs-rail-text-current);
+}
+
+.separator {
+  margin: 0 0 14px;
+  border: 0;
+  border-top: 1px solid var(--docs-rail-separator);
 }
 
 .headingLink {
@@ -43,7 +54,7 @@
   display: block;
   min-height: 26px;
   margin-bottom: 3px;
-  color: #a0a8a5;
+  color: var(--docs-rail-text);
   text-decoration: none;
   font-size: 16px;
   font-weight: 400;
@@ -51,24 +62,26 @@
   cursor: pointer;
 
   &.current {
-    color: #000;
+    color: var(--docs-rail-text-current);
   }
 
   &:hover {
-    color: #3c3937;
+    color: var(--docs-rail-text-hover);
   }
 }
 
 .buttonsBlock {
-  margin-top: 10px;
-  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 14px;
+  margin-bottom: 24px;
   flex-shrink: 0;
 }
 
 .buttonSection {
-  & + & {
-    margin-top: 15px;
-  }
+  display: flex;
+  flex-direction: column;
 }
 
 .buttonSectionIcon {
@@ -79,28 +92,77 @@
 }
 
 .buttonSectionDescription {
-  color: var(--color-black);
+  margin: 0;
+  color: var(--docs-rail-text-current);
+  line-height: 1.55;
 }
 
 .button {
   width: 100%;
-  margin: 10px 0;
+  margin: 8px 0 0;
+
+  --docs-button-bg: var(--docs-surface-bg);
+  --docs-button-bg-hover: var(--docs-surface-hover-bg);
+  --docs-button-text: var(--docs-text-primary);
 
   &.tutorials {
     white-space: nowrap;
   }
 }
 
+:global(body.dark-mode) .buttonSectionDescription {
+  color: var(--docs-text-secondary);
+}
+
 .githubIcon {
-  background-image: url('../../../images/github_icon.svg');
+  background-color: currentcolor;
+  background-image: none;
+  mask-image: url('../../../images/github_icon.svg');
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  /* stylelint-disable-next-line property-no-vendor-prefix */
+  -webkit-mask-image: url('../../../images/github_icon.svg');
+  /* stylelint-disable-next-line property-no-vendor-prefix */
+  -webkit-mask-repeat: no-repeat;
+  /* stylelint-disable-next-line property-no-vendor-prefix */
+  -webkit-mask-position: center;
+  /* stylelint-disable-next-line property-no-vendor-prefix */
+  -webkit-mask-size: contain;
 }
 
 .discordIcon {
   width: 1.2em;
   height: 1.2em;
-  background-image: url('../../../images/discord.svg');
+  background-color: currentcolor;
+  background-image: none;
+  mask-image: url('../../../images/discord.svg');
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  /* stylelint-disable-next-line property-no-vendor-prefix */
+  -webkit-mask-image: url('../../../images/discord.svg');
+  /* stylelint-disable-next-line property-no-vendor-prefix */
+  -webkit-mask-repeat: no-repeat;
+  /* stylelint-disable-next-line property-no-vendor-prefix */
+  -webkit-mask-position: center;
+  /* stylelint-disable-next-line property-no-vendor-prefix */
+  -webkit-mask-size: contain;
 }
 
 .lakefsIcon {
-  background-image: url('../../../images/lakefs.svg');
+  background-color: currentcolor;
+  background-image: none;
+  mask-image: url('../../../images/lakefs.svg');
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  /* stylelint-disable-next-line property-no-vendor-prefix */
+  -webkit-mask-image: url('../../../images/lakefs.svg');
+  /* stylelint-disable-next-line property-no-vendor-prefix */
+  -webkit-mask-repeat: no-repeat;
+  /* stylelint-disable-next-line property-no-vendor-prefix */
+  -webkit-mask-position: center;
+  /* stylelint-disable-next-line property-no-vendor-prefix */
+  -webkit-mask-size: contain;
 }

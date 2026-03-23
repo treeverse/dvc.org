@@ -1,4 +1,8 @@
 .linksList {
+  --nav-link-border: var(--border-subtle);
+  --nav-link-text: var(--text-primary);
+  --nav-link-hover-bg: color-mix(in srgb, var(--text-primary) 6%, transparent);
+
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -24,7 +28,7 @@
     margin-left: 0;
 
     & + & {
-      border-top: 1px solid #e5e7eb;
+      border-top: 1px solid var(--nav-link-border);
     }
   }
 }
@@ -37,7 +41,7 @@
   font-size: 17px;
   line-height: 20px;
   text-decoration: none;
-  color: #353940;
+  color: var(--nav-link-text);
   padding: 20px 5px;
   display: flex;
   align-items: flex-end;
@@ -86,11 +90,11 @@
     &:hover,
     &:active {
       opacity: 1;
-      background-color: rgb(15 22 36 / 5%);
+      background-color: var(--nav-link-hover-bg);
     }
   }
 }
 
 button.link:focus {
-  color: #353940;
+  color: var(--nav-link-text);
 }

@@ -2,12 +2,12 @@
   .Collapsible__trigger {
     font-family: var(--font-base);
     font-weight: 600;
-    font-size: 17px;
+    font-size: 16px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     cursor: pointer;
-    color: var(--color-black);
+    color: var(--docs-text-primary);
   }
 }
 
@@ -36,21 +36,23 @@
   display: flex;
 
   a.card {
-    color: inherit;
+    color: var(--docs-text-primary);
     text-decoration: inherit;
     transition: background-color 0.3s ease-in-out;
-    background-color: #fff;
+    background-color: var(--docs-surface-bg);
 
     &:hover {
+      color: var(--docs-text-primary);
       text-decoration: inherit;
-      background-color: var(--color-light-blue);
+      background-color: var(--docs-surface-hover-bg);
     }
   }
 }
 
 .card {
   flex: 1 0;
-  border: 1px solid #d6d6d6;
+  border: 1px solid var(--docs-border-subtle);
+  background-color: var(--docs-surface-bg);
   margin: 0 0.5rem;
   border-radius: 10px;
   padding: 0.75rem 1rem;
@@ -87,16 +89,66 @@
     margin: 0;
     margin-bottom: 0.25em;
     font-weight: bold;
-    color: var(--color-gray-dark);
+    color: var(--docs-text-secondary);
   }
 
   .cardContent {
     flex: 1;
+    min-width: 0;
+    color: var(--docs-text-primary);
+
+    p {
+      color: inherit;
+    }
   }
 }
 
+:global(body.dark-mode) .card {
+  border-color: color-mix(in srgb, var(--docs-border-subtle) 90%, white 6%);
+  background-color: color-mix(
+    in srgb,
+    var(--docs-surface-bg) 88%,
+    var(--docs-content-bg) 12%
+  );
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 2%);
+}
+
+:global(body.dark-mode) .cardWrapper a.card {
+  transition:
+    background-color 0.22s ease,
+    border-color 0.22s ease,
+    box-shadow 0.22s ease;
+}
+
+:global(body.dark-mode) .cardWrapper a.card:hover,
+:global(body.dark-mode) .cardWrapper a.card:focus-visible {
+  border-color: color-mix(in srgb, var(--docs-border-subtle) 82%, white 12%);
+  background-color: color-mix(
+    in srgb,
+    var(--docs-surface-hover-bg) 84%,
+    var(--docs-surface-bg) 16%
+  );
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 4%),
+    0 2px 6px rgb(0 0 0 / 12%);
+}
+
+:global(body.dark-mode) .cardHeading {
+  color: var(--docs-text-primary);
+  font-weight: 600;
+}
+
+:global(body.dark-mode) .cardContent {
+  color: var(--docs-text-secondary);
+}
+
+:global(body.dark-mode) .cardContent p {
+  color: inherit;
+}
+
 .infoCardWrapper {
-  border: 1px solid #d6d6d6;
+  border: 1px solid var(--docs-border-subtle);
+  background-color: var(--docs-surface-bg);
   border-radius: 10px;
   padding: 1.25rem 1.5rem;
   margin: 2rem 0;
@@ -115,16 +167,38 @@
   object-fit: contain;
 }
 
+.infoCardLogoMask {
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  flex-shrink: 0;
+  color: var(--docs-text-primary);
+  background-color: currentcolor;
+  mask-image: var(--info-card-logo);
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+  /* stylelint-disable-next-line property-no-vendor-prefix */
+  -webkit-mask-image: var(--info-card-logo);
+  /* stylelint-disable-next-line property-no-vendor-prefix */
+  -webkit-mask-repeat: no-repeat;
+  /* stylelint-disable-next-line property-no-vendor-prefix */
+  -webkit-mask-position: center;
+  /* stylelint-disable-next-line property-no-vendor-prefix */
+  -webkit-mask-size: contain;
+}
+
 .infoCardTitle {
   margin: 0;
   font-size: 1.5rem;
   font-weight: 600;
-  color: var(--color-gray-dark);
+  color: var(--docs-text-primary);
 }
 
 .infoCardContent {
   font-size: 18px;
   line-height: 1.7;
+  color: var(--docs-text-secondary);
 
   p {
     margin: 0 0 0.5rem;
@@ -139,8 +213,8 @@
   display: inline-block !important;
   margin-top: 1rem !important;
   padding: 0.5rem 1.25rem !important;
-  background-color: #13adc7 !important;
-  color: #fff !important;
+  background-color: var(--docs-accent-primary) !important;
+  color: var(--docs-accent-primary-contrast) !important;
   font-weight: 500 !important;
   font-size: 16px !important;
   text-decoration: none !important;
@@ -150,8 +224,8 @@
 }
 
 .infoCardLink:hover {
-  background-color: #11849b !important;
-  color: #fff !important;
+  background-color: var(--docs-accent-primary-hover) !important;
+  color: var(--docs-accent-primary-contrast) !important;
   text-decoration: none !important;
 }
 

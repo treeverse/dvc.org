@@ -2,7 +2,7 @@ import cn from 'classnames'
 import { navigate } from 'gatsby'
 import { useEffect, useRef, useCallback, PropsWithChildren } from 'react'
 
-import 'github-markdown-css/github-markdown-light.css'
+import 'github-markdown-css/github-markdown.css'
 import useCustomYtEmbeds from '../../../../utils/front/useCustomYtEmbeds'
 import { getPathWithSource } from '../../../../utils/shared/sidebar'
 import Link from '../../../Link'
@@ -74,8 +74,8 @@ const Main: React.FC<PropsWithChildren<IMainProps>> = ({
   )
 
   useEffect(() => {
-    document.addEventListener('touchstart', onTouchStart, false)
-    document.addEventListener('touchend', onTouchEnd, false)
+    document.addEventListener('touchstart', onTouchStart, { passive: true })
+    document.addEventListener('touchend', onTouchEnd, { passive: true })
 
     return (): void => {
       document.removeEventListener('touchstart', onTouchStart)

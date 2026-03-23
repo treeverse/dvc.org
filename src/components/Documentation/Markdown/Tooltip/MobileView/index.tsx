@@ -59,7 +59,7 @@ const MobileView: React.FC<IMobileViewProps> = ({
               <div
                 className={styles.closeContainer}
                 onClick={closeTooltip}
-                onKeyPress={onCloseKeyDown}
+                onKeyDown={onCloseKeyDown}
                 role="button"
                 tabIndex={0}
               >
@@ -68,7 +68,7 @@ const MobileView: React.FC<IMobileViewProps> = ({
               </div>
               <h5 className={styles.modalHeader}>{header}</h5>
               <div
-                className="markdown-body"
+                className={cn('markdown-body', styles.modalBody)}
                 dangerouslySetInnerHTML={{ __html: description }}
               />
             </div>

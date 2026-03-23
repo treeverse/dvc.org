@@ -1,4 +1,99 @@
 .container {
+  --docs-sidebar-bg: var(--bg-subtle);
+  --docs-content-bg: #fff;
+  --docs-surface-bg: #fff;
+  --docs-surface-hover-bg: var(--bg-subtle);
+  --docs-backdrop-bg: var(--bg-overlay);
+  --docs-overlay-text: var(--text-on-overlay);
+  --docs-sidebar-shadow: rgb(0 0 0 / 14%) 0 0 4px, rgb(0 0 0 / 28%) 0 4px 8px;
+  --docs-floating-control-bg: rgb(255 255 255 / 90%);
+  --docs-floating-control-shadow: 0 0 9px 0 rgb(0 0 0 / 15%);
+  --docs-border-subtle: #d6d6d6;
+  --docs-border-strong: #d1d9e0;
+  --docs-text-primary: var(--text-primary);
+  --docs-text-secondary: var(--text-secondary);
+  --docs-text-muted: var(--text-muted);
+  --docs-toc-text: var(--text-secondary);
+  --docs-toc-text-hover: var(--text-primary);
+  --docs-toc-text-active: #40364d;
+  --docs-toc-text-current: var(--text-primary);
+  --docs-rail-text: #778584;
+  --docs-rail-text-hover: #3c3937;
+  --docs-rail-text-current: #000;
+  --docs-rail-border: var(--border-subtle);
+  --docs-rail-separator: var(--border-subtle);
+  --docs-accent-primary: var(--accent-primary);
+  --docs-accent-primary-hover: var(--accent-primary-hover);
+  --docs-accent-primary-contrast: var(--accent-primary-contrast);
+  --docs-accent-secondary: var(--accent-secondary);
+  --docs-accent-warn: var(--accent-warn);
+  --docs-link: #0969da;
+  --docs-link-hover: #0969da;
+  --docs-link-decoration: color-mix(in srgb, var(--docs-link) 30%, transparent);
+  --docs-link-decoration-hover: color-mix(
+    in srgb,
+    var(--docs-link-hover) 55%,
+    transparent
+  );
+  --docs-blockquote-bg: transparent;
+  --docs-blockquote-border: #d1d9e0;
+  --docs-blockquote-text: #59636e;
+  --docs-caption: #6a737d;
+  --docs-synopsis-bg: var(--bg-subtle);
+  --docs-synopsis-border: var(--border-subtle);
+  --docs-synopsis-command: var(--text-primary);
+  --docs-synopsis-either: var(--text-secondary);
+  --docs-synopsis-separator: var(--text-muted);
+  --docs-callout-tip-bg: color-mix(
+    in srgb,
+    var(--docs-accent-primary) 8%,
+    var(--docs-content-bg)
+  );
+  --docs-callout-info-bg: color-mix(
+    in srgb,
+    var(--docs-accent-secondary) 8%,
+    var(--docs-content-bg)
+  );
+  --docs-callout-warn-bg: color-mix(
+    in srgb,
+    var(--docs-accent-warn) 9%,
+    var(--docs-content-bg)
+  );
+  --docs-callout-tip-border: color-mix(
+    in srgb,
+    var(--docs-accent-primary) 20%,
+    var(--docs-border-strong)
+  );
+  --docs-callout-info-border: color-mix(
+    in srgb,
+    var(--docs-accent-secondary) 20%,
+    var(--docs-border-strong)
+  );
+  --docs-callout-warn-border: color-mix(
+    in srgb,
+    var(--docs-accent-warn) 22%,
+    var(--docs-border-strong)
+  );
+  --docs-callout-tip-hover-bg: color-mix(
+    in srgb,
+    var(--docs-accent-primary) 12%,
+    var(--docs-content-bg)
+  );
+  --docs-callout-info-hover-bg: color-mix(
+    in srgb,
+    var(--docs-accent-secondary) 12%,
+    var(--docs-content-bg)
+  );
+  --docs-callout-warn-hover-bg: color-mix(
+    in srgb,
+    var(--docs-accent-warn) 13%,
+    var(--docs-content-bg)
+  );
+  --docs-arg-target-flash-bg: rgb(148 93 214 / 10%);
+  --docs-tooltip-bg: var(--docs-surface-bg);
+  --docs-tooltip-shadow: var(--shadow-elevated);
+  --docs-video-tooltip-bg: var(--docs-backdrop-bg);
+
   display: flex;
   flex-direction: row;
   flex: 1;
@@ -7,6 +102,7 @@
 
   @media screen(xsMax) {
     padding: 0 15px;
+    background-color: var(--docs-content-bg);
   }
 
   &::before {
@@ -19,12 +115,165 @@
     bottom: 0;
     width: 50%;
     pointer-events: none;
-    background-color: var(--color-light-blue);
+    background-color: var(--docs-sidebar-bg);
+    transition: background-color var(--theme-transition-duration)
+      var(--theme-transition-easing);
 
     @media screen(xsMax) {
       display: none;
     }
   }
+
+  &::after {
+    content: '';
+    display: block;
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 50%;
+    pointer-events: none;
+    background-color: var(--docs-content-bg);
+    transition: background-color var(--theme-transition-duration)
+      var(--theme-transition-easing);
+
+    @media screen(xsMax) {
+      display: none;
+    }
+  }
+}
+
+/*
+ * Dark-mode overrides.
+ *
+ * Tokens that simply pass through to the global semantic layer
+ * (e.g. --docs-text-primary: var(--text-primary)) are omitted here;
+ * the light-mode defaults already reference global tokens and therefore
+ * resolve correctly in dark mode automatically.
+ *
+ * Only tokens that need a *different* value in dark mode (custom
+ * color-mix, hard-coded colors, or re-mapped references) are listed.
+ */
+:global(body.dark-mode) .container {
+  /* Surfaces */
+  --docs-content-bg: color-mix(in srgb, var(--bg-surface) 94%, white);
+  --docs-surface-bg: color-mix(in srgb, var(--bg-elevated) 92%, white);
+  --docs-surface-hover-bg: color-mix(in srgb, var(--bg-elevated) 78%, white);
+  --docs-sidebar-bg: var(--bg-elevated);
+
+  /* Borders — boost for dark-mode visibility */
+  --docs-border-subtle: var(--border-strong);
+  --docs-border-strong: var(--border-strong);
+
+  /* Text — boosted brightness for dark-mode legibility */
+  --docs-text-secondary: color-mix(
+    in srgb,
+    var(--text-primary) 26%,
+    var(--text-secondary)
+  );
+  --docs-text-muted: color-mix(
+    in srgb,
+    var(--text-primary) 16%,
+    var(--text-muted)
+  );
+  --docs-toc-text-active: color-mix(
+    in srgb,
+    var(--text-primary) 84%,
+    var(--docs-text-secondary)
+  );
+
+  /* Rail — brighter than global muted so the TOC stays scannable */
+  --docs-rail-text: var(--docs-text-secondary);
+  --docs-rail-text-hover: var(--docs-text-primary);
+  --docs-rail-text-current: var(--text-primary);
+  --docs-rail-separator: color-mix(
+    in srgb,
+    var(--text-primary) 28%,
+    transparent
+  );
+
+  /* Links */
+  --docs-link: color-mix(in srgb, var(--docs-accent-primary) 82%, white);
+  --docs-link-hover: color-mix(
+    in srgb,
+    var(--docs-accent-primary-hover) 88%,
+    white
+  );
+  --docs-link-decoration: color-mix(in srgb, var(--docs-link) 40%, transparent);
+  --docs-link-decoration-hover: color-mix(
+    in srgb,
+    var(--docs-link-hover) 60%,
+    transparent
+  );
+
+  /* Blockquotes & captions */
+  --docs-blockquote-bg: color-mix(
+    in srgb,
+    var(--docs-surface-bg) 92%,
+    var(--docs-content-bg)
+  );
+  --docs-blockquote-border: var(--docs-border-strong);
+  --docs-blockquote-text: var(--docs-text-secondary);
+  --docs-caption: var(--docs-text-muted);
+
+  /* Synopsis — use stronger border so the box is visible */
+  --docs-synopsis-border: var(--border-strong);
+
+  /* Chrome */
+  --docs-sidebar-shadow: var(--shadow-elevated);
+  --docs-floating-control-bg: var(--bg-elevated);
+  --docs-floating-control-shadow: var(--shadow-elevated);
+  --docs-callout-tip-bg: color-mix(
+    in srgb,
+    var(--docs-accent-primary) 8%,
+    var(--docs-surface-bg)
+  );
+  --docs-callout-info-bg: color-mix(
+    in srgb,
+    var(--docs-accent-secondary) 8%,
+    var(--docs-surface-bg)
+  );
+  --docs-callout-warn-bg: color-mix(
+    in srgb,
+    var(--docs-accent-warn) 9%,
+    var(--docs-surface-bg)
+  );
+  --docs-callout-tip-border: color-mix(
+    in srgb,
+    var(--docs-accent-primary) 34%,
+    var(--docs-border-strong)
+  );
+  --docs-callout-info-border: color-mix(
+    in srgb,
+    var(--docs-accent-secondary) 34%,
+    var(--docs-border-strong)
+  );
+  --docs-callout-warn-border: color-mix(
+    in srgb,
+    var(--docs-accent-warn) 36%,
+    var(--docs-border-strong)
+  );
+  --docs-callout-tip-hover-bg: color-mix(
+    in srgb,
+    var(--docs-accent-primary) 11%,
+    var(--docs-surface-bg)
+  );
+  --docs-callout-info-hover-bg: color-mix(
+    in srgb,
+    var(--docs-accent-secondary) 11%,
+    var(--docs-surface-bg)
+  );
+  --docs-callout-warn-hover-bg: color-mix(
+    in srgb,
+    var(--docs-accent-warn) 12%,
+    var(--docs-surface-bg)
+  );
+  --docs-arg-target-flash-bg: color-mix(
+    in srgb,
+    var(--docs-accent-secondary) 18%,
+    var(--docs-content-bg)
+  );
 }
 
 .backdrop {
@@ -43,7 +292,7 @@
       z-index: 1;
       opacity: 1;
       pointer-events: all;
-      background-color: rgb(0 0 0 / 40%);
+      background-color: var(--docs-backdrop-bg);
     }
   }
 }
@@ -52,17 +301,18 @@
   @apply flex flex-col w-72
     sm:py-0;
 
-  background-color: var(--color-light-blue);
+  background-color: var(--docs-sidebar-bg);
   flex-shrink: 0;
   position: fixed;
   z-index: 2;
   bottom: 0;
   left: 0;
-  box-shadow:
-    rgb(0 0 0 / 14%) 0 0 4px,
-    rgb(0 0 0 / 28%) 0 4px 8px;
+  box-shadow: var(--docs-sidebar-shadow);
   transform: translateX(-110%);
-  transition: transform 0.35s ease;
+  transition:
+    transform 0.35s ease,
+    background-color var(--theme-transition-duration)
+      var(--theme-transition-easing);
 
   &.opened {
     transform: translateX(0);
@@ -92,8 +342,9 @@
   height: 45px;
   border: none;
   border-radius: 50%;
-  background-color: rgb(255 255 255 / 90%);
-  box-shadow: 0 0 9px 0 rgb(0 0 0 / 15%);
+  background-color: var(--docs-floating-control-bg);
+  color: var(--docs-text-primary);
+  box-shadow: var(--docs-floating-control-shadow);
   transition: transform 0.3s ease;
 
   &.opened {
@@ -113,10 +364,21 @@
   display: flex;
   flex-direction: row;
   max-width: calc(100% - 280px);
-  background-color: #fff;
+  background-color: var(--docs-content-bg);
   flex: 1;
+  transition: background-color var(--theme-transition-duration)
+    var(--theme-transition-easing);
 
   @media screen(xsMax) {
     max-width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .container::before,
+  .container::after,
+  .side,
+  .content {
+    transition: none;
   }
 }

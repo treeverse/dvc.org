@@ -3,9 +3,14 @@ html {
 }
 
 .headerContainer {
-  @apply flex flex-col flex-nowrap fixed top-0 left-0 right-0 w-full justify-center z-30 bg-white;
+  --header-bg: var(--bg-elevated);
+  --header-text: var(--text-primary);
+  --header-shadow: 0 2px 3px 0 rgb(0 0 0 / 15%);
 
-  box-shadow: 0 2px 3px 0 rgb(0 0 0 / 15%);
+  @apply flex flex-col flex-nowrap fixed top-0 left-0 right-0 w-full justify-center z-30;
+
+  background-color: var(--header-bg);
+  box-shadow: var(--header-shadow);
 }
 
 .header {
@@ -13,7 +18,7 @@ html {
 
   width: 100%;
   z-index: 3;
-  color: #fff;
+  color: var(--header-text);
   display: flex;
   flex-flow: row nowrap;
   flex-shrink: 0;

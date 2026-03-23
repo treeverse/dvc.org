@@ -1,32 +1,55 @@
 .callout {
-  padding: 12px 16px;
-  border-left: 3px solid;
-  margin: 8px 0;
-  border-radius: 0 6px 6px 0;
-  font-size: 17px;
+  padding: 12px 16px 12px 18px;
+  border: 0;
+  border-left: 3px solid var(--callout-border);
+  margin: 14px 0;
+  border-radius: 0 10px 10px 0;
+  font-size: 16px;
+  line-height: 1.65;
   position: relative;
+  background-color: var(--callout-bg);
 
-  --callout-accent: var(--color-azure);
+  --callout-accent: var(--docs-accent-primary);
+  --callout-bg: var(--docs-callout-tip-bg);
+  --callout-border: var(--docs-callout-tip-border);
+  --callout-hover-bg: var(--docs-callout-tip-hover-bg);
 
   &.warn {
-    --callout-accent: var(--color-orange);
-
-    border-color: var(--color-orange);
-    background-color: rgb(227 112 70 / 10%);
+    --callout-accent: var(--docs-accent-warn);
+    --callout-bg: var(--docs-callout-warn-bg);
+    --callout-border: var(--docs-callout-warn-border);
+    --callout-hover-bg: var(--docs-callout-warn-hover-bg);
   }
 
   &.tip {
-    --callout-accent: var(--color-azure);
-
-    border-color: var(--color-azure);
-    background-color: rgb(19 173 199 / 10%);
+    --callout-accent: var(--docs-accent-primary);
+    --callout-bg: var(--docs-callout-tip-bg);
+    --callout-border: var(--docs-callout-tip-border);
+    --callout-hover-bg: var(--docs-callout-tip-hover-bg);
   }
 
   &.info {
-    --callout-accent: var(--color-purple);
+    --callout-accent: var(--docs-accent-secondary);
+    --callout-bg: var(--docs-callout-info-bg);
+    --callout-border: var(--docs-callout-info-border);
+    --callout-hover-bg: var(--docs-callout-info-hover-bg);
+  }
 
-    border-color: var(--color-purple);
-    background-color: rgb(148 93 214 / 10%);
+  /* Link underlines match callout accent */
+  & a {
+    text-decoration-color: color-mix(
+      in srgb,
+      var(--callout-accent) 35%,
+      transparent
+    );
+  }
+
+  & a:hover {
+    text-decoration-color: color-mix(
+      in srgb,
+      var(--callout-accent) 55%,
+      transparent
+    );
   }
 }
 
@@ -34,24 +57,25 @@
 
 .title {
   font-weight: 600;
-  font-size: 17px;
-  margin: 0 0 6px;
+  font-size: 16px;
+  margin: 0 0 8px;
   line-height: 1.4;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 }
 
 .icon {
   display: inline-flex;
   flex-shrink: 0;
   color: var(--callout-accent);
+  margin-top: 1px;
 }
 
 .iconFloat {
   display: inline-flex;
   float: left;
-  margin-right: 8px;
+  margin-right: 10px;
   margin-top: 2px;
   color: var(--callout-accent);
 }
@@ -70,17 +94,22 @@
   display: flex;
   align-items: center;
   flex: 1;
-  gap: 8px;
+  gap: 10px;
+  min-height: 1.6rem;
 }
 
 .triggerLabel {
   flex: 1;
+  min-width: 0;
+  line-height: 1.45;
 }
 
 .chevron {
   flex-shrink: 0;
-  color: #5f6c72;
-  transition: transform 200ms ease;
+  color: var(--docs-text-secondary);
+  transition:
+    transform 200ms ease,
+    color 160ms ease;
 }
 
 .chevronOpen {
@@ -88,5 +117,59 @@
 }
 
 .collapsibleContent {
-  padding: 10px 0 4px;
+  margin-top: 10px;
+  padding: 12px 0 2px;
+  border-top: 1px solid
+    color-mix(in srgb, var(--callout-border) 70%, transparent);
+}
+
+.callout :global(.Collapsible__trigger) {
+  display: block;
+  margin: -4px -6px;
+  padding: 4px 6px;
+  border-radius: 6px;
+  transition: color 160ms ease;
+}
+
+.callout :global(.Collapsible__trigger:hover) .chevron {
+  color: var(--callout-accent);
+}
+
+.callout :global(.Collapsible__trigger:focus-visible) {
+  outline: 2px solid color-mix(in srgb, var(--callout-accent) 28%, transparent);
+  outline-offset: 2px;
+}
+
+:global(body.dark-mode) .callout {
+  color: var(--docs-text-primary);
+
+  .title,
+  .triggerLabel,
+  .content {
+    color: var(--docs-text-primary);
+  }
+
+  .content :is(p, li, td, th, strong),
+  .collapsibleContent :is(p, li, td, th, strong) {
+    color: inherit;
+  }
+
+  .content code,
+  .collapsibleContent code {
+    color: var(--docs-text-primary);
+  }
+
+  /* Stronger separator for dark surfaces */
+  .collapsibleContent {
+    border-top-color: color-mix(
+      in srgb,
+      var(--callout-border) 90%,
+      transparent
+    );
+  }
+
+  /* Brighter focus ring on dark backgrounds */
+  :global(.Collapsible__trigger:focus-visible) {
+    outline-color: color-mix(in srgb, var(--callout-accent) 45%, transparent);
+  }
 }

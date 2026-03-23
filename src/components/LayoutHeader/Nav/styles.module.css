@@ -5,6 +5,8 @@
 }
 
 .wrapper {
+  --nav-mobile-bg: var(--bg-elevated);
+
   display: flex;
   flex-shrink: 0;
   flex-direction: row;
@@ -20,45 +22,53 @@
     align-items: stretch;
     flex-shrink: initial;
     visibility: hidden;
-    padding: 12px 16px;
+    opacity: 0;
+    padding: 8px 16px;
     position: fixed;
     z-index: 11;
-    transform: translateX(100%);
-    inset: 0;
-    background-color: #fff;
+    inset: 56px 0 0;
+    background-color: var(--nav-mobile-bg);
     overflow-y: auto;
     overscroll-behavior: contain;
     font-size: 20px;
     line-height: 24px;
+    transition:
+      opacity 0.25s ease,
+      visibility 0.25s;
 
     &.opened {
       visibility: visible;
-      transform: translateX(0);
-      transition:
-        transform 0.4s ease,
-        visibility 0.4s;
+      opacity: 1;
     }
   }
 }
 
-.mobileLogoRow {
+.desktopThemeSwitcher {
+  margin-left: auto;
+
+  @media screen(smMax) {
+    display: none;
+  }
+}
+
+.mobileControls {
   display: none;
 
   @media screen(smMax) {
     display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: auto;
+    position: fixed;
+    top: 0;
+    right: 16px;
+    height: 56px;
+    z-index: 999;
   }
 }
 
-.mobileLogo {
-  @apply hover active;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  &:focus path {
-    fill: var(--color-orange);
-  }
+.mobileThemeSwitcher {
+  flex-shrink: 0;
 }
 
 .hamburgerButton {
@@ -66,6 +76,7 @@
 
   display: none;
   visibility: hidden;
+  color: var(--text-primary);
 
   @media screen(smMax) {
     position: relative;
@@ -73,8 +84,8 @@
     visibility: visible;
     z-index: 999;
     border: none;
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     align-items: center;
     justify-content: center;
     background: transparent;
@@ -92,9 +103,7 @@
   }
 
   &.hamburgerOpened {
-    position: absolute;
-    top: 1rem;
-    right: 0.5rem;
+    /* No repositioning needed — parent is fixed */
   }
 }
 

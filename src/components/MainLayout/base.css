@@ -3,27 +3,140 @@
 @tailwind utilities;
 
 :root {
-  --color-black: #24292e;
-  --color-gray-light: #b0b8c5;
-  --color-gray: #838d93;
-  --color-gray-dark: #5f6c72;
-  --color-gray-opaque: rgb(131 141 147 / 50%);
-  --color-gray-hover: #40364d;
-  --color-light-gray: #d9e2e8;
-  --color-azure: #13adc7;
-  --color-azure-hover: #13a3bd;
-  --color-teal: #0e7c91;
-  --color-teal-hover: #0a6e82;
-  --color-blue: #0366d6;
-  --color-lighter-blue: #dde7ee;
-  --color-light-blue: #eef4f8;
-  --color-light-blue-hover: #e4eaee;
-  --color-purple: #945dd6;
-  --color-purple-hover: #745cb7;
-  --color-orange: #e37046;
-  --color-orange-bright: #f46837;
+  color-scheme: light;
+
+  /* Primitive palette */
+  --neutral-0: #fff;
+  --neutral-50: #f7fafc;
+  --neutral-100: #eef4f8;
+  --neutral-150: #e4eaee;
+  --neutral-200: #d9e2e8;
+  --neutral-300: #b0b8c5;
+  --neutral-400: #838d93;
+  --neutral-500: #5f6c72;
+  --neutral-600: #40364d;
+  --neutral-700: #33414e;
+  --neutral-800: #222c37;
+  --neutral-900: #151c23;
+  --neutral-950: #0f1419;
+  --brand-cyan-400: #38c3d9;
+  --brand-cyan-500: #13adc7;
+  --brand-cyan-600: #13a3bd;
+  --brand-teal-500: #0e7c91;
+  --brand-teal-600: #0a6e82;
+  --brand-blue-500: #0366d6;
+  --brand-purple-400: #a97ae8;
+  --brand-purple-500: #945dd6;
+  --brand-purple-600: #745cb7;
+  --brand-orange-500: #e37046;
+  --brand-orange-600: #f46837;
+
+  /* Semantic roles */
+  --bg-canvas: var(--neutral-0);
+  --bg-subtle: var(--neutral-100);
+  --bg-surface: var(--neutral-0);
+  --bg-elevated: var(--neutral-0);
+  --bg-inset: var(--neutral-150);
+  --bg-overlay: rgb(0 0 0 / 40%);
+  --text-primary: #24292e;
+  --text-secondary: var(--neutral-500);
+  --text-muted: var(--neutral-400);
+  --text-inverse: var(--neutral-0);
+  --text-on-overlay: var(--neutral-0);
+  --border-subtle: var(--neutral-200);
+  --border-strong: var(--neutral-300);
+  --border-muted: rgb(131 141 147 / 50%);
+  --accent-primary: var(--brand-cyan-500);
+  --accent-primary-hover: var(--brand-cyan-600);
+  --accent-primary-contrast: var(--neutral-0);
+  --accent-secondary: var(--brand-purple-500);
+  --accent-secondary-hover: var(--brand-purple-600);
+  --accent-warn: var(--brand-orange-500);
+  --accent-warn-hover: var(--brand-orange-600);
+  --accent-warn-contrast: var(--neutral-950);
+  --link: var(--brand-teal-500);
+  --link-hover: var(--brand-teal-600);
+  --link-strong: var(--brand-blue-500);
+  --focus-ring: var(--neutral-600);
+  --theme-transition-duration: 120ms;
+  --theme-transition-easing: ease;
+  --shadow-elevated: 0 4px 24px rgb(0 0 0 / 12%), 0 1px 4px rgb(0 0 0 / 8%);
+
+  /* Legacy aliases for phased migration */
+  --color-black: var(--text-primary);
+  --color-gray-light: var(--border-strong);
+  --color-gray: var(--text-muted);
+  --color-gray-dark: var(--text-secondary);
+  --color-gray-opaque: var(--border-muted);
+  --color-gray-hover: var(--neutral-600);
+  --color-light-gray: var(--border-subtle);
+  --color-azure: var(--accent-primary);
+  --color-azure-hover: var(--accent-primary-hover);
+  --color-teal: var(--link);
+  --color-teal-hover: var(--link-hover);
+  --color-blue: var(--link-strong);
+  --color-lighter-blue: var(--border-subtle);
+  --color-light-blue: var(--bg-subtle);
+  --color-light-blue-hover: var(--bg-inset);
+  --color-purple: var(--accent-secondary);
+  --color-purple-hover: var(--accent-secondary-hover);
+  --color-orange: var(--accent-warn);
+  --color-orange-bright: var(--accent-warn-hover);
   --layout-width: 1005px;
   --layout-width-wide: 1200px;
+}
+
+body.dark-mode {
+  color-scheme: dark;
+
+  --bg-canvas: #0c1116;
+  --bg-subtle: #141b22;
+  --bg-surface: #1c252f;
+  --bg-elevated: #24303b;
+  --bg-inset: #10161d;
+  --bg-overlay: rgb(3 6 10 / 72%);
+  --text-primary: #edf3f7;
+  --text-secondary: #c0cad3;
+  --text-muted: #97a5b1;
+  --text-inverse: var(--neutral-950);
+  --text-on-overlay: var(--neutral-0);
+  --border-subtle: #4d5d6a;
+  --border-strong: #6b7d8a;
+  --border-muted: rgb(192 202 211 / 48%);
+  --accent-primary: #3fc7dc;
+  --accent-primary-hover: #72d9e8;
+  --accent-primary-contrast: var(--neutral-950);
+  --accent-secondary: var(--brand-purple-400);
+  --accent-secondary-hover: #c29af2;
+  --accent-warn: #f28a61;
+  --accent-warn-hover: #ff9b74;
+  --link: #38c3d9;
+  --link-hover: #84dbeb;
+  --link-strong: #78b4ff;
+  --focus-ring: #8fdcf0;
+  --shadow-elevated: 0 8px 28px rgb(0 0 0 / 38%), 0 2px 8px rgb(0 0 0 / 24%);
+
+  /* Legacy aliases — must be re-declared here so they resolve against
+     body.dark-mode's semantic tokens instead of :root's light ones. */
+  --color-black: var(--text-primary);
+  --color-gray-light: var(--border-strong);
+  --color-gray: var(--text-muted);
+  --color-gray-dark: var(--text-secondary);
+  --color-gray-opaque: var(--border-muted);
+  --color-gray-hover: #c0cad3;
+  --color-light-gray: var(--border-subtle);
+  --color-azure: var(--accent-primary);
+  --color-azure-hover: var(--accent-primary-hover);
+  --color-teal: var(--link);
+  --color-teal-hover: var(--link-hover);
+  --color-blue: var(--link-strong);
+  --color-lighter-blue: var(--border-subtle);
+  --color-light-blue: var(--bg-subtle);
+  --color-light-blue-hover: var(--bg-inset);
+  --color-purple: var(--accent-secondary);
+  --color-purple-hover: var(--accent-secondary-hover);
+  --color-orange: var(--accent-warn);
+  --color-orange-bright: var(--accent-warn-hover);
 }
 
 html {
@@ -36,7 +149,23 @@ body {
   font-family: var(--font-base);
   font-weight: 400;
   line-height: 1.5;
-  color: var(--color-black);
+  color: var(--text-primary);
+  background-color: var(--bg-canvas);
+}
+
+/*
+ * Theme-switch transition — opt-in via the .theme-transition utility class.
+ *
+ * Components that need a smooth background/border crossfade during a theme
+ * change should add this class to their root element.  Keeping it opt-in
+ * prevents non-local CSS surprises and avoids blanket compositor-layer cost.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  :where(.theme-transition) {
+    transition-property: background-color, border-color, outline-color;
+    transition-duration: var(--theme-transition-duration);
+    transition-timing-function: var(--theme-transition-easing);
+  }
 }
 
 html,
@@ -54,7 +183,7 @@ input:focus,
 select:focus,
 textarea:focus,
 a:focus {
-  outline: 2px dotted var(--color-gray-hover);
+  outline: 2px dotted var(--focus-ring);
   outline-offset: 5px;
 }
 
@@ -72,16 +201,16 @@ body:not(.user-is-tabbing) a:focus {
 
 body.user-is-tabbing .btn-with-focus {
   &:focus {
-    color: #fff;
-    background-color: var(--color-orange);
-    border-color: var(--color-orange);
+    color: var(--accent-warn-contrast);
+    background-color: var(--accent-warn);
+    border-color: var(--accent-warn);
     outline: none;
   }
 
   &--white:focus {
-    color: var(--color-black);
-    background: #fff;
-    border-color: #fff;
+    color: var(--text-primary);
+    background: var(--bg-surface);
+    border-color: var(--bg-surface);
   }
 }
 

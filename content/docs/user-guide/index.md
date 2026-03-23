@@ -262,7 +262,7 @@ _Luigi_, etc.
 
 </details>
 
-<infocard title="lakeFS" logo="/img/lakefs.svg" href="https://docs.lakefs.io/latest/" cta="Explore lakeFS">
+<infocard title="lakeFS" logo="/img/lakefs.svg" logomode="mask" href="https://docs.lakefs.io/latest/" cta="Explore lakeFS">
 
 [lakeFS](https://docs.lakefs.io/) is a Git-like data version control system for
 large-scale data lakes and object stores (such as S3, GCS, and Azure), designed

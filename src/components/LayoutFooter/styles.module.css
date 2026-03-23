@@ -1,8 +1,20 @@
 .wrapper {
+  --footer-bg: #40364d;
+  --footer-heading: rgb(255 255 255 / 33%);
+  --footer-text: rgb(255 255 255 / 75%);
+  --footer-text-hover: #fff;
+
   @apply z-10;
 
   width: 100%;
-  background-color: #40364d;
+  background-color: var(--footer-bg);
+}
+
+:global(body.dark-mode) .wrapper {
+  --footer-bg: #111820;
+  --footer-heading: rgb(237 243 247 / 56%);
+  --footer-text: rgb(237 243 247 / 72%);
+  --footer-text-hover: rgb(237 243 247 / 96%);
 }
 
 .div {
@@ -98,8 +110,7 @@
 }
 
 .heading {
-  opacity: 0.33;
-  color: #fff;
+  color: var(--footer-heading);
   font-size: 12px;
   line-height: 24px;
   font-weight: 500;
@@ -119,15 +130,20 @@
   @apply active;
   @apply focus;
 
+  appearance: none;
   display: flex;
   align-items: center;
   text-align: left;
   font-size: 18px;
   line-height: 30px;
-  color: rgb(255 255 255 / 75%);
+  color: var(--footer-text);
   text-decoration: none;
   letter-spacing: 0.02em;
   padding: 4px 0;
+  border: 0;
+  background: transparent;
+  font-family: inherit;
+  cursor: pointer;
 
   @media screen(mdMax) {
     font-size: 16px;
@@ -135,7 +151,7 @@
   }
 
   &:hover {
-    color: #fff;
+    color: var(--footer-text-hover);
   }
 }
 
@@ -179,7 +195,7 @@
 .companyLabel {
   font-size: 18px;
   line-height: 30px;
-  color: rgb(255 255 255 / 75%);
+  color: var(--footer-text);
   display: flex;
   align-items: center;
   justify-content: center;

@@ -6,9 +6,14 @@ import Link from '../../Link'
 
 import * as styles from './styles.module.css'
 
-export const HeaderBranding = () => (
+interface HeaderBrandingProps {
+  onClick?: () => void
+}
+
+export const HeaderBranding: React.FC<HeaderBrandingProps> = ({ onClick }) => (
   <>
     <Link
+      onClick={onClick}
       href={mainSiteUrls.home}
       className={cn(styles.logoLink, 'mr-auto')}
       title="DVC"

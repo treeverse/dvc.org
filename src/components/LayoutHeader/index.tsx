@@ -40,7 +40,7 @@ const LayoutHeader: React.FC<ILayoutModifiable> = ({ modifiers }) => {
           )}
           wide
         >
-          <HeaderBranding />
+          <HeaderBranding onClick={handleClose} />
           <Nav opened={opened} onToggle={handleToggle} onClose={handleClose} />
         </LayoutWidthContainer>
       </header>

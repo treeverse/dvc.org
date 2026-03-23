@@ -1,12 +1,10 @@
 import cn from 'classnames'
 import { useEffect, useRef } from 'react'
 
-import { mainSiteUrls } from '../../../consts.js'
-import { ReactComponent as LogoSVG } from '../../../images/dvc_by_lakefs.svg'
 import { logEvent } from '../../../utils/front/plausible'
 import HamburgerIcon from '../../HamburgerIcon'
-import Link from '../../Link'
 import PseudoButton from '../../PseudoButton'
+import ThemeSwitcher from '../ThemeSwitcher'
 
 import LinkItems from './LinkItems'
 import SocialIcons from './SocialIcons'
@@ -53,17 +51,8 @@ const Nav: React.FC<NavProps> = ({ opened, onToggle, onClose }) => {
         className={cn(styles.wrapper, opened && styles.opened)}
         aria-label="Main navigation"
       >
-        <div className={styles.mobileLogoRow}>
-          <Link
-            onClick={onClose}
-            href={mainSiteUrls.home}
-            className={styles.mobileLogo}
-            aria-label="Home"
-          >
-            <LogoSVG />
-          </Link>
-        </div>
         <LinkItems onItemClick={onClose} isMobileMenu={opened} />
+        <ThemeSwitcher className={styles.desktopThemeSwitcher} />
         <SocialIcons />
         <PseudoButton
           className={cn(styles.getStartedButton, 'btn-with-focus')}
@@ -77,14 +66,20 @@ const Nav: React.FC<NavProps> = ({ opened, onToggle, onClose }) => {
           Get Started
         </PseudoButton>
       </nav>
-      <button
-        className={cn(styles.hamburgerButton, opened && styles.hamburgerOpened)}
-        onClick={onToggle}
-        aria-expanded={opened}
-        aria-label={opened ? 'Close menu' : 'Open menu'}
-      >
-        <HamburgerIcon opened={opened} />
-      </button>
+      <div className={styles.mobileControls}>
+        <ThemeSwitcher className={styles.mobileThemeSwitcher} />
+        <button
+          className={cn(
+            styles.hamburgerButton,
+            opened && styles.hamburgerOpened
+          )}
+          onClick={onToggle}
+          aria-expanded={opened}
+          aria-label={opened ? 'Close menu' : 'Open menu'}
+        >
+          <HamburgerIcon opened={opened} />
+        </button>
+      </div>
     </>
   )
 }

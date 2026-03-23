@@ -39,27 +39,27 @@
   line-height: 26px;
   font-weight: 400;
   text-decoration: none;
-  color: var(--color-gray-dark);
+  color: var(--docs-toc-text);
 
   svg {
     display: inline-block;
   }
 
   &:hover {
-    color: var(--color-black);
+    color: var(--docs-toc-text-hover);
 
     @media screen(xsMax) {
-      color: var(--color-gray-hover);
+      color: var(--docs-toc-text-active);
     }
   }
 
   &.active {
-    color: var(--color-gray-hover);
+    color: var(--docs-toc-text-active);
     font-weight: 500;
   }
 
   &.current {
-    color: var(--color-black);
+    color: var(--docs-toc-text-current);
     font-weight: 600;
   }
 }
@@ -70,6 +70,8 @@
   width: 12px;
   height: 12px;
   margin-left: 2px;
+  color: currentcolor;
+  stroke: currentcolor;
   opacity: 0.6;
   transition: opacity 0.15s ease;
 }
@@ -84,7 +86,7 @@
 }
 
 .specialIcon {
-  color: var(--color-gray-dark);
+  color: var(--docs-toc-text);
   position: absolute;
   width: 0.65rem;
   height: 0.65rem;
@@ -93,11 +95,11 @@
 }
 
 .sectionLink.active .specialIcon {
-  color: var(--color-gray-hover);
+  color: var(--docs-toc-text-active);
 }
 
 .sectionLink.current .specialIcon {
-  color: var(--color-black);
+  color: var(--docs-toc-text-current);
 }
 
 .sidebarDefaultBullet {
@@ -111,19 +113,19 @@
   border: solid currentcolor;
   border-width: 0 1.5px 1.5px 0;
   background: transparent;
-  color: var(--color-gray-dark);
+  color: var(--docs-toc-text);
   transform: rotate(-45deg);
   transition:
     transform 0.2s ease,
     color 0.2s ease;
 
   &:focus {
-    outline-color: var(--color-gray-light);
-    outline-offset: 0;
+    outline-color: var(--focus-ring);
+    outline-offset: 2px;
   }
 
   &:hover {
-    color: var(--color-gray-hover);
+    color: var(--docs-toc-text-active);
   }
 
   &.active {
@@ -131,7 +133,7 @@
   }
 
   &.currentBullet {
-    color: var(--color-black);
+    color: var(--docs-toc-text-current);
   }
 
   &.sidebarLeafBullet {

@@ -3,10 +3,10 @@
   --underline-offset: 3px;
 
   position: relative;
-  text-decoration: underline dotted var(--color-gray-light);
+  text-decoration: underline dotted var(--docs-link);
   text-underline-offset: var(--underline-offset);
   text-decoration-thickness: var(--underline-thickness);
-  background-image: linear-gradient(var(--color-azure), var(--color-azure));
+  background-image: linear-gradient(var(--docs-link), var(--docs-link));
   background-position: 0 calc(100% - var(--underline-offset));
   background-repeat: no-repeat;
   background-size: 0 var(--underline-thickness);
@@ -32,7 +32,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgb(0 0 0 / 40%);
+  background-color: var(--bg-overlay);
 }
 
 .closeContainer {
@@ -44,7 +44,7 @@
   position: absolute;
   height: 23px;
   width: 2px;
-  background-color: var(--color-gray-dark);
+  background-color: var(--docs-text-secondary);
 
   &.first {
     transform: rotate(-45deg);
@@ -56,19 +56,29 @@
 }
 
 .modalContent {
+  composes: popovercontainer from '../shared.module.css';
   width: 80%;
   max-width: 400px;
   padding: 16px 20px;
   border: none;
   border-radius: 8px;
-  background-color: #fff;
-  box-shadow:
-    0 4px 24px rgb(0 0 0 / 12%),
-    0 1px 4px rgb(0 0 0 / 8%);
+  color: var(--docs-text-primary);
+  background-color: var(--docs-tooltip-bg);
+  box-shadow: var(--docs-tooltip-shadow);
 }
 
 .modalHeader {
   font-size: 16px;
   font-weight: 600;
   margin-bottom: 6px;
+  color: var(--docs-text-primary);
+}
+
+:global(body.dark-mode) .highlightedText {
+  color: var(--docs-link);
+  text-decoration-color: color-mix(in srgb, var(--docs-link) 50%, transparent);
+}
+
+.modalBody {
+  composes: popoverbody from '../shared.module.css';
 }

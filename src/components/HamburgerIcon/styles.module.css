@@ -7,7 +7,7 @@
 .line {
   width: 22px;
   height: 4px;
-  background-color: #2e3137;
+  background-color: currentcolor;
   border-radius: 10px;
   margin: 5px 0;
   transition: 0.4s;

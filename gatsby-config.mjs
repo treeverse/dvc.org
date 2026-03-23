@@ -13,13 +13,14 @@ import './src/config/prismjs/dvctable.js'
 import simpleLinkerTerms from './content/linked-terms.js'
 import redirectsMiddleware from './server/redirect.js'
 import customYoutubeTransformer from './src/config/custom-yt-embedder.js'
+import makeGitHubMarkdownCssUseThemeAttribute from './src/config/postcss-theme-attribute.js'
 import sentryConfig from './src/config/sentry.js'
 
 const require = createRequire(import.meta.url)
-const __dirname = import.meta.dirname
+const rootDir = import.meta.dirname
 
 const linkIcon = fs
-  .readFileSync(path.join(__dirname, 'src', 'images', 'linkIcon.svg'))
+  .readFileSync(path.join(rootDir, 'src', 'images', 'linkIcon.svg'))
   .toString()
 
 const imageMaxWidth = 700
@@ -51,7 +52,8 @@ const sentry = true
 const postCssPlugins = [
   tailwindNesting(postcssNested),
   autoprefixer,
-  tailwindcss
+  tailwindcss,
+  makeGitHubMarkdownCssUseThemeAttribute
 ]
 
 const plugins = [
