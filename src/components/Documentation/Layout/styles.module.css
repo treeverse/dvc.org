@@ -100,9 +100,10 @@
   z-index: 2;
   height: 100%;
 
-  @media screen(xsMax) {
+  @media screen(smMax) {
     padding: 0 15px;
     background-color: var(--docs-content-bg);
+    z-index: 11; /* above footer (z-10) so fixed hamburger stays visible */
   }
 
   &::before {
@@ -119,7 +120,7 @@
     transition: background-color var(--theme-transition-duration)
       var(--theme-transition-easing);
 
-    @media screen(xsMax) {
+    @media screen(smMax) {
       display: none;
     }
   }
@@ -138,7 +139,7 @@
     transition: background-color var(--theme-transition-duration)
       var(--theme-transition-easing);
 
-    @media screen(xsMax) {
+    @media screen(smMax) {
       display: none;
     }
   }
@@ -279,7 +280,7 @@
 .backdrop {
   display: none;
 
-  @media screen(xsMax) {
+  @media screen(smMax) {
     display: block;
     opacity: 0;
     pointer-events: none;
@@ -298,16 +299,21 @@
 }
 
 .side {
-  @apply flex flex-col w-72
-    sm:py-0;
+  @apply flex flex-col sm:py-0;
 
   background-color: var(--docs-sidebar-bg);
   flex-shrink: 0;
   position: fixed;
   z-index: 2;
-  bottom: 0;
+  top: 0;
   left: 0;
-  box-shadow: var(--docs-sidebar-shadow);
+  bottom: 0;
+  width: 100vw;
+
+  @media (width >= 480px) {
+    width: 420px;
+  }
+
   transform: translateX(-110%);
   transition:
     transform 0.35s ease,
@@ -318,46 +324,18 @@
     transform: translateX(0);
   }
 
-  @media screen(xs) {
+  @media screen(md) {
     position: static;
     transform: none;
-    box-shadow: none;
     width: 280px;
+    inset: auto;
   }
 }
 
 .innerSidebar {
-  @apply flex flex-col h-screen pt-14 xs:sticky xs:h-auto xs:max-h-screen xs:top-0 z-20;
-}
+  @apply flex flex-col h-screen pt-14 md:sticky md:h-auto md:max-h-screen md:top-0 z-20;
 
-.sideToggle {
-  display: none;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  z-index: 3;
-  left: 8px;
-  bottom: 20px;
-  width: 45px;
-  height: 45px;
-  border: none;
-  border-radius: 50%;
-  background-color: var(--docs-floating-control-bg);
-  color: var(--docs-text-primary);
-  box-shadow: var(--docs-floating-control-shadow);
-  transition: transform 0.3s ease;
-
-  &.opened {
-    transform: translateX(calc(100vw - 60px));
-  }
-
-  @media screen(xsMax) {
-    display: flex;
-
-    > * {
-      transform: scale(0.75);
-    }
-  }
+  overflow-y: auto;
 }
 
 .content {
@@ -369,7 +347,7 @@
   transition: background-color var(--theme-transition-duration)
     var(--theme-transition-easing);
 
-  @media screen(xsMax) {
+  @media screen(smMax) {
     max-width: 100%;
   }
 }

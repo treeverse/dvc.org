@@ -1,6 +1,5 @@
 import cn from 'classnames'
-import { navigate } from 'gatsby'
-import { useEffect, useRef, useCallback, PropsWithChildren } from 'react'
+import { PropsWithChildren } from 'react'
 
 import 'github-markdown-css/github-markdown.css'
 import useCustomYtEmbeds from '../../../../utils/front/useCustomYtEmbeds'
@@ -13,30 +12,12 @@ import * as styles from './styles.module.css'
 import * as themeStyles from './theme.module.css'
 import { useArgsTargetFlash } from './useArgsTargetFlash'
 
-const isInsideCodeBlock = (node: Element): boolean => {
-  while (node?.parentNode) {
-    if (node.tagName === 'PRE') {
-      return true
-    }
-
-    if (node.tagName === 'ARTICLE') {
-      return false
-    }
-
-    node = node.parentNode as Element
-  }
-
-  return false
-}
-
 interface IMainProps {
   githubLink: string
   tutorials?: { [type: string]: string }
   prev?: string
   next?: string
 }
-
-type RawTouchHandler = (this: Document, e: TouchEvent) => void
 
 const Main: React.FC<PropsWithChildren<IMainProps>> = ({
   children,
@@ -45,43 +26,8 @@ const Main: React.FC<PropsWithChildren<IMainProps>> = ({
   tutorials,
   githubLink
 }) => {
-  const touchstartXRef = useRef(0)
-  const touchendXRef = useRef(0)
-  const isCodeBlockRef = useRef(false)
   useArgsTargetFlash()
   useCustomYtEmbeds()
-  const handleSwipeGesture = useCallback(() => {
-    if (isCodeBlockRef.current) return
-
-    if (next && touchstartXRef.current - touchendXRef.current > 100) {
-      navigate(next)
-    }
-
-    if (prev && touchendXRef.current - touchstartXRef.current > 100) {
-      navigate(prev)
-    }
-  }, [prev, next])
-  const onTouchStart = useCallback<RawTouchHandler>(e => {
-    isCodeBlockRef.current = isInsideCodeBlock(e.target as Element)
-    touchstartXRef.current = e.changedTouches[0].screenX
-  }, [])
-  const onTouchEnd = useCallback<RawTouchHandler>(
-    e => {
-      touchendXRef.current = e.changedTouches[0].screenX
-      handleSwipeGesture()
-    },
-    [handleSwipeGesture]
-  )
-
-  useEffect(() => {
-    document.addEventListener('touchstart', onTouchStart, { passive: true })
-    document.addEventListener('touchend', onTouchEnd, { passive: true })
-
-    return (): void => {
-      document.removeEventListener('touchstart', onTouchStart)
-      document.removeEventListener('touchend', onTouchEnd)
-    }
-  }, [onTouchEnd, onTouchStart])
 
   return (
     <div className={styles.content} id="markdown-root">

@@ -44,10 +44,24 @@
 }
 
 .desktopThemeSwitcher {
-  margin-left: auto;
+  margin-right: 8px;
 
   @media screen(smMax) {
     display: none;
+  }
+}
+
+.mobileControlsLeft {
+  display: none;
+
+  @media screen(smMax) {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 4px;
+    height: 56px;
+    z-index: 999;
   }
 }
 
@@ -57,11 +71,11 @@
   @media screen(smMax) {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 2px;
     margin-left: auto;
     position: fixed;
     top: 0;
-    right: 16px;
+    right: 8px;
     height: 56px;
     z-index: 999;
   }
@@ -111,6 +125,7 @@
   position: relative;
   border-radius: 100px;
   z-index: 1;
+  margin-left: auto;
   padding: 14px 20px;
   font-weight: 500;
   font-size: 16px;

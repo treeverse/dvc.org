@@ -39,7 +39,12 @@ const menuData: IMenuData = {
       ],
       analyticsKey: 'dataVersionControl'
     },
-    { href: docUrls.home, eventType: 'doc', text: 'Doc' },
+    {
+      href: docUrls.home,
+      eventType: 'doc',
+      text: 'Doc',
+      className: 'hideOnMdMax'
+    },
     { href: mainSiteUrls.blog, eventType: 'blog', text: 'Blog' },
     { href: externalUrls.course, eventType: 'course', text: 'Course' },
     {

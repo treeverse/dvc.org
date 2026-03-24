@@ -11,21 +11,11 @@
   flex-direction: row;
   display: flex;
   padding: 0;
-  margin: 0 16px 0 4px;
+  margin: 0 2px;
   list-style: none;
 
-  @media screen(xl) {
-    margin: 0 24px 0 12px;
-  }
-
-  @media screen(mdMax) {
+  @media (width <= 850px) {
     display: none;
-  }
-
-  @media screen(smMax) {
-    display: flex;
-    flex-direction: column;
-    margin: 0;
   }
 }
 
@@ -82,16 +72,6 @@
   width: 24px;
   height: 24px;
   color: currentcolor;
-
-  @media screen(mdMax) {
-    width: 20px;
-    height: 20px;
-  }
-
-  @media screen(smMax) {
-    width: 24px;
-    height: 24px;
-  }
 }
 
 .socialLabel {

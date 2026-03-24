@@ -18,7 +18,7 @@
 
 .linkItem {
   position: relative;
-  margin-left: 12px;
+  margin-left: 6px;
 
   &:first-of-type {
     margin: 0;
@@ -97,4 +97,10 @@
 
 button.link:focus {
   color: var(--nav-link-text);
+}
+
+:global(.hideOnMdMax) {
+  @media screen(mdMax) {
+    display: none;
+  }
 }

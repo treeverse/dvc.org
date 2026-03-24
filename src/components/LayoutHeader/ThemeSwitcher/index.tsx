@@ -51,8 +51,8 @@ const ThemeSwitcher: React.FC<IThemeSwitcherProps> = ({ className }) => {
       <svg
         className={styles.morphIcon}
         viewBox="0 0 24 24"
-        width="20"
-        height="20"
+        width="24"
+        height="24"
         fill="none"
         aria-hidden="true"
       >

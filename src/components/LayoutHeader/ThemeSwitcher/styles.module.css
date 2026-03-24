@@ -48,6 +48,12 @@
     opacity: 0;
     z-index: 10;
     transition: opacity 0.15s ease;
+
+    @media screen(smMax) {
+      left: auto;
+      right: 0;
+      transform: none;
+    }
   }
 
   &:hover::after,

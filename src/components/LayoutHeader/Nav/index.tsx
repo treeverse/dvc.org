@@ -1,5 +1,5 @@
 import cn from 'classnames'
-import { useEffect, useRef } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 import { logEvent } from '../../../utils/front/plausible'
 import HamburgerIcon from '../../HamburgerIcon'
@@ -17,20 +17,57 @@ interface NavProps {
 }
 
 const Nav: React.FC<NavProps> = ({ opened, onToggle, onClose }) => {
+  const [docsSidebarOpen, setDocsSidebarOpen] = useState(false)
+
+  // Listen for docs sidebar state changes to sync the hamburger icon
   useEffect(() => {
-    document.body.classList.toggle(styles.hiddenScrollbar, opened)
+    const handler = (e: Event) => {
+      const detail = (e as CustomEvent).detail
+      setDocsSidebarOpen(detail?.open ?? false)
+    }
+    document.addEventListener('docs-sidebar-state', handler)
+    return () => document.removeEventListener('docs-sidebar-state', handler)
+  }, [])
+
+  const isDocsPage = useCallback(
+    () => document.body.hasAttribute('data-docs-page'),
+    []
+  )
+
+  const handleToggle = useCallback(() => {
+    if (isDocsPage()) {
+      document.dispatchEvent(new Event('docs-sidebar-toggle'))
+      return
+    }
+    onToggle()
+  }, [onToggle, isDocsPage])
+
+  const handleClose = useCallback(() => {
+    if (isDocsPage() && docsSidebarOpen) {
+      document.dispatchEvent(new Event('docs-sidebar-toggle'))
+      return
+    }
+    onClose()
+  }, [onClose, isDocsPage, docsSidebarOpen])
+
+  // On doc pages, the hamburger reflects the docs sidebar state.
+  // On other pages, it reflects the site nav state.
+  const hamburgerOpened = docsSidebarOpen || opened
+
+  useEffect(() => {
+    document.body.classList.toggle(styles.hiddenScrollbar, hamburgerOpened)
     return () => {
       document.body.classList.remove(styles.hiddenScrollbar)
     }
-  }, [opened])
+  }, [hamburgerOpened])
 
-  const onCloseRef = useRef(onClose)
+  const onCloseRef = useRef(handleClose)
   useEffect(() => {
-    onCloseRef.current = onClose
-  }, [onClose])
+    onCloseRef.current = handleClose
+  }, [handleClose])
 
   useEffect(() => {
-    if (!opened) return
+    if (!hamburgerOpened) return
 
     const ac = new AbortController()
 
@@ -43,7 +80,7 @@ const Nav: React.FC<NavProps> = ({ opened, onToggle, onClose }) => {
     )
 
     return () => ac.abort()
-  }, [opened])
+  }, [hamburgerOpened])
 
   return (
     <>
@@ -52,8 +89,8 @@ const Nav: React.FC<NavProps> = ({ opened, onToggle, onClose }) => {
         aria-label="Main navigation"
       >
         <LinkItems onItemClick={onClose} isMobileMenu={opened} />
-        <ThemeSwitcher className={styles.desktopThemeSwitcher} />
         <SocialIcons />
+        <ThemeSwitcher className={styles.desktopThemeSwitcher} />
         <PseudoButton
           className={cn(styles.getStartedButton, 'btn-with-focus')}
           href="/start"
@@ -66,19 +103,21 @@ const Nav: React.FC<NavProps> = ({ opened, onToggle, onClose }) => {
           Get Started
         </PseudoButton>
       </nav>
-      <div className={styles.mobileControls}>
-        <ThemeSwitcher className={styles.mobileThemeSwitcher} />
+      <div className={styles.mobileControlsLeft}>
         <button
           className={cn(
             styles.hamburgerButton,
-            opened && styles.hamburgerOpened
+            hamburgerOpened && styles.hamburgerOpened
           )}
-          onClick={onToggle}
-          aria-expanded={opened}
-          aria-label={opened ? 'Close menu' : 'Open menu'}
+          onClick={handleToggle}
+          aria-expanded={hamburgerOpened}
+          aria-label={hamburgerOpened ? 'Close menu' : 'Open menu'}
         >
-          <HamburgerIcon opened={opened} />
+          <HamburgerIcon opened={hamburgerOpened} />
         </button>
+      </div>
+      <div className={styles.mobileControls}>
+        <ThemeSwitcher className={styles.mobileThemeSwitcher} />
       </div>
     </>
   )

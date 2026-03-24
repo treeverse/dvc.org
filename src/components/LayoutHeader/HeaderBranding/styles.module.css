@@ -11,6 +11,17 @@
     width: 100%;
     height: inherit;
   }
+
+  @media screen(smMax) {
+    margin-left: 40px;
+    max-width: calc(100vw - 152px);
+
+    svg {
+      width: auto;
+      max-width: 100%;
+      height: auto;
+    }
+  }
 }
 
 .logo {

@@ -17,16 +17,10 @@
 .sections {
   margin-bottom: 25px;
   margin-top: 10px;
-
-  @media screen(xsMax) {
-    min-width: auto;
-  }
 }
 
 .sectionLinks {
-  @media screen(smMax) {
-    position: relative;
-  }
+  position: relative;
 }
 
 .sectionLink {
@@ -37,20 +31,29 @@
   padding: 0 0 5px 15px;
   font-size: 18px;
   line-height: 26px;
+
+  @media screen(smMax) {
+    min-height: 44px;
+    padding: 10px 8px 10px 36px;
+    font-size: 20px;
+    line-height: 28px;
+  }
+
   font-weight: 400;
   text-decoration: none;
   color: var(--docs-toc-text);
+  border-radius: 6px;
 
   svg {
     display: inline-block;
   }
 
   &:hover {
-    color: var(--docs-toc-text-hover);
+    color: var(--docs-toc-text-active);
+  }
 
-    @media screen(xsMax) {
-      color: var(--docs-toc-text-active);
-    }
+  &:active {
+    background-color: var(--docs-surface-hover-bg);
   }
 
   &.active {
@@ -92,6 +95,12 @@
   height: 0.65rem;
   top: 0.5rem;
   left: -0.08rem;
+
+  @media screen(smMax) {
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px;
+  }
 }
 
 .sectionLink.active .specialIcon {
@@ -107,17 +116,45 @@
   left: 0;
   top: 10px;
   display: block;
-  width: 8px;
-  height: 8px;
+  width: 12px;
+  height: 12px;
+
+  @media screen(smMax) {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 32px;
+    height: 100%;
+    transform: none;
+  }
+
   padding: 0;
-  border: solid currentcolor;
-  border-width: 0 1.5px 1.5px 0;
+  border: none;
   background: transparent;
   color: var(--docs-toc-text);
-  transform: rotate(-45deg);
   transition:
     transform 0.2s ease,
     color 0.2s ease;
+
+  /* Use an SVG-style approach with ::after for a stable chevron */
+  &::after {
+    content: '';
+    position: absolute;
+    top: 1px;
+    left: 2px;
+    width: 8px;
+    height: 8px;
+    border: solid currentcolor;
+    border-width: 0 1.5px 1.5px 0;
+    transform: rotate(-45deg);
+    transition: transform 0.2s ease;
+
+    @media screen(smMax) {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+  }
 
   &:focus {
     outline-color: var(--focus-ring);
@@ -128,8 +165,16 @@
     color: var(--docs-toc-text-active);
   }
 
-  &.active {
+  &.active::after {
     transform: rotate(45deg);
+    top: 0;
+    left: 1px;
+
+    @media screen(smMax) {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
   }
 
   &.currentBullet {
@@ -137,11 +182,34 @@
   }
 
   &.sidebarLeafBullet {
-    width: 4px;
-    height: 4px;
-    border: none;
-    border-radius: 999px;
-    background: currentcolor;
-    transform: unset;
+    width: 12px;
+    height: 12px;
+
+    @media screen(smMax) {
+      width: 12px;
+      height: 12px;
+      top: 50%;
+      left: 4px;
+      bottom: auto;
+      transform: translateY(-50%);
+    }
+
+    &::after {
+      content: '';
+      width: 4px;
+      height: 4px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: none;
+      border-radius: 999px;
+      background: currentcolor;
+    }
+  }
+
+  &.sidebarLeafBullet.active::after {
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
   }
 }
