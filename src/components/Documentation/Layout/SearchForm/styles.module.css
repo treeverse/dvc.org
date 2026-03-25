@@ -18,14 +18,8 @@
   --docsearch-simple-text-bg: #f8f8f8;
 
   height: 60px;
-  padding-top: 10px;
+  padding: 10px 12px 0;
   z-index: 10;
-
-  @media screen(xsMax) {
-    position: relative;
-    padding: 16px 20px 0;
-    top: 0;
-  }
 
   input {
     height: 40px;

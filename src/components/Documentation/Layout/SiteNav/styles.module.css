@@ -1,8 +1,9 @@
 .siteNav {
+  display: none;
   border-bottom: 1px solid var(--docs-border-subtle);
 
-  @media screen(md) {
-    display: none;
+  @media screen(smMax) {
+    display: block;
   }
 }
 
@@ -12,7 +13,6 @@
   align-items: center;
   gap: 0;
   padding: 4px 8px;
-  overflow: hidden;
 }
 
 .link {
@@ -20,8 +20,8 @@
   align-items: center;
   flex-shrink: 0;
   gap: 3px;
-  padding: 8px clamp(8px, 2.5vw, 14px);
-  font-size: clamp(13px, 4vw, 16px);
+  padding: 8px clamp(4px, 2vw, 10px);
+  font-size: clamp(13px, 3.8vw, 15px);
   font-weight: 500;
   white-space: nowrap;
   color: var(--docs-text-secondary);
@@ -44,8 +44,6 @@
 }
 
 .chevron {
-  transition: transform 0.2s ease;
-
   .linkActive & {
     transform: rotate(180deg);
   }

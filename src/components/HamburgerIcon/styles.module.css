@@ -10,7 +10,7 @@
   background-color: currentcolor;
   border-radius: 10px;
   margin: 5px 0;
-  transition: 0.4s;
+  transition: 0.2s ease;
 
   .opened & {
     border-radius: 20px;

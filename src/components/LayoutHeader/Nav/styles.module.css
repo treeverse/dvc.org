@@ -32,9 +32,6 @@
     overscroll-behavior: contain;
     font-size: 20px;
     line-height: 24px;
-    transition:
-      opacity 0.25s ease,
-      visibility 0.25s;
 
     &.opened {
       visibility: visible;
@@ -104,12 +101,6 @@
     justify-content: center;
     background: transparent;
     outline: none;
-    transition:
-      0.5s all,
-      opacity 0.2s,
-      outline-offset 0s,
-      outline-width 0s,
-      outline-color 0s;
 
     &:hover {
       cursor: pointer;

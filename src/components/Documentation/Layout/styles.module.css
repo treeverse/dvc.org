@@ -2,7 +2,7 @@
   --docs-sidebar-bg: var(--bg-subtle);
   --docs-content-bg: #fff;
   --docs-surface-bg: #fff;
-  --docs-surface-hover-bg: var(--bg-subtle);
+  --docs-surface-hover-bg: color-mix(in srgb, var(--bg-subtle) 92%, #000);
   --docs-backdrop-bg: var(--bg-overlay);
   --docs-overlay-text: var(--text-on-overlay);
   --docs-sidebar-shadow: rgb(0 0 0 / 14%) 0 0 4px, rgb(0 0 0 / 28%) 0 4px 8px;
@@ -277,65 +277,72 @@
   );
 }
 
+.side {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--docs-sidebar-bg);
+  flex-shrink: 0;
+  width: 280px;
+  transition: background-color var(--theme-transition-duration)
+    var(--theme-transition-easing);
+
+  @media screen(smMax) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 2;
+    visibility: hidden;
+    transform: translateX(-100%);
+    transition:
+      transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+      visibility 0.3s;
+
+    @media (width >= 480px) {
+      width: 400px;
+      box-shadow: var(--docs-sidebar-shadow);
+    }
+
+    &.opened {
+      visibility: visible;
+      transform: translateX(0);
+    }
+
+    :global([data-resizing]) & {
+      transition: none;
+    }
+  }
+}
+
+.innerSidebar {
+  @apply flex flex-col sticky top-0 max-h-screen z-20 pt-14;
+
+  overflow: auto clip;
+}
+
 .backdrop {
   display: none;
 
   @media screen(smMax) {
     display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    background-color: var(--docs-backdrop-bg);
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.3s linear;
+    transition: opacity 0.3s;
 
     &.opened {
-      content: '';
-      position: fixed;
-      inset: 0;
-      z-index: 1;
       opacity: 1;
-      pointer-events: all;
-      background-color: var(--docs-backdrop-bg);
+      pointer-events: auto;
+    }
+
+    :global([data-resizing]) & {
+      transition: none;
     }
   }
-}
-
-.side {
-  @apply flex flex-col sm:py-0;
-
-  background-color: var(--docs-sidebar-bg);
-  flex-shrink: 0;
-  position: fixed;
-  z-index: 2;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 100vw;
-
-  @media (width >= 480px) {
-    width: 420px;
-  }
-
-  transform: translateX(-110%);
-  transition:
-    transform 0.35s ease,
-    background-color var(--theme-transition-duration)
-      var(--theme-transition-easing);
-
-  &.opened {
-    transform: translateX(0);
-  }
-
-  @media screen(md) {
-    position: static;
-    transform: none;
-    width: 280px;
-    inset: auto;
-  }
-}
-
-.innerSidebar {
-  @apply flex flex-col h-screen pt-14 md:sticky md:h-auto md:max-h-screen md:top-0 z-20;
-
-  overflow-y: auto;
 }
 
 .content {
@@ -356,7 +363,7 @@
   .container::before,
   .container::after,
   .side,
-  .content {
+  .backdrop {
     transition: none;
   }
 }
