@@ -104,7 +104,7 @@
     "title-case": "4.3.2",
     "tsconfig-paths-webpack-plugin": "4.2.0",
     "unified": "11.0.5",
-    "unist-util-visit": "5.0.0",
+    "unist-util-visit": "5.1.0",
     "upath": "2.0.1"
   },
   "devDependencies": {
