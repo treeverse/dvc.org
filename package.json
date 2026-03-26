@@ -39,7 +39,7 @@
   },
   "private": true,
   "dependencies": {
-    "@babel/plugin-transform-react-jsx": "7.27.1",
+    "@babel/plugin-transform-react-jsx": "7.28.6",
     "@reach/portal": "0.18.0",
     "@reach/skip-nav": "0.18.0",
     "@sentry/gatsby": "10.17.0",
@@ -71,7 +71,7 @@
     "gatsby-transformer-remark": "6.16.0",
     "gatsby-transformer-remark-frontmatter": "1.1.0",
     "gatsby-transformer-sharp": "5.16.0",
-    "github-markdown-css": "5.8.1",
+    "github-markdown-css": "5.9.0",
     "github-slugger": "2.0.0",
     "hast-util-select": "6.0.4",
     "hast-util-to-jsx-runtime": "2.3.6",
@@ -80,10 +80,10 @@
     "iso-url": "1.2.1",
     "isomorphic-fetch": "3.0.0",
     "lodash": "4.17.23",
-    "lucide-react": "0.545.0",
+    "lucide-react": "0.577.0",
     "nanoid": "5.1.6",
     "permissions-policy": "0.6.0",
-    "postcss": "8.5.6",
+    "postcss": "8.5.8",
     "postcss-nested": "7.0.2",
     "prismjs": "1.30.0",
     "promise-polyfill": "8.3.0",
@@ -108,9 +108,9 @@
     "upath": "2.0.1"
   },
   "devDependencies": {
-    "@babel/core": "7.28.4",
+    "@babel/core": "7.29.0",
     "@eslint/js": "10.0.1",
-    "@eslint/json": "1.0.1",
+    "@eslint/json": "1.1.0",
     "@types/gatsbyjs__reach-router": "2.0.5",
     "@types/hast": "3.0.4",
     "@types/lodash": "4.17.20",
@@ -123,23 +123,23 @@
     "eslint-import-resolver-typescript": "4.4.4",
     "eslint-plugin-import-x": "4.16.2",
     "eslint-plugin-jsx-a11y": "6.10.2",
-    "eslint-plugin-prettier": "5.5.4",
+    "eslint-plugin-prettier": "5.5.5",
     "eslint-plugin-react": "7.37.5",
     "eslint-plugin-react-hooks": "6.1.1",
     "gatsby-plugin-webpack-bundle-analyser-v2": "1.1.32",
     "gatsby-source-filesystem": "5.16.0",
     "globals": "17.4.0",
     "husky": "9.1.7",
-    "lint-staged": "16.2.3",
+    "lint-staged": "16.3.3",
     "nodemon": "3.1.10",
-    "prettier": "3.6.2",
+    "prettier": "3.8.1",
     "remark": "15.0.1",
     "remark-html": "16.0.1",
     "stylelint": "17.4.0",
     "stylelint-config-standard": "40.0.0",
     "typescript": "5.9.3",
     "typescript-eslint": "8.57.0",
-    "vitest": "4.0.18"
+    "vitest": "4.1.0"
   },
   "resolutions": {
     "css-tree": "3.2.1"
@@ -147,5 +147,5 @@
   "cacheDirectories": [
     "node_modules"
   ],
-  "packageManager": "yarn@4.10.3"
+  "packageManager": "yarn@4.12.0"
 }
