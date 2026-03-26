@@ -17,7 +17,7 @@
   "customManagers": [
     {
       "customType": "regex",
-      "fileMatch": ["^src/components/Link/index\\.tsx$"],
+      "managerFilePatterns": ["/^src/components/Link/index\\.tsx$/"],
       "matchStrings": [
         "'(?<currentValue>\\d+\\.\\d+\\.\\d+)'\\s*//\\s*renovate:\\s*datasource=(?<datasource>.*?)\\s+depName=(?<depName>.*?)\\s*$"
       ]
