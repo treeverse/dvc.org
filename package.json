@@ -81,7 +81,7 @@
     "isomorphic-fetch": "3.0.0",
     "lodash": "4.17.23",
     "lucide-react": "0.577.0",
-    "nanoid": "5.1.6",
+    "nanoid": "5.1.7",
     "permissions-policy": "0.6.0",
     "postcss": "8.5.8",
     "postcss-nested": "7.0.2",
@@ -110,7 +110,7 @@
   "devDependencies": {
     "@babel/core": "7.29.0",
     "@eslint/js": "10.0.1",
-    "@eslint/json": "1.1.0",
+    "@eslint/json": "1.2.0",
     "@types/gatsbyjs__reach-router": "2.0.5",
     "@types/hast": "3.0.4",
     "@types/lodash": "4.17.20",
@@ -118,7 +118,7 @@
     "@types/react": "19.2.14",
     "@types/react-collapse": "5.0.4",
     "@types/unist": "3.0.3",
-    "eslint": "10.0.3",
+    "eslint": "10.1.0",
     "eslint-config-prettier": "10.1.8",
     "eslint-import-resolver-typescript": "4.4.4",
     "eslint-plugin-import-x": "4.16.2",
@@ -130,16 +130,16 @@
     "gatsby-source-filesystem": "5.16.0",
     "globals": "17.4.0",
     "husky": "9.1.7",
-    "lint-staged": "16.3.3",
+    "lint-staged": "16.4.0",
     "nodemon": "3.1.10",
     "prettier": "3.8.1",
     "remark": "15.0.1",
     "remark-html": "16.0.1",
-    "stylelint": "17.4.0",
+    "stylelint": "17.6.0",
     "stylelint-config-standard": "40.0.0",
     "typescript": "5.9.3",
     "typescript-eslint": "8.57.0",
-    "vitest": "4.1.0"
+    "vitest": "4.1.2"
   },
   "resolutions": {
     "css-tree": "3.2.1"
@@ -147,5 +147,5 @@
   "cacheDirectories": [
     "node_modules"
   ],
-  "packageManager": "yarn@4.12.0"
+  "packageManager": "yarn@4.13.0"
 }
