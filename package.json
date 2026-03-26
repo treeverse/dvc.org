@@ -80,7 +80,7 @@
     "iso-url": "1.2.1",
     "isomorphic-fetch": "3.0.0",
     "lodash": "4.17.23",
-    "lucide-react": "0.577.0",
+    "lucide-react": "1.7.0",
     "nanoid": "5.1.7",
     "permissions-policy": "0.6.0",
     "postcss": "8.5.8",
