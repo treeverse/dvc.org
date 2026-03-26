@@ -1,20 +1,15 @@
 import path from 'path'
 
-let tooltipHTMLProcessor
-const getTooltipHTMLProcessor = async () => {
-  if (!tooltipHTMLProcessor) {
-    const { remark } = await import('remark')
-    const { default: recommended } = await import(
-      'remark-preset-lint-recommended'
-    )
-    const { default: remarkHtml } = await import('remark-html')
-    const { default: simpleLinkerTerms } = await import(
-      '../../content/linked-terms.js'
-    )
-    const { default: dvcLinker } = await import(
-      '../plugins/gatsby-remark-dvc-linker/index.js'
-    )
+import { remark } from 'remark'
+import remarkHtml from 'remark-html'
+import recommended from 'remark-preset-lint-recommended'
 
+import simpleLinkerTerms from '../../content/linked-terms.js'
+import dvcLinker from '../plugins/gatsby-remark-dvc-linker/index.js'
+
+let tooltipHTMLProcessor
+const getTooltipHTMLProcessor = () => {
+  if (!tooltipHTMLProcessor) {
     tooltipHTMLProcessor = remark()
       .use(recommended)
       .use(() => async tree => {
@@ -26,7 +21,7 @@ const getTooltipHTMLProcessor = async () => {
 }
 
 const processTooltip = async tooltip => {
-  const processor = await getTooltipHTMLProcessor()
+  const processor = getTooltipHTMLProcessor()
   const vfile = await processor.process(tooltip)
   return vfile.toString()
 }
