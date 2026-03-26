@@ -21,7 +21,6 @@
     "allowJs": true,
     "alwaysStrict": true,
     "noEmit": true,
-    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
       "@/static/*": ["./static/*"]
