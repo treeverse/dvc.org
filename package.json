@@ -113,7 +113,7 @@
     "@eslint/json": "1.2.0",
     "@types/gatsbyjs__reach-router": "2.0.5",
     "@types/hast": "3.0.4",
-    "@types/lodash": "4.17.20",
+    "@types/lodash": "4.17.24",
     "@types/promise-polyfill": "6.0.6",
     "@types/react": "19.2.14",
     "@types/react-collapse": "5.0.4",
