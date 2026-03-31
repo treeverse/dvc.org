@@ -18,7 +18,7 @@ const PROTOCOL_REGEXP = /^https?:\/\//
 const isRelative = (url: string): boolean => !PROTOCOL_REGEXP.test(url)
 const isMailto = (url: string): boolean => url.startsWith('mailto:')
 
-const VERSION = '3.67.0' // renovate
+const VERSION = '3.67.1' // renovate
 
 const ResultLinkComponent: React.FC<ILinkProps> = ({
   href,
