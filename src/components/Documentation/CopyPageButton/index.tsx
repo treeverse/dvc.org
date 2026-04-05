@@ -26,10 +26,27 @@ const CopyPageButton: React.FC<ICopyPageButtonProps> = ({ pagePath }) => {
     setCopyState('copying')
     setOpen(false)
     try {
-      const res = await fetch(markdownUrl)
-      if (!res.ok) throw new Error(res.statusText)
-      const text = await res.text()
-      await navigator.clipboard.writeText(text)
+      const textPromise = fetch(markdownUrl).then(res => {
+        if (!res.ok) throw new Error(res.statusText)
+        return res.text()
+      })
+
+      // Safari requires clipboard writes to start in the synchronous call
+      // stack of a user gesture. Using ClipboardItem with a Promise lets us
+      // begin the write synchronously while resolving content async.
+      if (
+        typeof ClipboardItem !== 'undefined' &&
+        ClipboardItem.supports?.('text/plain')
+      ) {
+        const item = new ClipboardItem({
+          'text/plain': textPromise.then(
+            t => new Blob([t], { type: 'text/plain' })
+          )
+        })
+        await navigator.clipboard.write([item])
+      } else {
+        await navigator.clipboard.writeText(await textPromise)
+      }
     } catch {
       setCopyState('idle')
       return
