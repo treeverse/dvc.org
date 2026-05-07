@@ -40,7 +40,8 @@ const helmetOptions = {
       frameSrc: [
         'https://*.youtube.com',
         'https://*.youtube-nocookie.com',
-        'https://web.cmp.usercentrics.eu'
+        'https://web.cmp.usercentrics.eu',
+        'https://api.vector.co' // Common Room
       ],
       connectSrc: ["'self'", 'https:'],
       imgSrc: ["'self'", 'data:', 'https:'],
