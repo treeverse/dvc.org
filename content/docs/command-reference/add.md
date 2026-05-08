@@ -92,10 +92,6 @@ dataset has a large file count.
 
 <admon type="info">
 
-For datasets with many files, prefer adding the directory or the smallest useful
-subdirectory instead of tracking thousands of files as separate DVC targets.
-Directory targets keep Git-tracked metadata smaller, while still allowing
-granular commands such as `dvc pull`, `dvc push`, `dvc get`, and `dvc import`.
 If your project routinely versions tens of thousands of small files or
 object-store-scale datasets, consider [lakeFS](https://docs.lakefs.io/).
 
