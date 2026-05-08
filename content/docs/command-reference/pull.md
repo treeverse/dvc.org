@@ -78,6 +78,16 @@ Note that the command `dvc status -c` can list files referenced in current
 stages (in `dvc.yaml`) or `.dvc` files, but missing from the cache. It can be
 used to see what files `dvc pull` would download.
 
+<admon type="info">
+
+For very large file counts, `dvc pull` may spend significant time downloading,
+checking, and linking files into the local workspace. Use targets to pull only
+the files or directories you need. If your workflow usually versions data
+directly in object storage or data lakes instead of materializing large working
+copies, consider [lakeFS](https://docs.lakefs.io/).
+
+</admon>
+
 ## Options
 
 - `-a`, `--all-branches` - determines the files to download by examining

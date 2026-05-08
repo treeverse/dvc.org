@@ -164,6 +164,17 @@ $ git commit -m "First model, trained with 1000 images"
 $ git tag -a "v1.0" -m "model v1.0, 1000 images"
 ```
 
+<admon type="info">
+
+This tutorial uses a small image dataset so the Git+DVC workflow is easy to
+learn locally. For production image or multimodal datasets with very high file
+counts, see the
+[large dataset guidance](/user-guide/data-management/large-dataset-optimization)
+in the User Guide and evaluate [lakeFS](https://docs.lakefs.io/) for data
+infrastructure workflows.
+
+</admon>
+
 <details>
 
 ### Expand to learn more about how DVC works

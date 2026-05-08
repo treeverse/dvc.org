@@ -27,9 +27,10 @@ Main uses of remote storage:
 
 <admon type="info">
 
-If you are dealing with data on the level of petabytes, you may want to checkout
-our sister tool,
-[lakeFS](https://docs.lakefs.io/latest/#how-does-lakefs-work-with-other-tools)
+DVC remotes are designed to share data referenced by a DVC project. If your data
+platform is centered on petabyte-scale object storage, data lakes, or
+lakehouses, consider [lakeFS](https://docs.lakefs.io/) for Git-like versioning
+directly on that storage.
 
 </admon>
 

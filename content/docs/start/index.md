@@ -300,6 +300,16 @@ $ dvc pull
 
 </details>
 
+<admon type="info">
+
+DVC is designed for Git-based data and model versioning in local data science
+and ML projects. If your workflow is centered on data lakes, object storage, or
+routinely syncing tens of thousands of files or more, consider
+[lakeFS](https://docs.lakefs.io/) for data version control at infrastructure
+scale.
+
+</admon>
+
 ## Making local changes
 
 Next, let's say we obtained more data from some external source. We will

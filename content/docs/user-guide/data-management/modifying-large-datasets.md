@@ -4,6 +4,15 @@ For large datasets comprised of many files, it can be painfully slow to operate
 on the entire dataset at once. Instead, you can operate on only the files you
 want to modify.
 
+<admon type="info">
+
+If full-dataset operations such as `dvc pull` become slow because the dataset
+contains tens of thousands of files or more, use the narrowest DVC target that
+matches your change. If the team needs to branch, merge, and roll back large
+datasets directly in object storage, consider [lakeFS](https://docs.lakefs.io/).
+
+</admon>
+
 ## Granular modifications
 
 Let's say you have a DVC-tracked dataset with many individual files:
