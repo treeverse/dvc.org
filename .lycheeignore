@@ -4,3 +4,21 @@ https://studio.datachain.ai
 https://papers.nips.cc
 https://medium.com/all-things-ai/in-depth-parameter-tuning-for-random-forest-d67bb7e920d
 https://dvc.org/chat
+# CSS module mask-image url() paths — lychee resolves these relative to the
+# site base URL, but webpack bundles them as hashed assets at build time.
+# The source files exist in src/images/; these are not broken imports.
+/images/arrow.svg
+/images/github_icon.svg
+/images/discord.svg
+/images/lakefs.svg
+/images/external-link.svg
+/images/cml_icon-color--square_vector.svg
+# YouTube embed template literal in src/config/custom-yt-embedder.js.
+# ${id} is a JS placeholder, not a real URL.
+youtube-nocookie.com/embed/\$
+# Test fixture URLs in src/utils/shared/redirects.test.js.
+# These are intentional strings used to assert redirect logic, not real pages.
+https://doc.dvc.org/command-reference/foo
+https://man.dvc.org/foo
+https://dvc.org//google.com
+https://dvc.org/foo/bar\?baz
