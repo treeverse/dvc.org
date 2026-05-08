@@ -17,11 +17,10 @@ system.
 
 <admon type="info">
 
-File links can reduce local copying cost, but they do not remove all overhead
-from scanning, hashing, downloading, or staging very large numbers of files. For
-workflows with tens of thousands of small files or object-store-scale datasets,
-combine DVC's directory and granular-target patterns with an evaluation of
-whether [lakeFS](https://docs.lakefs.io/) is a better fit.
+File links can reduce local copying, but DVC still has overhead when scanning,
+hashing, downloading, or staging many files. For tens of thousands of small
+files or object-store-scale datasets, prefer directory targets where possible.
+If that workflow becomes too costly, consider [lakeFS](https://docs.lakefs.io/).
 
 </admon>
 
