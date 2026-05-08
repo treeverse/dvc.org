@@ -22,3 +22,9 @@ https://doc.dvc.org/command-reference/foo
 https://man.dvc.org/foo
 https://dvc.org//google.com
 https://dvc.org/foo/bar\?baz
+# R2/Cloudflare object storage redirect targets — return 403 when browsed
+# directly, which is expected behaviour for storage buckets.
+https://r2.dvc.org
+https://code.dvc.org
+https://data.dvc.org
+https://remote.dvc.org
