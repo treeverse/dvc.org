@@ -83,9 +83,9 @@ $ dvc remote modify --local myremote \
 ## S3-compatible servers (non-Amazon)
 
 Set the `endpointurl` parameter with the URL to connect to the S3-compatible
-service (e.g. [Nebius], [MinIO], [IBM Cloud Object Storage], etc.). For example,
-let's set up a [DigitalOcean Space] (equivalent to a bucket in S3) called
-`mystore` found in the `nyc3` region:
+service (e.g. [Backblaze B2], [IBM Cloud Object Storage], [MinIO], [Nebius],
+etc.). For example, let's set up a [DigitalOcean Space] (equivalent to a bucket
+in S3) called `mystore` found in the `nyc3` region:
 
 ```cli
 $ dvc remote add -d myremote s3://mystore/path
@@ -100,9 +100,10 @@ they're effective depends on each storage platform.
 
 </admon>
 
-[minio]: https://www.min.io/
+[backblaze b2]: https://www.backblaze.com/docs/cloud-storage-s3-compatible-api
 [digitalocean space]: https://www.digitalocean.com/products/spaces
 [ibm cloud object storage]: https://www.ibm.com/products/cloud-object-storage
+[minio]: https://www.min.io/
 [nebius]: https://docs.nebius.com/object-storage
 
 ## More configuration parameters
