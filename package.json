@@ -67,7 +67,7 @@
     "hast-util-select": "6.0.4",
     "hast-util-to-jsx-runtime": "2.3.6",
     "helmet": "8.1.0",
-    "http-proxy-middleware": "3.0.5",
+    "http-proxy-middleware": "3.0.7",
     "lucide-react": "1.7.0",
     "permissions-policy": "0.6.0",
     "postcss": "8.5.14",
