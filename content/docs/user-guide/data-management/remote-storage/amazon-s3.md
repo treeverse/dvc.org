@@ -83,9 +83,8 @@ $ dvc remote modify --local myremote \
 ## S3-compatible servers (non-Amazon)
 
 Set the `endpointurl` parameter with the URL to connect to the S3-compatible
-service (e.g. [Nebius], [MinIO], [IBM Cloud Object Storage], etc.). For example,
-let's set up a [DigitalOcean Space] (equivalent to a bucket in S3) called
-`mystore` found in the `nyc3` region:
+service. For example, let's set up a [DigitalOcean Space] (equivalent to a
+bucket in S3) called `mystore` found in the `nyc3` region:
 
 ```cli
 $ dvc remote add -d myremote s3://mystore/path
@@ -93,10 +92,37 @@ $ dvc remote modify myremote endpointurl \
                     https://nyc3.digitaloceanspaces.com
 ```
 
+Credentials work the same way as for Amazon S3
+([see above](#custom-authentication)): either rely on the
+`AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` environment
+variables, or store the service's key pair with `--local` so that it is
+excluded from the Git repository:
+
+```cli
+$ dvc remote modify --local myremote access_key_id 'mykey'
+$ dvc remote modify --local myremote secret_access_key 'mysecret'
+```
+
+Endpoint URLs for some common S3-compatible services:
+
+| Service                    | `endpointurl`                                              |
+| -------------------------- | ---------------------------------------------------------- |
+| [Ceph RGW]                 | depends on your deployment                                 |
+| [Cloudflare R2]            | `https://<account_id>.r2.cloudflarestorage.com`            |
+| [DigitalOcean Space]       | `https://<region>.digitaloceanspaces.com`                  |
+| [IBM Cloud Object Storage] | `https://s3.<region>.cloud-object-storage.appdomain.cloud` |
+| [MinIO]                    | depends on your deployment                                 |
+| [Nebius]                   | `https://storage.<region>.nebius.cloud`                    |
+| [Tigris]                   | `https://t3.storage.dev`                                   |
+
 <admon type="info">
 
 Any other S3 parameter can also be set for S3-compatible storage. Whether
-they're effective depends on each storage platform.
+they're effective depends on each storage platform. Two common cases: some
+services validate the request signing region, so if requests fail with
+`SignatureDoesNotMatch`, set `region` to the value your service expects; and
+for self-hosted servers with self-signed certificates, see `ssl_verify`
+([below](#more-configuration-parameters)).
 
 </admon>
 
@@ -104,6 +130,9 @@ they're effective depends on each storage platform.
 [digitalocean space]: https://www.digitalocean.com/products/spaces
 [ibm cloud object storage]: https://www.ibm.com/products/cloud-object-storage
 [nebius]: https://docs.nebius.com/object-storage
+[tigris]: https://www.tigrisdata.com/
+[ceph rgw]: https://docs.ceph.com/en/latest/radosgw/
+[cloudflare r2]: https://developers.cloudflare.com/r2/
 
 ## More configuration parameters
 
