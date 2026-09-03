@@ -5,11 +5,11 @@
   color: var(--text-primary);
   background-color: color-mix(
     in srgb,
-    var(--accent-primary) 12%,
+    var(--accent-secondary) 8%,
     var(--bg-elevated)
   );
   border-bottom: 1px solid
-    color-mix(in srgb, var(--accent-primary) 22%, transparent);
+    color-mix(in srgb, var(--accent-secondary) 22%, transparent);
 }
 
 :global(body[data-layout-alert-dismissed]) .alert {
@@ -25,7 +25,7 @@
   max-width: var(--layout-width-wide);
   height: 100%;
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0 calc(var(--layout-alert-height) + 12px);
 }
 
 .alertLink {
@@ -36,8 +36,8 @@
   min-width: 0;
   height: 100%;
   color: inherit;
-  font-size: 14px;
-  line-height: 20px;
+  font-size: 16px;
+  line-height: 24px;
   text-align: center;
   text-decoration: none;
   white-space: nowrap;
@@ -49,7 +49,6 @@
 
   &:hover .cta,
   &:focus-visible .cta {
-    color: var(--link-hover);
     text-decoration-color: currentcolor;
   }
 }
@@ -88,8 +87,11 @@
 
 .cta {
   flex-shrink: 0;
-  color: var(--link);
+  max-width: calc(100% - 8px);
+  overflow: hidden;
+  color: var(--link-hover);
   font-weight: 600;
+  text-overflow: ellipsis;
   text-decoration: underline;
   text-decoration-color: color-mix(in srgb, currentcolor 45%, transparent);
   text-underline-offset: 2px;
@@ -101,7 +103,8 @@
 @media (width <= 572px) {
   .alertLink {
     gap: 6px;
-    font-size: 13px;
+    font-size: 14px;
+    line-height: 20px;
   }
 }
 
