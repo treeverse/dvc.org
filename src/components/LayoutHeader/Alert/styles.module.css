@@ -1,10 +1,112 @@
 .alert {
-  background-color: #dee;
-  transition: 0.5s all;
+  width: 100%;
+  height: var(--layout-alert-height);
   overflow: hidden;
+  color: var(--text-primary);
+  background-color: color-mix(
+    in srgb,
+    var(--accent-primary) 12%,
+    var(--bg-elevated)
+  );
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--accent-primary) 22%, transparent);
+}
 
-  &.collapsed {
-    height: 0;
-    transform: translateY(-100%);
+:global(body[data-layout-alert-dismissed]) .alert {
+  display: none;
+}
+
+.inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: var(--layout-width-wide);
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.alertLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 0;
+  height: 100%;
+  color: inherit;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+
+  &:focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: -3px;
+  }
+
+  &:hover .cta,
+  &:focus-visible .cta {
+    color: var(--link-hover);
+    text-decoration-color: currentcolor;
+  }
+}
+
+.dismissButton {
+  position: absolute;
+  top: 0;
+  right: 8px;
+  display: grid;
+  place-items: center;
+  width: var(--layout-alert-height);
+  height: var(--layout-alert-height);
+  padding: 0;
+  color: inherit;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  opacity: 0.7;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: -3px;
+    opacity: 1;
+  }
+}
+
+.message {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cta {
+  flex-shrink: 0;
+  color: var(--link);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, currentcolor 45%, transparent);
+  text-underline-offset: 2px;
+  transition:
+    color 0.15s ease,
+    text-decoration-color 0.15s ease;
+}
+
+@media (width <= 572px) {
+  .alertLink {
+    gap: 6px;
+    font-size: 13px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta {
+    transition: none;
   }
 }

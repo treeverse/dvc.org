@@ -75,7 +75,6 @@
     "prismjs": "1.30.0",
     "react": "19.2.4",
     "react-dom": "19.2.4",
-    "react-intersection-observer": "10.0.3",
     "rehype-parse": "9.0.1",
     "rehype-stringify": "10.0.1",
     "remark-html": "16.0.1",

@@ -20,7 +20,7 @@ const ARROW_SIZE = 10
 const VIEWPORT_PADDING = 16
 
 const getNavbarBottom = (): number => {
-  const header = document.querySelector('header[data-collapsed], #header')
+  const header = document.getElementById('header')
 
   return header?.getBoundingClientRect().bottom ?? 0
 }

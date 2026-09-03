@@ -1,9 +1,11 @@
 @reference "../../../styles/global.css";
 
 .container {
-  @apply mt-7 pt-14 sticky top-0 max-h-screen;
+  @apply mt-7 pt-14 sticky;
 
   align-self: flex-start;
+  top: var(--layout-alert-height);
+  max-height: calc(100vh - var(--layout-alert-height));
   flex-shrink: 0;
   width: 170px;
   font-size: 16px;

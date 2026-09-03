@@ -1,42 +1,26 @@
 import cn from 'clsx/lite'
-import { useState, useCallback } from 'react'
-import { useInView } from 'react-intersection-observer'
+import { useCallback, useState } from 'react'
 
 import LayoutWidthContainer from '../LayoutWidthContainer'
-import { LayoutModifiers, ILayoutModifiable } from '../MainLayout'
 
+import LayoutAlert from './Alert'
+import { dismissAlert } from './Alert/state'
 import { HeaderBranding } from './HeaderBranding'
 import Nav from './Nav'
 import * as styles from './styles.module.css'
 
-const LayoutHeader: React.FC<ILayoutModifiable> = ({ modifiers }) => {
-  const { ref, inView } = useInView({ rootMargin: '20px 0px 0px 0px' })
-  const scrolled = !inView
-
+const LayoutHeader: React.FC = () => {
   const [opened, setOpened] = useState(false)
   const handleToggle = useCallback(() => setOpened(prev => !prev), [])
   const handleClose = useCallback(() => setOpened(false), [])
 
-  const hasCollapsedModifier = modifiers?.includes(LayoutModifiers.Collapsed)
-  const collapsed = opened || hasCollapsedModifier || scrolled
-
   return (
     <>
-      <div ref={ref} />
-      <header
-        id="header"
-        data-collapsed={collapsed}
-        className={cn(styles.headerContainer)}
-      >
+      <div aria-hidden="true" className={styles.alertSpacer} />
+      <header id="header" className={styles.headerContainer}>
+        <LayoutAlert onDismiss={dismissAlert} />
         <LayoutWidthContainer
-          className={cn(
-            styles.header,
-            'transition-all',
-            'ease-in-out',
-            'delay-150',
-            'py-2',
-            'px-3'
-          )}
+          className={cn(styles.header, 'py-2', 'px-3')}
           wide
         >
           <HeaderBranding onClick={handleClose} />

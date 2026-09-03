@@ -3,7 +3,7 @@ import { Element } from 'hast'
 
 import Documentation from '../components/Documentation'
 import DocumentationLayout from '../components/Documentation/Layout'
-import MainLayout, { LayoutModifiers } from '../components/MainLayout'
+import MainLayout from '../components/MainLayout'
 import SEO from '../components/SEO'
 import { getItemByPath } from '../utils/shared/sidebar'
 
@@ -22,7 +22,6 @@ const DocPage: React.FC<
       slug: string
       headings: []
       is404: boolean
-      isAlertLanding: boolean
       pageInfo?: {
         currentPage: number
         nextPage?: string
@@ -39,7 +38,7 @@ const DocPage: React.FC<
   } = data
 
   return (
-    <MainLayout modifiers={[LayoutModifiers.Wide, LayoutModifiers.Collapsed]}>
+    <MainLayout>
       <DocumentationLayout currentPath={pathname}>
         <Documentation htmlAst={htmlAst} path={pathname} headings={headings} />
       </DocumentationLayout>

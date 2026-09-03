@@ -2,8 +2,6 @@ const is404Regexp = /^\/404/
 const isDocsRegexp = /^\/doc/
 const trailingSlashRegexp = /\/$/
 
-const alertLandingArray = ['/enterprise']
-
 let markdownProcessor
 const getMarkdownProcessor = async () => {
   if (!markdownProcessor) {
@@ -29,8 +27,6 @@ const setPageContext = (page, actions) =>
         ? pPath.replace(trailingSlashRegexp, '')
         : pPath
 
-    const isAlertLanding = alertLandingArray.includes(pagePath)
-
     actions.deletePage(page)
     actions.createPage({
       ...page,
@@ -38,8 +34,7 @@ const setPageContext = (page, actions) =>
       context: {
         ...page.context,
         is404: is404Regexp.test(page.path),
-        isDocs: isDocsRegexp.test(page.path),
-        isAlertLanding
+        isDocs: isDocsRegexp.test(page.path)
       }
     })
     resolve()

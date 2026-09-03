@@ -16216,19 +16216,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-intersection-observer@npm:10.0.3":
-  version: 10.0.3
-  resolution: "react-intersection-observer@npm:10.0.3"
-  peerDependencies:
-    react: ^17.0.0 || ^18.0.0 || ^19.0.0
-    react-dom: ^17.0.0 || ^18.0.0 || ^19.0.0
-  peerDependenciesMeta:
-    react-dom:
-      optional: true
-  checksum: 10c0/64439d19793c49bf9d1701fc74cd854f4ddc646411500a4d1efa058ac0100efdde5d4dd24ce736a48eeba9de3585c164c916be2b91e9c9b2b5db7b756c8cec9d
-  languageName: node
-  linkType: hard
-
 "react-is@npm:^16.13.1":
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
@@ -20097,7 +20084,6 @@ __metadata:
     prismjs: "npm:1.30.0"
     react: "npm:19.2.4"
     react-dom: "npm:19.2.4"
-    react-intersection-observer: "npm:10.0.3"
     rehype-parse: "npm:9.0.1"
     rehype-stringify: "npm:10.0.1"
     remark: "npm:15.0.1"

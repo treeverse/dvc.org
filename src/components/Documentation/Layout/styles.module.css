@@ -318,7 +318,10 @@
 }
 
 .innerSidebar {
-  @apply flex flex-col sticky top-0 max-h-screen z-20 pt-14;
+  @apply flex flex-col sticky z-20 pt-14;
+
+  top: var(--layout-alert-height);
+  max-height: calc(100vh - var(--layout-alert-height));
 }
 
 .backdrop {

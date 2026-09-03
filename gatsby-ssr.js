@@ -1,4 +1,20 @@
 import { wrapPageElement } from './gatsby-shared'
+import {
+  ALERT_DISMISSED_ATTRIBUTE,
+  ALERT_DISMISSED_STORAGE_KEY
+} from './src/components/LayoutHeader/Alert/state'
+
+const alertInitScript = `
+try {
+  if (localStorage.getItem(${JSON.stringify(
+    ALERT_DISMISSED_STORAGE_KEY
+  )}) === 'true') {
+    document.body.setAttribute(${JSON.stringify(
+      ALERT_DISMISSED_ATTRIBUTE
+    )}, '');
+  }
+} catch(e) {}
+`
 
 const themeInitScript = `
 void function() {
@@ -67,6 +83,12 @@ export const onRenderBody = ({ setHeadComponents, setPreBodyComponents }) => {
     ))
   )
   setPreBodyComponents([
+    <script
+      key="layout-alert-init"
+      id="layout-alert-init"
+      data-uc-allowed="true"
+      dangerouslySetInnerHTML={{ __html: alertInitScript }}
+    />,
     <script
       key="theme-mode-init"
       id="theme-mode-init"
