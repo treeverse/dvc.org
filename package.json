@@ -80,6 +80,7 @@
     "remark-html": "16.0.1",
     "remark-preset-lint-recommended": "7.0.1",
     "serve-handler": "6.1.7",
+    "shell-quote": "1.8.4",
     "tailwindcss": "4.2.2",
     "tailwindcss-animate": "1.0.7",
     "unified": "11.0.5",

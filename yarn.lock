@@ -17561,6 +17561,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"shell-quote@npm:1.8.4":
+  version: 1.8.4
+  resolution: "shell-quote@npm:1.8.4"
+  checksum: 10c0/86c93678bc394cb81f5ddcdc87df9c95d279ef9652775cd1cd1eed361404169a8d8cbaacaeed232ab09919e36ee1e5363863570390d78571f8c22b7f6312fb40
+  languageName: node
+  linkType: hard
+
 "shell-quote@npm:^1.7.3":
   version: 1.8.3
   resolution: "shell-quote@npm:1.8.3"
@@ -20090,6 +20097,7 @@ __metadata:
     remark-html: "npm:16.0.1"
     remark-preset-lint-recommended: "npm:7.0.1"
     serve-handler: "npm:6.1.7"
+    shell-quote: "npm:1.8.4"
     stylelint: "npm:17.6.0"
     stylelint-config-standard: "npm:40.0.0"
     tailwindcss: "npm:4.2.2"
