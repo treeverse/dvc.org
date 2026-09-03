@@ -5,6 +5,24 @@ html {
   --layout-header-height: 56px;
 }
 
+@media (width <= 572px) {
+  html {
+    --layout-alert-height: 72px;
+  }
+}
+
+@media (width <= 340px) {
+  html {
+    --layout-alert-height: 92px;
+  }
+}
+
+@media (width <= 280px) {
+  html {
+    --layout-alert-height: 112px;
+  }
+}
+
 :global(body[data-layout-alert-dismissed]) {
   --layout-alert-height: 0px;
 }

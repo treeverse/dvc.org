@@ -101,10 +101,41 @@
 }
 
 @media (width <= 572px) {
+  .inner {
+    padding: 4px 52px;
+  }
+
   .alertLink {
+    display: block;
     gap: 6px;
-    font-size: 14px;
+    min-height: 44px;
+    height: auto;
+    padding: 2px 0;
+    font-size: 15px;
     line-height: 20px;
+    white-space: normal;
+  }
+
+  .dismissButton {
+    top: 50%;
+    right: 4px;
+    width: 44px;
+    height: 44px;
+    transform: translateY(-50%);
+  }
+
+  .message {
+    overflow: visible;
+    text-overflow: clip;
+  }
+
+  .cta {
+    display: block;
+    max-width: none;
+    overflow: visible;
+    margin-left: 0;
+    text-overflow: clip;
+    white-space: nowrap;
   }
 }
 
