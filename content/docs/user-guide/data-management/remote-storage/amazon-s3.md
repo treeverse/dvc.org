@@ -188,6 +188,39 @@ See `dvc remote modify` for more command usage details.
 - `grant_full_control` - grant `FULL_CONTROL` permissions at object-level ACL to
   specific grantees. Cannot be used with `acl`.
 
+- `storage_class` - [storage class] for objects uploaded to S3 (or compatible
+  providers). Common values: `STANDARD`, `REDUCED_REDUNDANCY`, `STANDARD_IA`,
+  `ONEZONE_IA`, `INTELLIGENT_TIERING`, `GLACIER`, `DEEP_ARCHIVE`. S3-compatible
+  providers may support custom class names. None (provider default) by default.
+
+  ```cli
+  $ dvc remote modify myremote storage_class 'REDUCED_REDUNDANCY'
+  ```
+
+- `requester_pays` (`true` or `false`) - whether the requester pays for data
+  transfer from [requester-pays buckets]. `false` by default.
+
+  ```cli
+  $ dvc remote modify myremote requester_pays true
+  ```
+
+- `object_tags` - URL-encoded [object tags] to attach to uploaded files (e.g.
+  `env=prod&team=ml`). None by default.
+
+  ```cli
+  $ dvc remote modify myremote object_tags 'env=prod&team=ml'
+  ```
+
+- `extra_s3_args` - JSON object of additional parameters passed directly to
+  [boto3 S3 write operations] (`put_object`, `upload_file`, etc.). Useful for
+  S3-compatible providers that require non-standard parameters. When a key
+  overlaps with a named option above, `extra_s3_args` takes precedence.
+
+  ```cli
+  $ dvc remote modify myremote \
+          extra_s3_args '{"StorageClass": "WARM", "RequestPayer": "requester"}'
+  ```
+
 - `allow_anonymous_login` (`true` or `false`) - whether to allow anonymous
   access. `false` by default.
 
@@ -202,6 +235,14 @@ See `dvc remote modify` for more command usage details.
   https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#specifying-grantee
 [permissions]:
   https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#permissions
+[storage class]:
+  https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html
+[requester-pays buckets]:
+  https://docs.aws.amazon.com/AmazonS3/latest/userguide/RequesterPaysBuckets.html
+[object tags]:
+  https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-tagging.html
+[boto3 s3 write operations]:
+  https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3/client/put_object.html
 
 ## Environment variables
 
