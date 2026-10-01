@@ -112,7 +112,7 @@ stages:
     outs:
       - data/clean.csv
   train:
-    cmd: python src/model.py data/model.csv
+    cmd: python src/model.py data/clean.csv
     deps:
       - src/model.py
       - data/clean.csv
