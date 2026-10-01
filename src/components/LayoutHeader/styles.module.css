@@ -1,36 +1,7 @@
 @reference "../../styles/global.css";
 
 html {
-  --layout-alert-height: 40px;
-  --layout-header-height: 56px;
-}
-
-@media (width <= 572px) {
-  html {
-    --layout-alert-height: 72px;
-  }
-}
-
-@media (width <= 340px) {
-  html {
-    --layout-alert-height: 92px;
-  }
-}
-
-@media (width <= 280px) {
-  html {
-    --layout-alert-height: 112px;
-  }
-}
-
-:global(body[data-layout-alert-dismissed]) {
-  --layout-alert-height: 0px;
-}
-
-:global(body main :target) {
-  scroll-margin-top: calc(
-    var(--layout-header-height) + var(--layout-alert-height) + 20px
-  );
+  @apply scroll-pt-14;
 }
 
 .headerContainer {
@@ -44,27 +15,31 @@ html {
   box-shadow: var(--header-shadow);
 }
 
-.alertSpacer {
-  flex: 0 0 auto;
-  width: 100%;
-  height: var(--layout-alert-height);
-}
-
 .header {
   @apply h-14;
 
   width: 100%;
   z-index: 3;
-  position: relative;
   color: var(--header-text);
   display: flex;
   flex-flow: row nowrap;
   flex-shrink: 0;
   justify-content: center;
   align-items: center;
+  transition: height 0.2s linear;
+  will-change: height;
   padding: 0 24px;
 
   @media (width <= 572px) {
     padding: 0 16px;
+  }
+}
+
+.gitHubAlertLink {
+  vertical-align: middle;
+  margin-left: 0.1em;
+
+  svg {
+    color: inherit;
   }
 }

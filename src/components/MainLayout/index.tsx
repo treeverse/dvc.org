@@ -11,12 +11,26 @@ import SearchProvider from '../Search'
 
 import { useRedirects } from './utils'
 
-export interface ILayoutComponentProps {
+export enum LayoutModifiers {
+  Wide,
+  Collapsed,
+  HideAlert
+}
+
+export interface ILayoutModifiable {
+  modifiers?: Array<LayoutModifiers>
+}
+
+export interface ILayoutComponentProps extends ILayoutModifiable {
   className?: string
   children?: ReactNode
 }
 
-const MainLayout = ({ className, children }: ILayoutComponentProps) => {
+const MainLayout = ({
+  className,
+  children,
+  modifiers = []
+}: ILayoutComponentProps) => {
   useRedirects()
 
   useEffect(() => {
@@ -39,7 +53,7 @@ const MainLayout = ({ className, children }: ILayoutComponentProps) => {
           'items-center'
         )}
       >
-        <LayoutHeader />
+        <LayoutHeader modifiers={modifiers} />
         <main
           className={cn(
             'w-full',

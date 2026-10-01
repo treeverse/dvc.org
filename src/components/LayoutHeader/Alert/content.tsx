@@ -1,17 +1,14 @@
 import Link from '../../Link'
-
-import * as styles from './styles.module.css'
-
-const WEBINAR_URL =
-  'https://dvc.org/webinars/end-to-end-lineage-aws-dvc-mlflow/'
+import { ReactComponent as GithubSVG } from '../../SocialIcon/github.svg'
 
 export const AlertContent = () => (
-  <Link className={styles.alertLink} href={WEBINAR_URL}>
-    <span className={styles.message}>
-      See how AWS built end-to-end ML lineage with DVC, SageMaker &amp; MLflow
-    </span>
-    <span className={styles.cta}>
-      Join us <time dateTime="2026-09-22">Sept. 22</time>
-    </span>
-  </Link>
+  <>
+    <span role="img" aria-label="rocket">
+      🚀
+    </span>{' '}
+    <Link href="https://github.com/treeverse/dvc">
+      Star us on <GithubSVG className="h-5 w-5 inline-block align-middle" />
+    </Link>
+    !
+  </>
 )

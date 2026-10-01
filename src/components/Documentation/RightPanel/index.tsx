@@ -25,11 +25,13 @@ const RightPanel: React.FC<IRightPanelProps> = ({ headings, githubLink }) => {
     animatingRef.current = false
 
     // A heading is "active" once it passes the visible top boundary.
-    // The extra buffer covers the anchor margin and minor spacing.
-    const getBaseOffset = (): number =>
-      (document.getElementById('header')?.getBoundingClientRect().bottom ??
-        56) + 30
-    let baseOffset = getBaseOffset()
+    // scroll-padding-top accounts for the fixed header; the extra
+    // buffer covers scroll-margin on headings and minor spacing.
+    let baseOffset =
+      (parseInt(
+        getComputedStyle(document.documentElement).scrollPaddingTop,
+        10
+      ) || 0) + 30
 
     const update = (): void => {
       if (animatingRef.current) return
@@ -61,21 +63,23 @@ const RightPanel: React.FC<IRightPanelProps> = ({ headings, githubLink }) => {
         })
     }
 
-    const onLayoutResize = (): void => {
-      baseOffset = getBaseOffset()
+    const onResize = (): void => {
+      baseOffset =
+        (parseInt(
+          getComputedStyle(document.documentElement).scrollPaddingTop,
+          10
+        ) || 0) + 30
       scheduleUpdate()
     }
 
     // Detect layout shifts from <details>, images, etc. that don't
     // fire scroll or resize events but still move headings.
     const markdownRoot = document.getElementById('markdown-root')
-    const header = document.getElementById('header')
-    const resizeObserver = new ResizeObserver(onLayoutResize)
+    const resizeObserver = new ResizeObserver(scheduleUpdate)
     if (markdownRoot) resizeObserver.observe(markdownRoot)
-    if (header) resizeObserver.observe(header)
 
     document.addEventListener('scroll', scheduleUpdate, { passive: true })
-    window.addEventListener('resize', onLayoutResize, { passive: true })
+    window.addEventListener('resize', onResize, { passive: true })
     scheduleUpdateRef.current = scheduleUpdate
     rafId = requestAnimationFrame(() => {
       rafId = 0
@@ -84,7 +88,7 @@ const RightPanel: React.FC<IRightPanelProps> = ({ headings, githubLink }) => {
 
     return (): void => {
       document.removeEventListener('scroll', scheduleUpdate)
-      window.removeEventListener('resize', onLayoutResize)
+      window.removeEventListener('resize', onResize)
       resizeObserver.disconnect()
       cancelAnimationFrame(rafId)
       guardCleanupRef.current?.()

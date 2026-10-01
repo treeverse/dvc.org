@@ -26,12 +26,9 @@
     visibility: hidden;
     opacity: 0;
     padding: 8px 16px;
-    position: absolute;
+    position: fixed;
     z-index: 11;
-    top: 56px;
-    right: 0;
-    left: 0;
-    height: calc(100dvh - 56px - var(--layout-alert-height));
+    inset: 56px 0 0;
     background-color: var(--nav-mobile-bg);
     overflow-y: auto;
     overscroll-behavior: contain;
@@ -59,7 +56,7 @@
   @media (width <= 768px) {
     display: flex;
     align-items: center;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 4px;
     height: 56px;
@@ -75,7 +72,7 @@
     align-items: center;
     gap: 2px;
     margin-left: auto;
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 8px;
     height: 56px;
