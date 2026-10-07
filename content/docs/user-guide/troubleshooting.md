@@ -70,6 +70,9 @@ some network filesystem like NFS, Lustre, etc. If so, the solution is to enable
 $ dvc config core.hardlink_lock true
 ```
 
+You can pass the `--wait-for-lock` option to DVC commands to make them wait for
+the lock to be released instead of failing immediately.
+
 ## Cannot add files in symlinked directory {#add-symlink}
 
 DVC only supports [symlinked files](/command-reference/add#add-symlink) as valid
