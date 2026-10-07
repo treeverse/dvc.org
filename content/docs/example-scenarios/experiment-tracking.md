@@ -24,7 +24,7 @@ instead, and not as a separate system.
 [codified with dvc]: /user-guide/project-structure/dvcyaml-files
 [versioning everything]: /example-scenarios/versioning-data-and-models
 
-![](/img/vscode-live.gif) \_DVC Experiments are organized along project versions
+![](/img/vscode-live.gif)<span></span>DVC Experiments are organized along project versions
 (Git commits, branches, tags, etc.), and can be compared in the terminal, the
 [VS Code extension][ide] (shown) or DVC Studio.
 
