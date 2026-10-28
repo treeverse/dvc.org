@@ -76,6 +76,34 @@ into a <abbr>DVC project</abbr>:
 $ dvc import https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0 sd_xl_base_1.0.safetensors
 ```
 
+## Hugging Face Storage Buckets
+
+[Storage Buckets](https://huggingface.co/docs/hub/storage-buckets) are mutable
+object storage on the Hugging Face Hub with an
+[S3-compatible API](https://huggingface.co/docs/hub/storage-buckets-s3), so a
+bucket can be used as a DVC
+[remote](/doc/user-guide/data-management/remote-storage/amazon-s3). Set
+`endpointurl` to `https://s3.hf.co/<NAMESPACE>` (your Hugging Face user or
+organization name) and use the bare bucket name in the `s3://` URL:
+
+```cli
+$ pip install "dvc[s3]"
+$ dvc remote add -d myremote s3://<BUCKET>/dvc-store
+$ dvc remote modify myremote endpointurl https://s3.hf.co/<NAMESPACE>
+$ dvc remote modify myremote region us-east-1
+```
+
+Generate S3 credentials for the bucket in your
+[Hugging Face settings](https://huggingface.co/docs/hub/storage-buckets-s3#generating-s3-credentials)
+and set them with `dvc remote modify --local` so they stay out of Git:
+
+```cli
+$ dvc remote modify --local myremote access_key_id <ACCESS_KEY_ID>
+$ dvc remote modify --local myremote secret_access_key <SECRET_ACCESS_KEY>
+```
+
+`dvc push` and `dvc pull` then work as with any S3 remote.
+
 ## Hugging Face Datasets
 
 [Hugging Face Datasets](https://huggingface.co/docs/datasets/index) is a Python
