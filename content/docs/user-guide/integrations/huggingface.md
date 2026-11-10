@@ -83,13 +83,13 @@ object storage on the Hugging Face Hub with an
 [S3-compatible API](https://huggingface.co/docs/hub/storage-buckets-s3), so a
 bucket can be used as a DVC
 [remote](/doc/user-guide/data-management/remote-storage/amazon-s3). Set
-`endpointurl` to `https://s3.hf.co/<NAMESPACE>` (your Hugging Face user or
+`endpointurl` to `https://<NAMESPACE>.s3.hf.co` (your Hugging Face user or
 organization name) and use the bare bucket name in the `s3://` URL:
 
 ```cli
 $ pip install "dvc[s3]"
 $ dvc remote add -d myremote s3://<BUCKET>/dvc-store
-$ dvc remote modify myremote endpointurl https://s3.hf.co/<NAMESPACE>
+$ dvc remote modify myremote endpointurl https://<NAMESPACE>.s3.hf.co
 $ dvc remote modify myremote region us-east-1
 ```
 
