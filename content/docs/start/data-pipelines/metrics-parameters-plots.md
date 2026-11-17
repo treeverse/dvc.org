@@ -125,7 +125,7 @@ You can view tracked metrics with `dvc metrics show `:
 ```dvc
 $ dvc metrics show
 Path                    avg_prec.test    avg_prec.train    roc_auc.test    roc_auc.train
-eval/metrics.json  0.94496          0.97723           0.96191         0.98737
+eval/metrics.json  0.9014          0.95704           0.93196         0.97743
 ```
 
 You can view plots with `dvc plots show` (shown below), which generates an HTML
