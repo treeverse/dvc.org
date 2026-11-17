@@ -19,7 +19,9 @@ export default tseslint.config(
       '**/.cache/**',
       '.log/**',
       '**/.yarn/**',
-      '**/tmp/**'
+      '**/tmp/**',
+      // vendored third-party script, kept verbatim
+      'plugins/gatsby-plugin-usercentrics/utm-share.js'
     ]
   },
   eslint.configs.recommended,

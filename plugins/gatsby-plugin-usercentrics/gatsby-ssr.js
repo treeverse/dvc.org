@@ -1,12 +1,20 @@
 export const onRenderBody = (
   { setHeadComponents },
-  { settingsId, rulesetId }
+  { settingsId, rulesetId, utmShareScript }
 ) =>
   setHeadComponents([
     <script
       key="usercentrics-autoblocker"
       src="https://web.cmp.usercentrics.eu/modules/autoblocker.js"
     />,
+    utmShareScript && (
+      <script
+        key="utm-share"
+        id="utm-share"
+        data-uc-allowed="true"
+        dangerouslySetInnerHTML={{ __html: utmShareScript }}
+      />
+    ),
     <script
       key="usercentrics-cmp"
       id="usercentrics-cmp"

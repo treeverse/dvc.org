@@ -155,7 +155,7 @@ const plugins = [
           }
         },
         require.resolve('./src/plugins/resize-image-plugin'),
-        require.resolve('./src/plugins/null-link-plugin'),
+        require.resolve('./src/plugins/null-link-plugin')
       ]
     }
   },
@@ -258,7 +258,17 @@ if (usercentricsSettingsId || usercentricsRulesetId) {
     resolve: 'gatsby-plugin-usercentrics',
     options: {
       settingsId: usercentricsSettingsId,
-      rulesetId: usercentricsRulesetId
+      rulesetId: usercentricsRulesetId,
+      // inlined so it is already listening when Usercentrics loads
+      utmShareScript: fs.readFileSync(
+        path.join(
+          rootDir,
+          'plugins',
+          'gatsby-plugin-usercentrics',
+          'utm-share.js'
+        ),
+        'utf8'
+      )
     }
   })
 }
@@ -267,7 +277,7 @@ if (process.env.NODE_ENV === 'production') {
   plugins.push({
     resolve: 'gatsby-plugin-plausible',
     options: {
-      dataDomain: "dvc.org",
+      dataDomain: 'dvc.org',
       apiEndpoint: '/pl/api/event',
       scriptSrc: '/pl/js/pa-MFZCoVaRDCFH3aTEbZ2Ld.js'
     }
@@ -283,7 +293,6 @@ if (process.env.GATSBY_GTM_ID) {
     }
   })
 }
-
 
 export default {
   plugins: plugins.filter(Boolean),

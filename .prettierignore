@@ -4,3 +4,4 @@ public/
 packages/websites-server/examples/*/.cache
 packages/websites-server/examples/*/public
 .venv/
+plugins/gatsby-plugin-usercentrics/utm-share.js
