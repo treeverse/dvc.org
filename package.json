@@ -44,7 +44,7 @@
     "@svgr/webpack": "8.1.0",
     "@tailwindcss/postcss": "4.2.2",
     "clsx": "2.1.1",
-    "compression": "1.8.1",
+    "compression": "1.8.2",
     "express": "5.2.1",
     "gatsby": "5.16.1",
     "gatsby-plugin-catch-links": "5.16.0",
