@@ -268,11 +268,12 @@ $ git commit -m "CHANGED"
 
 $ dvc commit
 dependencies ['src/train.py'] of 'train.dvc' changed.
-Are you sure you commit it? [y/n] y
+Are you sure you want to commit it? [y/n/s] y
 
 $ dvc status
 Data and pipelines are up to date.
 ```
+The interactive prompt allows you to confirm (`y`), abort (`n`), or skip the current stage (`s`) to proceed to the next one.
 
 Instead of reproducing the pipeline for changes that do not produce different
 results, just use `commit` on both Git and DVC.
