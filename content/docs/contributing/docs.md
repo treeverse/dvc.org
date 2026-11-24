@@ -52,29 +52,32 @@ before submitting them, and it's quite necessary when making changes to the
 website engine itself. Source code and content files need to be properly
 formatted and linted as well, which is also ensured by the full setup below.
 
-Make sure you have a recent LTS version of [Node.js](https://nodejs.org/en/)
-(`>=18.0.0`, `<=20.x`), and install [Yarn](https://yarnpkg.com/):
+Use [Node.js](https://nodejs.org/en/) 24.x, as specified in
+[`package.json`](https://github.com/treeverse/dvc.org/blob/main/package.json).
+Use [Corepack](https://github.com/nodejs/corepack#readme) to select the Yarn
+version pinned in that file instead of installing Yarn globally. If your Node.js
+installation doesn't include Corepack, follow the
+[Corepack installation instructions](https://github.com/nodejs/corepack#manual-installs).
 
-> In Windows, you may need to install [Visual Studio Build Tools], and the
-> [Windows
->
-> > SDK] first.
+> On Windows, you may need to install the [Visual Studio Build Tools] and the
+> [Windows SDK] first.
 
 [windows sdk]:
   https://developer.microsoft.com/en-us/windows/downloads/windows-10-sdk/
 [visual studio build tools]:
   https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2019
 
-```cli
-$ npm install -g yarn
-```
-
-Having cloned this project locally, navigate into the directory and install the
-project dependencies with Yarn:
+After cloning the repository, run these commands from its root directory:
 
 ```cli
-$ yarn
+$ corepack enable
+$ yarn --version
+$ yarn install --immutable
 ```
+
+The version printed by `yarn --version` should match the version listed in
+`packageManager` in `package.json`. Installing the dependencies also sets up the
+pre-commit Git hook for formatting and linting.
 
 Launch the server locally with:
 
@@ -83,9 +86,7 @@ $ yarn develop
 ```
 
 This will start the server on the default port, `8000`. Visit
-`http://localhost:8000/` and navigate to the page in question. This will also
-enable the pre-commit Git hook that will be formatting and linting your code and
-documentation files automatically.
+`http://localhost:8000/` and navigate to the page in question.
 
 ### All commands
 
