@@ -2,6 +2,7 @@
 
 We currently support the following _ML Frameworks_:
 
+- [CatBoost](/dvclive/ml-frameworks/catboost)
 - [Fast.ai](/dvclive/ml-frameworks/fastai)
 - [Hugging Face](/dvclive/ml-frameworks/huggingface)
 - [Keras](/dvclive/ml-frameworks/keras)
