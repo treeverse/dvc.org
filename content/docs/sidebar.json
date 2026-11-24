@@ -748,6 +748,10 @@
         "source": "ml-frameworks/index.md",
         "children": [
           {
+            "slug": "catboost",
+            "label": "CatBoost"
+          },
+          {
             "slug": "fastai",
             "label": "Fast.ai"
           },
