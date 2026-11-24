@@ -3,7 +3,7 @@
 ```py
 def log_plot(
     name: str,
-    datapoints: pd.DataFrame | np.ndarray | List[Dict],
+    datapoints: pd.DataFrame | np.ndarray | list[dict] | dict,
     x: str,
     y: Union[str, list[str]],
     template: Optional[str] = None,
@@ -68,7 +68,9 @@ or DVC Studio.
 - `name` - name of the output file.
 
 - `datapoints` - Pandas DataFrame, Numpy array or list of dictionaries
-  containing the data for the plot.
+  containing the data for the plot. For `bar_horizontal` and
+  `bar_horizontal_sorted`, you can also pass a dictionary of labels and bar
+  lengths.
 
 - `x` - name of the key (present in the dictionaries) to use as the `x` axis.
 
@@ -85,6 +87,29 @@ or DVC Studio.
 - `x_label` - label for the `x` axis. Defaults to the name passed as `x`.
 
 - `y_label` - label for the `y` axis. Defaults to the name passed as `y`.
+
+## Example: Horizontal bars from a dictionary
+
+For feature importance scores, pass the feature names as dictionary keys and
+their scores as values. DVCLive writes each key to the `y` field and each value
+to the `x` field.
+
+```py
+from dvclive import Live
+
+with Live() as live:
+    live.log_plot(
+        "iris_feature_importance",
+        {"petal_width": 0.4, "sepal_length": 0.03},
+        x="importance",
+        y="name",
+        template="bar_horizontal",
+    )
+```
+
+When using a DataFrame or a list of records, assign the numeric column to `x`
+and the category column to `y`. DVCLive warns if no row contains the specified
+`x` field or if a value in that field cannot be read as a number.
 
 ## Example: Plot from Pandas DataFrame
 
@@ -229,5 +254,5 @@ Rendered with `dvc plots`:
   does not have a supported type. Supported types include:
 
   ```python
-  pd.DataFrame | np.ndarray | List[Dict]
+  pd.DataFrame | np.ndarray | list[dict] | dict  # dict for horizontal bars
   ```
